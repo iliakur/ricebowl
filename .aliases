@@ -1,0 +1,88 @@
+# Export path variables
+export umd=~/Dropbox/UMD_ORG
+export ospc=~/Dropbox/ospc
+# added by Miniconda 3.7.0 installer
+export PATH="/home/quickbeam/ilia_dev/python/miniconda/bin:$PATH"
+export python=~/ilia_dev/python
+
+# Aliasing system commands
+alias less="less -N"
+alias mv="mv -v"
+alias rm="rm -Rv"
+alias cp="cp -v"
+# alias nautil="nautilus ."
+
+# Aliasing certain sets of operations
+# self-referentially starting with editing this file
+alias myalias="vim $HOME/.aliases"
+alias clean="rm -r ~/Downloads/*"
+alias cln-tex="latexmk -c; rm *.bbl"
+alias mk-tex="latexmk -pdf"
+alias lambda="java -jar /usr/bin/LambdaCalculator.jar"
+alias readings="cd ~/Dropbox/Readings"
+alias thes-update="cp ~/Documents/umass/spring13/thesis/ltxsource/report.pdf
+~/ilia/ilia_dev/python/minimal/kurenkov_2013_minimalism.pdf"
+alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
+alias dirgraph='dot -Tpdf -O'
+alias jpgraph='dot -Tjpg -O'
+alias pynt='ipython notebook'
+
+#----------------------------------------------------------
+# Editing useful files
+alias agenda="vim ~/Dropbox/UMD_ORG/agenda"
+alias rareadme="cd $umd/RA_Readme/update2013/"
+#alias itnotes="vim ~/Dropbox/UMD_ORG/IT/ITnotes"
+alias gum="cd ~/ilia_dev/python/gum"
+alias modbib='vim ~/Documents/bib/master.bib'
+alias editmybash='vim ~/.zshrc'
+
+# Changing directories/ssh-ing places
+#----------------------------------------------------------
+
+alias employment="cd ~/Documents/jobs/source/"
+alias prediction="cd ~/Documents/umd/prediction"
+alias psycholing="cd ~/Documents/umd/ling640"
+
+alias droboserv="ssh kurenkov@files.ling.umd.edu"
+alias lingserv="ssh kurenkov@ling.umd.edu"
+
+alias eyetrack="cd ~/ilia_dev/python/EyeTrackAnalysis"
+alias the="cd ~/Documents/umass/spring13/thesis/r"
+
+alias cuttlefish="cd ~/Dropbox/UMD_ORG/experiments/Cuttlefish"
+alias sandcastle="cd ~/Dropbox/UMD_ORG/experiments/Sandcastle"
+
+alias valex='cd ~/ilia_dev/python/VALEXCorpusReader'
+
+alias taxcalc='cd ~/ilia_dev/python/taxcalc'
+
+# Conda Tab completion (currently not supported in zsh!)
+#---------------------------------------------------------
+#eval $(register-python-argcomplete conda)
+#source ~/.pycompletion.d
+
+# Conda environments
+alias sa='source activate'
+alias sd='source deactivate'
+
+# Added for drush to work
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# Aliases for working with NLTK
+alias nltkdev='cd ~/code/python/nltk'
+alias mut='python -m pytest --cov=nltk/model --cov-report term-missing nltk/test/unit/model'
+alias mdt='python -m pytest --cov=nltk/model --cov-report term-missing --doctest-glob="*.doctest" nltk/test/model.doctest'
+
+# Backup command (options):
+# -a		general archiving, useful
+# -r		have to explicitly specify this when using --files-from
+# -v		gotta check this for now
+# --delete	delete files in dest which are missing in src
+# --files-from	read list of folders to back up from file
+# --ignore-existing	Don't update/recreate existing files. Might remove this later
+# --exclude=".*"	ignore hidden files
+# --delete-excluded	delete any stray hidden files found in dest. might get rid of this later
+alias backmeup='rsync -arv --delete --files-from=backup-spec --ignore-existing --exclude=".*" --delete-excluded ~/ /media/quickbeam/5222-E566/backup'
+
+# Medusa ssh tunnel
+alias mssh='ssh -N -L 8000:localhost:8000 kurenkov@medusa.ling.uni-potsdam.de'
