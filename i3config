@@ -158,3 +158,6 @@ bar {
 # Additions from Ilia
 exec --no-startup-id nm-applet
 exec --no-startup-id workrave
+
+# exiting without prompt
+bindsym $mod+Shift+w exit
