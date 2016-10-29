@@ -165,3 +165,9 @@ bindcode $mod+Shift+25 exit
 
 # Set workspace layout to "tabbed" by default
 workspace_layout tabbed
+
+# Lock/Suspend/Shutdown/Restart
+bindsym Pause exec --no-startup-id i3lock -c 000000 -n
+bindsym $mod+Pause exec --no-startup-id systemctl suspend
+bindsym $mod+Delete exec --no-startup-id systemctl poweroff
+bindsym $mod+Shift+Delete exec --no-startup-id systemctl restart
