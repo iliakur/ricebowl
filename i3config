@@ -162,3 +162,6 @@ exec --no-startup-id workrave
 
 # exiting without prompt, use keycode for "w"
 bindcode $mod+Shift+25 exit
+
+# Set workspace layout to "tabbed" by default
+workspace_layout tabbed
