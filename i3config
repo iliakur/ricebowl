@@ -171,3 +171,9 @@ bindsym Pause exec --no-startup-id i3lock -c 000000 -n
 bindsym $mod+Pause exec --no-startup-id systemctl suspend
 bindsym $mod+Delete exec --no-startup-id systemctl poweroff
 bindsym $mod+Shift+Delete exec --no-startup-id systemctl restart
+
+# Volume control and icon
+exec --no-startup-id volumeicon
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 10%+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 10%- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
