@@ -89,6 +89,6 @@ setopt autocd
 #export PATH=/usr/local/texlive/2013/bin/i386-linux:$PATH
 
 # Virtualenvwrapper config
-export WORKON_HOME=/media/data/virtualenvs
-export PROJECT_HOME=/media/data/Devel
-#source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$DATA_DIR/virtualenvs
+export PROJECT_HOME=$DATA_DIR/Devel
+source /usr/local/bin/virtualenvwrapper.sh

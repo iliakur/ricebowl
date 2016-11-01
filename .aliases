@@ -4,6 +4,7 @@ export ospc=~/Dropbox/ospc
 # added by Miniconda 3.7.0 installer
 export PATH="/home/quickbeam/ilia_dev/python/miniconda/bin:$PATH"
 export python=~/ilia_dev/python
+export DATA_DIR=/data
 
 # Aliasing system commands
 alias less="less -N"
