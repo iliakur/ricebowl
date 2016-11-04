@@ -160,6 +160,10 @@ bar {
 # Stuff I want at startup: networking, workrave
 exec --no-startup-id nm-applet
 exec --no-startup-id workrave
+# keyboard layout switching
+exec --no-startup-id setxkbmap -option 'grp:alt_space_toggle'
+# set background with feh
+exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
 
 # exiting without prompt, use keycode for "w"
 bindcode $mod+Shift+25 exit
