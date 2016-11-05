@@ -73,6 +73,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 alias nltkdev='cd ~/code/python/nltk'
 alias mut='python -m pytest --cov=nltk/model --cov-report term-missing nltk/test/unit/model'
 alias mdt='python -m pytest --cov=nltk/model --cov-report term-missing --doctest-glob="*.doctest" nltk/test/model.doctest'
+alias mat='tox -e py27 -e py35 nltk.test.unit.model model.doctest'
 
 # Backup command (options):
 # -a		general archiving, useful
