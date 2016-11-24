@@ -1,0 +1,17 @@
+[user]
+	name = Ilia Kurenkov
+	email = ilia.kurenkov@gmail.com
+[credential]
+	helper = cache
+[alias]
+	ci = commit -m
+[diff]
+
+[merge]
+	tool = meld
+[core]
+	editor = vim
+[diff]
+	tool = meld
+[push]
+	default = simple
