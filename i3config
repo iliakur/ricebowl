@@ -154,6 +154,7 @@ bindsym $mod+p mode "resize"
 # finds out, if available)
 bar {
         status_command py3status
+        position top
 }
 
 # Additions from Ilia
