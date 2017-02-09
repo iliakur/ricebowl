@@ -165,6 +165,8 @@ exec --no-startup-id workrave
 exec --no-startup-id setxkbmap -option 'grp:alt_space_toggle'
 # set background with feh
 exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
+# Dropbox
+exec --no-startup-id dropbox start
 
 # Shortcuts for favorite programs
 bindsym $mod+s exec subl
