@@ -88,3 +88,4 @@ alias backmeup='rsync -arv --delete --files-from=backup-spec --ignore-existing -
 
 # Medusa ssh tunnel
 alias mssh='ssh -N -L 8000:localhost:8000 kurenkov@medusa.ling.uni-potsdam.de'
+alias medusa-ssh='ssh kurenkov@medusa.ling.uni-potsdam.de'
