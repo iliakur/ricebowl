@@ -87,8 +87,3 @@ source $HOME/.aliases
 setopt autocd
 # add tex-live to path variable
 #export PATH=/usr/local/texlive/2013/bin/i386-linux:$PATH
-
-# Virtualenvwrapper config
-export WORKON_HOME=$DATA_DIR/virtualenvs
-export PROJECT_HOME=$DATA_DIR/Devel
-source /usr/local/bin/virtualenvwrapper.sh
