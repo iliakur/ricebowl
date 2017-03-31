@@ -176,6 +176,7 @@ exec --no-startup-id dropbox start
 # Shortcuts for favorite programs
 bindsym $mod+s exec subl
 bindsym $mod+c exec google-chrome
+bindsym $mod+Tab exec firefox
 
 # exiting without prompt, use keycode for "w"
 bindcode $mod+Shift+25 exit
