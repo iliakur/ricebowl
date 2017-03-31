@@ -177,6 +177,7 @@ exec --no-startup-id dropbox start
 bindsym $mod+s exec subl
 bindsym $mod+c exec google-chrome
 bindsym $mod+Tab exec firefox
+bindsym $mod+z exec pcmanfm
 
 # exiting without prompt, use keycode for "w"
 bindcode $mod+Shift+25 exit
