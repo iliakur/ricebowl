@@ -202,3 +202,8 @@ hide_edge_borders both
 # Scratchpad Settings
 bindsym F9 move scratchpad
 bindsym F10 scratchpad show
+
+# Workrave Control (see workravectl.sh!)
+bindsym $mod+l exec workravectl toggle-op-mode
+bindsym $mod+u exec workravectl enable-reading-mode
+bindsym $mod+y exec workravectl disable-reading-mode
