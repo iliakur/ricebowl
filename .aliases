@@ -63,3 +63,41 @@ alias jn='jupyter notebook'
 
 # Yapf
 alias autoformat='yapf --style="$HOME/code/configs/yapf.conf" -i'
+
+# Controling Workrave
+function toggle-workrave-operation-mode {
+    current_mode=`dbus-send --dest=org.workrave.Workrave \
+                --print-reply=literal --type=method_call \
+                /org/workrave/Workrave/Core \
+                org.workrave.CoreInterface.GetOperationMode | tr -d ' '`
+    if [[ $current_mode == "suspended" ]]; then
+        dbus-send --dest=org.workrave.Workrave \
+                    --type=method_call \
+                    /org/workrave/Workrave/Core \
+                    org.workrave.CoreInterface.SetOperationMode \
+                    string:"normal"
+    # This is currently very primitive: if mode is anything other than
+    # "suspended", it will suspend workrave.
+    else
+        dbus-send --dest=org.workrave.Workrave \
+                    --type=method_call \
+                    /org/workrave/Workrave/Core \
+                    org.workrave.CoreInterface.SetOperationMode \
+                    string:"suspended"
+
+    fi
+}
+function enable-reading-mode {
+    dbus-send --dest=org.workrave.Workrave \
+                --type=method_call \
+                /org/workrave/Workrave/UI \
+                org.workrave.ControlInterface.ReadingMode \
+                boolean:true
+}
+function disable-reading-mode {
+    dbus-send --dest=org.workrave.Workrave \
+                --type=method_call \
+                /org/workrave/Workrave/UI \
+                org.workrave.ControlInterface.ReadingMode \
+                boolean:false
+}
