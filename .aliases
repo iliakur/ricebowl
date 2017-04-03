@@ -60,3 +60,6 @@ function tunnel-medusa {
 # Jupyter shortcuts
 alias jc='jupyter console'
 alias jn='jupyter notebook'
+
+# Yapf
+alias autoformat='yapf --style="$HOME/code/configs/yapf.conf" -i'
