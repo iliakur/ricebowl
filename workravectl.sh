@@ -39,4 +39,9 @@ elif [[ "$1" = "disable-reading-mode" ]]; then
                 /org/workrave/Workrave/UI \
                 org.workrave.ControlInterface.ReadingMode \
                 boolean:false
+elif [[ "$1" = "rest-break" ]]; then
+    dbus-send --dest=org.workrave.Workrave \
+                --type=method_call \
+                /org/workrave/Workrave/UI \
+                org.workrave.ControlInterface.RestBreak
 fi

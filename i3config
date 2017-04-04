@@ -207,3 +207,4 @@ bindsym F10 scratchpad show
 bindsym $mod+l exec workravectl toggle-op-mode
 bindsym $mod+u exec workravectl enable-reading-mode
 bindsym $mod+y exec workravectl disable-reading-mode
+bindsym $mod+j exec workravectl rest-break
