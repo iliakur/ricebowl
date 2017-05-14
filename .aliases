@@ -7,6 +7,8 @@ export DATA_DIR=/data
 # Virtualenvwrapper config
 export WORKON_HOME=$DATA_DIR/virtualenvs
 export PROJECT_HOME=$DATA_DIR/Devel
+# Use python3 by default in new virtualenv environments!
+export VIRTUALENV_PYTHON=/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Conda environments
