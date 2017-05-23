@@ -161,8 +161,9 @@ bar {
         position top
 }
 
-# Stuff I want at startup: networking, workrave
+# Stuff I want at startup: networking, redshift, workrave
 exec --no-startup-id nm-applet
+exec --no-startup-id redshift
 exec --no-startup-id workrave
 # Move workrave into scratchpad
 for_window [title="Workrave" floating] move scratchpad
