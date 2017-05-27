@@ -53,8 +53,6 @@ alias mat='tox -e py27 -e py35 nltk.test.unit.model model.doctest'
 alias backmeup='rsync -arv --delete --files-from=backup-spec --ignore-existing
 --exclude=".*" --delete-excluded ~/ /media/quickbeam/5222-E566/backup'
 
-# Medusa ssh connections
-alias medusa-ssh='ssh kurenkov@medusa.ling.uni-potsdam.de'
 # Lets you set up an arbitrary tunnel
 function tunnel-medusa {
     ssh -N -L $1\:localhost:$1 kurenkov@medusa.ling.uni-potsdam.de

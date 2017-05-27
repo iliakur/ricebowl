@@ -1,0 +1,13 @@
+Host poseidon-docker
+  User root
+  ProxyCommand ssh kurenkov@poseidon.ling.uni-potsdam.de nc localhost 22222
+
+Host poseidon
+  HostName poseidon.ling.uni-potsdam.de
+  User kurenkov
+  IdentityFile ~/.ssh/id_rsa_poseidon
+
+Host medusa
+  HostName medusa.ling.uni-potsdam.de
+  User kurenkov
+  IdentityFile ~/.ssh/id_rsa_medusa
