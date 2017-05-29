@@ -1,3 +1,5 @@
+IdentityFile ~/.ssh/id_rsa_git
+
 Host poseidon-docker
   User root
   ProxyCommand ssh kurenkov@poseidon.ling.uni-potsdam.de nc localhost 22222
