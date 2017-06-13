@@ -6,3 +6,12 @@
 - zsh
 - meld
 - vim
+
+
+# Setup Steps
+
+## Workrave
+```
+ln -s /path/to/configs/workrave.ini ~/.workrave/
+ln -s /path/to/configs/workravectl.sh ~/bin/workravectl
+```
