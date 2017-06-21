@@ -1,0 +1,12 @@
+channels:
+  - r
+  - defaults
+
+create_default_packages:
+  - flake8
+  - jupyter
+  - pytest
+  - pylint
+  - yapf
+  - docformatter
+  - ipdb
