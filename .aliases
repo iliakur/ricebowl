@@ -4,7 +4,7 @@ alias myalias="vim $HOME/.aliases"
 
 
 # Anaconda stuff
-export PATH=$PATH:/home/quickbeam/anaconda3/bin
+export PATH=/home/quickbeam/anaconda3/bin:$PATH
 alias sa='source activate'
 alias sd='source deactivate'
 
