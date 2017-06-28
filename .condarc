@@ -1,6 +1,7 @@
 channels:
   - r
   - defaults
+  - conda-forge
 
 create_default_packages:
   - flake8
