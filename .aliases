@@ -61,3 +61,13 @@ alias autoformat='yapf --style="$HOME/code/configs/yapf.conf" -i'
 function dkr_stop_rm {
     docker stop $1 && docker rm $1
 }
+
+function spin_up_sandbox {
+    NV_GPU=$1 nvidia-docker run -d \
+        --name=$2 -h pm2-sleep \
+    -v /srv/data/$3:/data \
+    -v /srv/projects/$2:/project \
+    -v /srv/scratchpad:/scratchpad \
+    --network=multi-host-net \
+    mlcog-up/$2
+}
