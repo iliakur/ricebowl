@@ -13,3 +13,26 @@ Host medusa
   HostName medusa.ling.uni-potsdam.de
   User kurenkov
   IdentityFile ~/.ssh/id_rsa_medusa
+
+Host ava
+  HostName ava.ling.uni-potsdam.de
+  StrictHostKeyChecking no
+  User kurenkov
+
+Host pm1-wildlife
+  ProxyCommand ssh ava nc pm1-wildlife 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
+Host pm2-sleep
+  ProxyCommand ssh ava nc pm2-sleep 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
+Host manager
+  ProxyCommand ssh ava nc manager 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
