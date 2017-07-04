@@ -19,6 +19,12 @@ Host ava
   StrictHostKeyChecking no
   User kurenkov
 
+Host manager
+  ProxyCommand ssh ava nc manager 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
 Host pm1-wildlife
   ProxyCommand ssh ava nc pm1-wildlife 22
   User kurenkov
@@ -31,8 +37,8 @@ Host pm2-sleep
   StrictHostKeyChecking no
   CheckHostIP no
 
-Host manager
-  ProxyCommand ssh ava nc manager 22
+Host pm3-sun
+  ProxyCommand ssh ava nc pm3-sun 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
