@@ -58,8 +58,12 @@ alias jn='jupyter notebook'
 alias autoformat='yapf --style="$HOME/code/configs/yapf.conf" -i'
 
 # Docker shortcuts
-function dkr_stop_rm {
+function dckr_stop_rm {
     docker stop $1 && docker rm $1
+}
+
+function dckr_prune_all {
+    docker container prune -f && docker image prune -f
 }
 
 function spin_up_sandbox {
