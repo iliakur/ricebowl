@@ -84,7 +84,7 @@ bindsym $mod+f layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+j focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -209,4 +209,4 @@ bindsym F10 scratchpad show
 # Toggle state
 bindsym $mod+l exec gnome-pomodoro --start-stop
 # Restart pomodoro
-bindsym $mod+j exec gnome-pomodoro --stop && gnome-pomodoro --start
+bindsym $mod+space exec gnome-pomodoro --stop && gnome-pomodoro --start
