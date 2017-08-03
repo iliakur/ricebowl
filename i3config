@@ -159,6 +159,7 @@ bindsym $mod+p mode "resize"
 bar {
         status_command py3status
         position top
+        font pango:DejaVu Sans Mono 12
 }
 
 # Stuff I want at startup: networking, redshift
