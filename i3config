@@ -164,6 +164,8 @@ bar {
 # Stuff I want at startup: networking, redshift
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
+exec --no-startup-id "i3-msg 'workspace 10; append_layout $HOME/.i3/i3-workspace10.json'"
+exec --no-startup-id gnome-pomodoro
 # keyboard layout switching
 exec --no-startup-id setxkbmap -option 'grp:alt_space_toggle'
 # set background with feh
@@ -202,8 +204,8 @@ hide_edge_borders both
 bindsym F9 move scratchpad
 bindsym F10 scratchpad show
 
-# Workrave Control (see workravectl.sh!)
-bindsym $mod+l exec workravectl toggle-op-mode
-bindsym $mod+u exec workravectl enable-reading-mode
-bindsym $mod+y exec workravectl disable-reading-mode
-bindsym $mod+j exec workravectl rest-break
+# Gnome-Pomodoro control
+# Toggle state
+bindsym $mod+l exec gnome-pomodoro --start-stop
+# Restart pomodoro
+bindsym $mod+j exec gnome-pomodoro --stop && gnome-pomodoro --start
