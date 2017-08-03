@@ -42,3 +42,15 @@ Host pm3-sun
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
+
+Host holmes-analysis
+  ProxyCommand ssh ava nc holmes-analysis 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
+Host m1-openmiir
+  ProxyCommand ssh ava nc m1-openmiir-speech 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
