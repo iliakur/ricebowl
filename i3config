@@ -161,12 +161,9 @@ bar {
         position top
 }
 
-# Stuff I want at startup: networking, redshift, workrave
+# Stuff I want at startup: networking, redshift
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
-exec --no-startup-id workrave
-# Move workrave into scratchpad
-for_window [title="Workrave" floating] move scratchpad
 # keyboard layout switching
 exec --no-startup-id setxkbmap -option 'grp:alt_space_toggle'
 # set background with feh
