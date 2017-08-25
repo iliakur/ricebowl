@@ -75,3 +75,8 @@ function spin_up_sandbox {
     --network=multi-host-net \
     mlcog-up/$2
 }
+
+# Scheme tab completion
+# (requires rlwrap package) and the following file:
+# https://gist.githubusercontent.com/bobbyno/3325982/raw/fc0208d287e56adc12b4c76114fcd21a107082ad/mit_scheme_bindings.txt
+alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
