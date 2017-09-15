@@ -59,3 +59,7 @@ Host tt-vm
   HostName vps441625.ovh.net
   User root
   IdentityFile ~/.ssh/id_rsa_revacom
+
+Host brick
+  HostName ev3dev.local
+  User robot
