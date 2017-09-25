@@ -63,3 +63,4 @@ Host tt-vm
 Host brick
   HostName ev3dev.local
   User robot
+  IdentityFile ~/.ssh/id_rsa_ev3dev
