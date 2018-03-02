@@ -18,6 +18,7 @@ Host ava
   HostName ava.ling.uni-potsdam.de
   StrictHostKeyChecking no
   User kurenkov
+  IdentityFile ~/.ssh/id_rsa_poseidon
 
 Host manager
   ProxyCommand ssh ava nc manager 22
@@ -55,6 +56,22 @@ Host m1-openmiir
   StrictHostKeyChecking no
   CheckHostIP no
 
+Host asr-dev
+  ProxyCommand ssh ava nc asr-dev 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
+Host asr-dev2
+  ProxyCommand ssh ava nc asr-dev2 22
+  User kurenkov
+  StrictHostKeyChecking no
+  CheckHostIP no
+
+Host lgm2017-lego
+  ProxyCommand ssh ava nc lgm2017-lego 22
+  User kurenkov
+
 Host tt-vm
   HostName vps441625.ovh.net
   User root
@@ -63,4 +80,9 @@ Host tt-vm
 Host brick
   HostName ev3dev.local
   User robot
+  IdentityFile ~/.ssh/id_rsa_ev3dev
+
+Host jetson
+  HostName 10.250.144.157
+  User nvidia
   IdentityFile ~/.ssh/id_rsa_ev3dev
