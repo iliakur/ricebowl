@@ -9,5 +9,4 @@ create_default_packages:
   - pytest
   - pylint
   - yapf
-  - docformatter
   - ipdb
