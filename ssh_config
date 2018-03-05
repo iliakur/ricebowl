@@ -14,62 +14,64 @@ Host medusa
   User kurenkov
   IdentityFile ~/.ssh/id_rsa_medusa
 
-Host ava
-  HostName ava.ling.uni-potsdam.de
+Host gate-keeper
+  HostName jarvis.ling.uni-potsdam.de
   StrictHostKeyChecking no
   User kurenkov
   IdentityFile ~/.ssh/id_rsa_poseidon
 
 Host manager
-  ProxyCommand ssh ava nc manager 22
+  ProxyCommand ssh gate-keeper nc manager 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
 Host pm1-wildlife
-  ProxyCommand ssh ava nc pm1-wildlife 22
+  ProxyCommand ssh gate-keeper nc pm1-wildlife 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
 Host pm2-sleep
-  ProxyCommand ssh ava nc pm2-sleep 22
+  ProxyCommand ssh gate-keeper nc pm2-sleep 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
 Host pm3-sun
-  ProxyCommand ssh ava nc pm3-sun 22
+  ProxyCommand ssh gate-keeper nc pm3-sun 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
 Host holmes-analysis
-  ProxyCommand ssh ava nc holmes-analysis 22
+  ProxyCommand ssh gate-keeper nc holmes-analysis 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
 Host m1-openmiir
-  ProxyCommand ssh ava nc m1-openmiir-speech 22
+  ProxyCommand ssh gate-keeper nc m1-openmiir-speech 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
 
-Host asr-dev
-  ProxyCommand ssh ava nc asr-dev 22
+Host asr-dev1
+  ProxyCommand ssh gate-keeper nc asr-dev1 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
+  IdentityFile ~/.ssh/id_rsa_poseidon
 
 Host asr-dev2
-  ProxyCommand ssh ava nc asr-dev2 22
+  ProxyCommand ssh gate-keeper nc asr-dev2 22
   User kurenkov
   StrictHostKeyChecking no
   CheckHostIP no
+  IdentityFile ~/.ssh/id_rsa_poseidon
 
 Host lgm2017-lego
-  ProxyCommand ssh ava nc lgm2017-lego 22
+  ProxyCommand ssh gate-keeper nc lgm2017-lego 22
   User kurenkov
 
 Host tt-vm
