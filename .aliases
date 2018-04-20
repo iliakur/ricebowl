@@ -2,6 +2,11 @@
 # Editing this file with vim
 alias myalias="vim $HOME/.aliases"
 
+# Virtualenvwrapper
+export WORKON_HOME=~/Envs
+export VIRTUALENVWRAPPER_PYTHON=`which python3`
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Anaconda stuff
 export PATH=/home/quickbeam/anaconda3/bin:$PATH
