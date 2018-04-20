@@ -71,7 +71,7 @@ Xft.hinting:    true
 Xft.rgba:       rgb
 Xft.hintstyle:  hintslight
 
-URxvt*font: xft:DejaVu Sans Mono:antialias=true:pixelsize=12
-URxvt*boldFont: xft:DejaVu Sans Mono:style=bold:antialias=true:pixelsize=12
-URxvt*italicFont: xft:DejaVu Sans Mono:style=italic:antialias=true:pixelsize=12
-URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=bolditalic:antialias=true:pixelsize=12
+URxvt*font: xft:DejaVu Sans Mono:antialias=true:pixelsize=16
+URxvt*boldFont: xft:DejaVu Sans Mono:style=bold:antialias=true:pixelsize=16
+URxvt*italicFont: xft:DejaVu Sans Mono:style=italic:antialias=true:pixelsize=16
+URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=bolditalic:antialias=true:pixelsize=16
