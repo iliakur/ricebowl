@@ -43,8 +43,8 @@ bindsym $mod+BackSpace exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod1+Shift+Tab focus right
-bindsym Mod1+Tab focus left
+bindsym Mod1+Shift+Tab focus left
+bindsym Mod1+Tab focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
