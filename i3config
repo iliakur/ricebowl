@@ -168,8 +168,13 @@ exec --no-startup-id gnome-pomodoro
 exec --no-startup-id setxkbmap -layout us,ru -variant colemak, -option 'grp:alt_space_toggle'
 # set background with feh
 exec --no-startup-id xsetroot -solid '#3B5D3B'
-# Dropbox
-# exec --no-startup-id dropbox start
+exec --no-startup-id dunst
+exec firefox
+exec firefox --new-window https://retresco.mite.yo.lk/
+exec firefox --new-window https://profimailer.de
+exec mattermost-desktop
+exec pycharm
+exec i3-msg 'workspace 3'
 
 # Shortcuts for favorite programs
 bindsym $mod+c exec google-chrome
@@ -206,4 +211,18 @@ bindsym $mod+o scratchpad show
 bindsym $mod+l exec gnome-pomodoro --start-stop
 # Restart pomodoro
 bindsym $mod+space exec gnome-pomodoro --stop && gnome-pomodoro --start
+
+# Workspace assignments
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output eDP-1
+
+# Window assignments
+assign [class="^Mattermost$"] 3
+assign [class="pycharm"] 1
 for_window [class="Gnome-pomodoro"] move scratchpad
+for_window [class="Firefox" title="mite"] move container to workspace 4
+for_window [class="Firefox" title="Outlook"] move container to workspace 3
