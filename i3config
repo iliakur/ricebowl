@@ -163,7 +163,6 @@ bar {
 # Stuff I want at startup: networking, redshift
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
-exec --no-startup-id "i3-msg 'workspace 10; append_layout $HOME/.i3/i3-workspace10.json'"
 exec --no-startup-id gnome-pomodoro
 # keyboard layout switching
 exec --no-startup-id setxkbmap -layout us,ru -variant colemak, -option 'grp:alt_space_toggle'
@@ -207,3 +206,4 @@ bindsym $mod+o scratchpad show
 bindsym $mod+l exec gnome-pomodoro --start-stop
 # Restart pomodoro
 bindsym $mod+space exec gnome-pomodoro --stop && gnome-pomodoro --start
+for_window [class="Gnome-pomodoro"] move scratchpad
