@@ -207,4 +207,7 @@ bindsym $mod+o scratchpad show
 bindsym $mod+l exec gnome-pomodoro --start-stop
 # Restart pomodoro
 bindsym $mod+space exec gnome-pomodoro --stop && gnome-pomodoro --start
+
 for_window [class="Gnome-pomodoro"] move scratchpad
+assign [class="pycharm"] 1
+assign [class="Google-chrome"] 2
