@@ -164,6 +164,7 @@ bar {
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id gnome-pomodoro
+exec --no-startup-id dunst
 # keyboard layout switching
 exec --no-startup-id setxkbmap -option 'grp:alt_space_toggle'
 # set background with feh
