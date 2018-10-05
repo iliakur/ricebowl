@@ -172,7 +172,7 @@ exec --no-startup-id xsetroot -solid '#3B5D3B'
 exec --no-startup-id dunst
 exec firefox
 exec firefox --new-window https://retresco.mite.yo.lk/
-exec firefox --new-window https://profimailer.de
+exec firefox --new-window https://outlook.office365.com/owa/
 exec mattermost-desktop
 exec pycharm
 exec i3-msg 'workspace 3'
@@ -226,4 +226,4 @@ assign [class="^Mattermost$"] 3
 assign [class="pycharm"] 1
 for_window [class="Gnome-pomodoro"] move scratchpad
 for_window [class="Firefox" title="mite"] move container to workspace 4
-for_window [class="Firefox" title="Outlook"] move container to workspace 3
+for_window [class="Firefox" title="Mail"] move container to workspace 3
