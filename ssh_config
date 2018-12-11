@@ -67,3 +67,9 @@ Host tt-vm
   HostName vps441625.ovh.net
   User root
   IdentityFile ~/.ssh/id_rsa_revacom
+
+
+Host gitlab.rtrsupport.de
+  HostName gitlab.rtrsupport.de
+  IdentityFile ~/.ssh/id_rtr
+  IdentitiesOnly yes
