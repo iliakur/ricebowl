@@ -172,8 +172,6 @@ exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
 # Dropbox
 exec --no-startup-id dropbox start
 
-exec --no-startup-id xrandr --output DP1 --auto --rotate right --right-of LVDS1
-
 # Shortcuts for favorite programs
 bindsym $mod+c exec google-chrome
 bindsym $mod+Tab exec firefox
