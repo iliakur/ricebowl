@@ -10,7 +10,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-directory "~/Documents/org")
+(setq org-agenda-files (quote ("~/Documents/org")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
