@@ -7,11 +7,47 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Default Orgmode
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (quote ("~/Documents/org")))
+(setq org-directory (file-name-as-directory "~/Documents/org"))
+
+(setq org-agenda-files
+      (mapcar
+	(lambda (name)
+	  (concat org-directory name ".org"))
+	(list "inbox" "gtd" "tickler")))
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+
+;; Orgmode + GTD
+;; https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "inbox.org" "Tasks")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "tickler.org" "Tickler")
+                               "* %i%? \n %U")))
+(setq org-refile-targets '(("~/Documents/org/gtd.org" :maxlevel . 3)
+                           ("~/Documents/org/someday.org" :maxlevel . 3)
+                           ("~/Documents/org/tickler.org" :maxlevel . 2)
+			   ))
+(setq org-agenda-custom-commands
+      '(
+	("i" "Inbox" tags-todo "inbox"
+           ((org-agenda-overriding-header "Inbox")))
+	("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
+           ((org-agenda-overriding-header "Retresco")))
+        ("h" "Housework" tags-todo "@home"
+           ((org-agenda-overriding-header "Around the House")))
+        ("e" "Email" tags-todo "@email"
+           ((org-agenda-overriding-header "Writing Email")))
+        ("l" "Learning" tags-todo "@school"
+           ((org-agenda-overriding-header "Learning")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
