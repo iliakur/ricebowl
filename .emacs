@@ -48,6 +48,7 @@
            ((org-agenda-overriding-header "Writing Email")))
         ("l" "Learning" tags-todo "@school"
            ((org-agenda-overriding-header "Learning")))))
+(setq org-tag-alist '(("@office" . ?o) ("@home" . ?h) ("@email" . ?e) ("@team_weekly")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
