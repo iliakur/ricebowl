@@ -7,11 +7,17 @@
 (require 'evil)
 (evil-mode 1)
 
+
 ;; Default Orgmode
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 (setq org-log-done t)
+
+
+;; Orgmode + GTD
+;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 (setq org-directory (file-name-as-directory "~/Documents/org"))
 
 (setq org-agenda-files
@@ -20,12 +26,11 @@
 	  (concat org-directory name ".org"))
 	(list "inbox" "gtd" "tickler")))
 
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+(set-register ?i '(file . "~/Documents/org/inbox.org"))
+(set-register ?p '(file . "~/Documents/org/gtd.org"))
+(set-register ?s '(file . "~/Documents/org/someday.org"))
 
-;; Orgmode + GTD
-;; https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
+
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "inbox.org" "Tasks")
                                "* TODO %i%?")
