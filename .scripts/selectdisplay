@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 displays=`xrandr | awk '$2=="connected" { print $1 }'`
 
 if [ $(echo "$displays" | wc -l) -eq 2 ]; then
     # handle dual display
-    read -d "\n" internal external <$(echo "$displays")
+    read internal external <<<$(echo $displays)
     echo $internal
     action=`printf 'connect\ndisconnect' | dmenu -i -p "Detected an external display "$external". Choose action:"`
     echo "$action"
@@ -13,9 +13,9 @@ if [ $(echo "$displays" | wc -l) -eq 2 ]; then
         xrandr --output "$external" --off
     else
         direction=`printf 'right\nleft' | dmenu -i -p "Which side to place external on:"`
-        rotation=`printf 'right\nleft\nnormal' | dmenu -i -p "Rotation:"`
+        rotation=`printf 'left\nright\nnormal' | dmenu -i -p "Rotation:"`
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
-               --output "$external" --auto --scale 1.0x1.0 --"$direction"-of "$internal"
+               --output "$external" --auto --scale 1.0x1.0 --"$direction"-of "$internal" --rotate "$rotation"
     fi
 else
     # do nothing if either 1 or more than 2 displays detected
