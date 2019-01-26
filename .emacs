@@ -45,23 +45,25 @@
 			   ))
 (setq org-agenda-custom-commands
       '(
-	("i" "Inbox" tags-todo "inbox"
-           ((org-agenda-overriding-header "Inbox")))
+	("c" "CogSys Masters" tags-todo "@cogsys"
+           ((org-agenda-overriding-header "CogSys Work")))
 	("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
-           ((org-agenda-overriding-header "Retresco")))
-        ("h" "Housework" tags-todo "@home"
+           ((org-agenda-overriding-header "Retresco work")))
+        ("h" "Housework" tags-todo "@housework"
            ((org-agenda-overriding-header "Around the House")))
         ("e" "Email" tags-todo "@email"
            ((org-agenda-overriding-header "Writing Email")))
-        ("l" "Learning" tags-todo "@school"
-           ((org-agenda-overriding-header "Learning")))))
+        ("g" "Groceries" tags-todo "@grocer"
+           ((org-agenda-overriding-header "At the supermarket")))
+	))
 (setq org-tag-persistent-alist
     '(
       ("@office" . ?o)
-      ("@home" . ?h)
+      ("@team_weekly")
+      ("@housework" . ?h)
+      ("@cogsys" . ?c)
       ("@email" . ?e)
-      ("@supermarket" . ?g)
-      ("@team_weekly")))
+      ("@grocer" . ?g)))
 
 (defun my-org-agenda-skip-all-siblings-but-first ()
   "Skip all but the first non-done entry."
