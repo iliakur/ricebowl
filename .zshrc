@@ -104,3 +104,7 @@ fi
 # needed for docker compose autocompletion:
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
