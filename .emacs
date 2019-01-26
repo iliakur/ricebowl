@@ -91,7 +91,7 @@
  '(org-agenda-todo-list-sublevels nil)
  '(org-enforce-todo-dependencies t)
  '(org-agenda-dim-blocked-tasks :invisible)
- '(package-selected-packages (quote (color-theme-solarized evil))))
+ '(package-selected-packages (quote (color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
