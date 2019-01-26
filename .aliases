@@ -81,3 +81,12 @@ function spin_up_sandbox {
 # (requires rlwrap package) and the following file:
 # https://gist.githubusercontent.com/bobbyno/3325982/raw/fc0208d287e56adc12b4c76114fcd21a107082ad/mit_scheme_bindings.txt
 alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
+
+
+# RTR git checkout
+function git_rtr_clone {
+    git clone $1 && \
+    echo "Moving into repo" && cd $(basename $1 .git) && \
+    echo "Setting RTR email" && \
+    git config --local user.email "ilia.kurenkov@retresco.de"
+}
