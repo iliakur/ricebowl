@@ -7,6 +7,7 @@
 (require 'evil)
 (evil-mode 1)
 
+(set-register ?e '(file . "~/.emacs"))
 
 ;; Default Orgmode
 (require 'org)
@@ -29,6 +30,7 @@
 (set-register ?i '(file . "~/Documents/org/inbox.org"))
 (set-register ?p '(file . "~/Documents/org/gtd.org"))
 (set-register ?s '(file . "~/Documents/org/someday.org"))
+(set-register ?t '(file . "~/Documents/org/tickler.org"))
 
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
