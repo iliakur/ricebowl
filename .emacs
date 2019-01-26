@@ -45,6 +45,8 @@
 			   ))
 (setq org-agenda-custom-commands
       '(
+	("b" "Banking" tags-todo "@bank"
+           ((org-agenda-overriding-header "When banking")))
 	("c" "CogSys Masters" tags-todo "@cogsys"
            ((org-agenda-overriding-header "CogSys Work")))
 	("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
@@ -60,8 +62,10 @@
     '(
       ("@office" . ?o)
       ("@team_weekly")
+      ("@rtr" . ?r)
       ("@housework" . ?h)
       ("@cogsys" . ?c)
+      ("@bank" . ?b)
       ("@email" . ?e)
       ("@grocer" . ?g)))
 
