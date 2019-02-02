@@ -2,12 +2,6 @@
 # Editing this file with vim
 alias myalias="vim $HOME/.aliases"
 
-# Virtualenvwrapper
-export WORKON_HOME=~/Envs
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
-mkdir -p $WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
-
 # Anaconda stuff
 alias sa='source activate'
 alias sd='source deactivate'
