@@ -6,6 +6,9 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(add-hook 'text-mode-hook 'auto-fill-mode)
+(setq-default fill-column 80)
+
 (require 'evil)
 (evil-mode 1)
 
