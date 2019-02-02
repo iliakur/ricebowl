@@ -91,13 +91,15 @@
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(inhibit-startup-screen t)
+ '(org-agenda-dim-blocked-tasks :invisible)
  '(org-agenda-span 3)
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-with-date t)
  '(org-agenda-todo-list-sublevels nil)
  '(org-enforce-todo-dependencies t)
- '(org-agenda-dim-blocked-tasks :invisible)
- '(package-selected-packages (quote (color-theme-solarized evil org))))
+ '(package-selected-packages
+   (quote
+    (org-ref markdown-mode color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
