@@ -80,6 +80,10 @@
         ("TODO" . org-warning) ("WAITING" . (:foreground "blue"))
         ))
 
+; pomidor config
+(global-set-key (kbd "<f12>") #'pomidor)
+(setq pomidor-sound-tick nil
+      pomidor-sound-tack nil)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -99,7 +103,7 @@
  '(org-enforce-todo-dependencies t)
  '(package-selected-packages
    (quote
-    (org-ref markdown-mode color-theme-solarized evil org))))
+    (pomidor org-ref markdown-mode color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
