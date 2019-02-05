@@ -77,7 +77,7 @@
 (setq org-todo-keywords '((type "TODO" "WAITING" "|" "DONE")))
 (setq org-todo-keyword-faces
       '(
-        ("TODO" . org-warning) ("WAITING" . (:background "blue" :foreground "yellow"))
+        ("TODO" . org-warning) ("WAITING" . (:foreground "blue"))
         ))
 
 
