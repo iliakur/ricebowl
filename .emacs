@@ -80,6 +80,13 @@
         ("TODO" . org-warning) ("WAITING" . (:foreground "blue"))
         ))
 
+; helm-bibtex config
+(setq bibtex-completion-notes-path "~/Dropbox/Readings/bibliography/notes/"
+      bibtex-completion-bibliography '("~/Dropbox/Readings/bibliography/references.bib")
+      bibtex-completion-library-path "~/Dropbox/Readings/bibliography/bibtex-pdfs/")
+(setq bibtex-completion-additional-search-fields '(keywords))
+
+
 ; pomidor config
 (global-set-key (kbd "<f12>") #'pomidor)
 (setq pomidor-sound-tick nil
@@ -103,7 +110,7 @@
  '(org-enforce-todo-dependencies t)
  '(package-selected-packages
    (quote
-    (pomidor org-ref markdown-mode color-theme-solarized evil org))))
+    (helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
