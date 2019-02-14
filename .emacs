@@ -95,11 +95,20 @@
       bibtex-completion-library-path "~/Dropbox/Readings/bibliography/bibtex-pdfs/")
 (setq bibtex-completion-additional-search-fields '(keywords))
 
+ (global-set-key (kbd "M-c") 'helm-bibtex)
+
+(setq org-latex-pdf-process
+      '("latexmk -xelatex %f"))
 
 ; pomidor config
 (global-set-key (kbd "<f12>") #'pomidor)
 (setq pomidor-sound-tick nil
       pomidor-sound-tack nil)
+
+; this is broken rn...
+; (require 'helm-bibtex)
+; (helm-delete-action-from-source "Insert BibTeX key" helm-source-bibtex)
+; (helm-add-action-to-source "Insert BibTeX key" 'bibtex-completion-insert-key helm-source-bibtex 0)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -119,7 +128,7 @@
  '(org-enforce-todo-dependencies t)
  '(package-selected-packages
    (quote
-    (helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
+    (evil-surround helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
