@@ -54,11 +54,16 @@
 			   ))
 (setq org-agenda-custom-commands
       '(
-	("b" "Banking" tags-todo "@bank"
+        ("b" "Banking" tags-todo "@bank"
            ((org-agenda-overriding-header "When banking")))
-	("c" "CogSys Masters" tags-todo "@cogsys"
+        ("c" . "CogSys Masters") 
+        ("cc" "CogSys general" tags-todo "@cogsys"
            ((org-agenda-overriding-header "CogSys Work")))
-	("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
+        ("cp" "Python Course" tags-todo "@cogsys+python_intro"
+           ((org-agenda-overriding-header "CogSys Work")))
+        ("ci" "IM" tags-todo "@cogsys+im"
+           ((org-agenda-overriding-header "CogSys Work")))
+        ("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
            ((org-agenda-overriding-header "Retresco work")))
         ("h" "Housework" tags-todo "@housework"
            ((org-agenda-overriding-header "Around the House")))
