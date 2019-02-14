@@ -10,9 +10,6 @@
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq-default fill-column 80)
 
-(require 'evil)
-(evil-mode 1)
-
 (set-register ?e '(file . "~/.emacs"))
 
 ;; Default Orgmode
@@ -135,3 +132,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(evil-mode 1)
+
