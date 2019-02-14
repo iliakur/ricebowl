@@ -44,7 +44,10 @@
                                "* TODO %i%?")
                               ("T" "Tickler" entry
                                (file+headline "tickler.org" "Tickler")
-                               "* %i%? \n %U")))
+                               "* %i%? \n %t")
+                              ("d" "Diary" entry
+                               (file+datetree "~/Documents/org/diary.org")
+                               "* Entered on %U\n %i%?")))
 (setq org-refile-targets '(("~/Documents/org/gtd.org" :maxlevel . 3)
                            ("~/Documents/org/someday.org" :maxlevel . 3)
                            ("~/Documents/org/tickler.org" :maxlevel . 2)
