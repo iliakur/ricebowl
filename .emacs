@@ -6,6 +6,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(visual-line-mode 1)
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq-default fill-column 80)
 
