@@ -148,4 +148,4 @@
  ;; If there is more than one, they won't work right.
  )
 (evil-mode 1)
-
+(global-evil-colemak-basics-mode)
