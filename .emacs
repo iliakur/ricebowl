@@ -51,16 +51,11 @@
 			   ))
 (setq org-agenda-custom-commands
       '(
-        ("b" "Banking" tags-todo "@bank"
-           ((org-agenda-overriding-header "When banking")))
-        ("c" . "CogSys Masters") 
-        ("cc" "CogSys general" tags-todo "@cogsys"
-           ((org-agenda-overriding-header "CogSys Work")))
-        ("cp" "Python Course" tags-todo "@cogsys+python_intro"
-           ((org-agenda-overriding-header "CogSys Work")))
-        ("ci" "IM" tags-todo "@cogsys+im"
-           ((org-agenda-overriding-header "CogSys Work")))
-        ("r" "Retresco Work" tags-todo "@rtr&-@team_weekly"
+        ("b" "Berlin House Search" tags-todo "housing")
+        ("p" "Python Course" tags-todo "+python_intro")
+        ("d" "Discourse Connectives" tags-todo "DCs&-read")
+        ("l" "Learning" tags-todo "learn")
+        ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
            ((org-agenda-overriding-header "Retresco work")))
         ("h" "Housework" tags-todo "@housework"
            ((org-agenda-overriding-header "Around the House")))
@@ -68,23 +63,42 @@
            ((org-agenda-overriding-header "Writing Email")))
         ("g" "Groceries" tags-todo "@grocer"
            ((org-agenda-overriding-header "At the supermarket")))
-	))
+        ("o" "Office" tags-todo "@office"
+           ((org-agenda-overriding-header "At the office")))))
 (setq org-tag-persistent-alist
     '(
-      ("@office" . ?o)
+      ; Cogsys-related stuff
+      (:startgrouptag)
+      ("cogsys" . ?c)
+      (:grouptags)
+      ("DCs" . ?d)
+      ("robosanta" . ?s)
+      (:endgrouptag)
+      ; Retresco-related stuff
+      (:startgrouptag)
+      ("rtr" . ?r)
+      (:grouptags)
       ("@team_weekly")
-      ("@rtr" . ?r)
+      ("laser" . ?a)
+      ("ling_svc")
+      ("textengine_core")
+      (:endgrouptag) 
+      ; Other projects/areas of focus
+      ("python_intro" . ?p)
+      ("learn" . ?l)
+      ("housing" . ?i)
+      ("finances" . ?f)
+      ("optimize" . ?z)
+      ; general contexts
+      ("@office" . ?o)
       ("@housework" . ?h)
-      ("@cogsys" . ?c)
       ("@bank" . ?b)
       ("@email" . ?e)
       ("@grocer" . ?g)))
 
 (setq org-todo-keywords '((type "TODO" "WAITING" "|" "DONE")))
 (setq org-todo-keyword-faces
-      '(
-        ("TODO" . org-warning) ("WAITING" . (:foreground "blue"))
-        ))
+      '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
 
 ; helm-bibtex config
 (setq bibtex-completion-notes-path "~/Dropbox/Readings/bibliography/notes/"
