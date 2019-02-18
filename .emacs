@@ -123,6 +123,7 @@
  '(org-agenda-todo-ignore-with-date t)
  '(org-agenda-todo-list-sublevels nil)
  '(org-enforce-todo-dependencies t)
+ '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
     (evil-surround helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
