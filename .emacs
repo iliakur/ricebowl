@@ -45,7 +45,13 @@
                               ("d" "Diary" entry
                                (file+datetree "~/Documents/org/diary.org")
                                "* Entered on %U\n %i%?")))
-(setq org-refile-targets '(("~/Documents/org/gtd.org" :maxlevel . 3)
+(defun current-buffers ()
+  (delq nil
+    (mapcar (lambda (buffer)
+      (buffer-file-name buffer))
+      (org-buffer-list 'files t))))
+(setq org-refile-targets '((current-buffers :maxlevel . 3)
+			   ("~/Documents/org/gtd.org" :maxlevel . 3)
                            ("~/Documents/org/someday.org" :maxlevel . 3)
                            ("~/Documents/org/tickler.org" :maxlevel . 2)
 			   ))
