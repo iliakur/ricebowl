@@ -87,4 +87,5 @@ function git_rtr_clone {
     echo "Moving into repo" && cd $(basename $1 .git) && \
     echo "Setting RTR email" && \
     git config --local user.email "ilia.kurenkov@retresco.de"
+    git config --local user.name "Ilia Kurenkov"
 }
