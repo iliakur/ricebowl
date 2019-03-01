@@ -157,7 +157,7 @@ bindsym $mod+p mode "resize"
 bar {
         status_command py3status -c ~/.i3/i3status.conf
         position top
-        font pango:DejaVu Sans Mono 12
+        font pango:DejaVu Sans Mono, Awesome 20
 }
 
 # Stuff I want at startup: networking, redshift
