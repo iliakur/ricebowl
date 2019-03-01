@@ -59,7 +59,7 @@
       '(
         ("b" "Berlin House Search" tags-todo "housing")
         ("p" "Python Course" tags-todo "+python_intro")
-        ("d" "Discourse Connectives" tags-todo "DCs&-read")
+        ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
         ("l" "Learning" tags-todo "learn")
         ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
            ((org-agenda-overriding-header "Retresco work")))
