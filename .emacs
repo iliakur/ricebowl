@@ -115,7 +115,7 @@
  (global-set-key (kbd "M-c") 'helm-bibtex)
 
 (setq org-latex-pdf-process
-      '("latexmk -xelatex %f"))
+      '("latexmk -dvi- -pdf %f"))
 
 ; pomidor config
 (global-set-key (kbd "<f12>") #'pomidor)
