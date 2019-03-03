@@ -224,8 +224,6 @@ workspace 6 output eDP-1
 # Window assignments
 assign [class="^Mattermost$"] 3
 assign [class="pycharm"] 1
-for_window [class="Gnome-pomodoro"] move scratchpad
-assign [class="pycharm"] 1
 assign [class="Google-chrome"] 2
-for_window [class="Firefox" title="mite"] move container to workspace 4
-for_window [class="Firefox" title="Mail"] move container to workspace 3
+for_window [class="Gnome-pomodoro"] move scratchpad
+for_window [class="Firefox" title="^mite"] move container to workspace 4
