@@ -156,3 +156,6 @@
 (evil-mode 1)
 (global-evil-colemak-basics-mode)
 (global-evil-surround-mode 1)
+
+(eval-after-load "org"
+  '(require 'ox-gfm nil t))
