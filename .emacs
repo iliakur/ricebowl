@@ -9,6 +9,7 @@
 (visual-line-mode 1)
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (setq-default fill-column 80)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (set-register ?e '(file . "~/.emacs"))
 
