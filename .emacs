@@ -89,7 +89,7 @@
       ("laser" . ?a)
       ("ling_svc")
       ("textengine_core")
-      (:endgrouptag) 
+      (:endgrouptag)
       ; Other projects/areas of focus
       ("python_intro" . ?p)
       ("learn" . ?l)
