@@ -20,6 +20,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-log-done t)
 
+(setq org-agenda-start-on-weekday 0)
 
 ;; Orgmode + GTD
 ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
