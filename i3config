@@ -176,6 +176,9 @@ exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
 # Dropbox
 exec --no-startup-id dropbox start
 
+exec --no-startup-id xset r rate 250 30
+exec --no-startup-id setxkbmap -layout us,ru,us -variant colemak,, -option grp:shifts_toggle,ctrl:swap_lalt_lctl_lwin,caps:escape,altwin:prtsc_rwin
+
 # Shortcuts for favorite programs
 bindsym $mod+c exec google-chrome
 bindsym $mod+w exec firefox
