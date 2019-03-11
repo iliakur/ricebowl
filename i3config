@@ -180,9 +180,9 @@ exec --no-startup-id xset r rate 250 30
 exec --no-startup-id setxkbmap -layout us,ru,us -variant colemak,, -option grp:shifts_toggle,ctrl:swap_lalt_lctl_lwin,caps:escape,altwin:prtsc_rwin
 
 # Shortcuts for favorite programs
-bindsym $mod+c exec google-chrome
-bindsym $mod+w exec firefox
 bindsym $mod+e exec emacs
+bindsym $mod+i exec firefox
+bindsym $mod+o exec google-chrome
 # This currently doesn't quite work
 bindsym $mod+z exec ranger
 
@@ -209,7 +209,7 @@ hide_edge_borders both
 
 # Scratchpad Settings
 bindsym $mod+m move scratchpad
-bindsym $mod+o scratchpad show
+bindsym $mod+w scratchpad show
 
 # Gnome-Pomodoro control
 # Toggle state
