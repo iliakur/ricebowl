@@ -23,6 +23,8 @@
 
 (setq org-agenda-start-on-weekday 0)
 
+
+
 ;; Orgmode + GTD
 ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 (setq org-directory (file-name-as-directory "~/Documents/org"))
@@ -156,9 +158,39 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(require 'evil)
 (evil-mode 1)
 (global-evil-colemak-basics-mode)
 (global-evil-surround-mode 1)
 
 (eval-after-load "org"
   '(require 'ox-gfm nil t))
+
+;; Orgmode settings for evil-surround
+;; from: https://stackoverflow.com/a/22418983/4501212
+(defmacro define-and-bind-text-object (key start-regex end-regex)
+  (let ((inner-name (make-symbol "inner-name"))
+        (outer-name (make-symbol "outer-name")))
+    `(progn
+       (evil-define-text-object ,inner-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count nil))
+       (evil-define-text-object ,outer-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count t))
+       (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
+       (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
+
+(define-and-bind-text-object "/" "/" "/")
+(define-and-bind-text-object "*" "\\*" "\\*")
+(define-and-bind-text-object "~" "~" "~")
+(define-and-bind-text-object "=" "=" "=")
+(define-and-bind-text-object "$" "\\$" "\\$") ;; sometimes your have to escape the regex
+
+(add-hook 'org-mode-hook (lambda ()
+			   progn
+			   (push '(?/ . ("/" . "/")) evil-surround-pairs-alist)
+			   (push '(?* . ("*" . "*")) evil-surround-pairs-alist)
+			   (push '(?~ . ("~" . "~")) evil-surround-pairs-alist)
+			   (push '(?= . ("=" . "=")) evil-surround-pairs-alist)
+			     ; this should be added for markdown mode, along with the asterisks and "`"
+			     ;(push '(?_ . ("_" . "_")) evil-surround-pairs-alist)
+			     ))
