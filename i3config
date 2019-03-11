@@ -182,6 +182,7 @@ exec --no-startup-id setxkbmap -layout us,ru,us -variant colemak,, -option grp:s
 # Shortcuts for favorite programs
 bindsym $mod+c exec google-chrome
 bindsym $mod+w exec firefox
+bindsym $mod+e exec emacs
 # This currently doesn't quite work
 bindsym $mod+z exec ranger
 
