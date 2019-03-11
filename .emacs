@@ -48,7 +48,7 @@
                                (file+headline "tickler.org" "Tickler")
                                "* %i%? \n %t")
                               ("d" "Diary" entry
-                               (file+datetree "~/Documents/org/diary.org")
+                               (file+olp+datetree "~/Documents/org/diary.org")
                                "* Entered on %U\n %i%?")))
 (defun current-buffers ()
   (delq nil
@@ -186,11 +186,11 @@
 (define-and-bind-text-object "$" "\\$" "\\$") ;; sometimes your have to escape the regex
 
 (add-hook 'org-mode-hook (lambda ()
-			   progn
+			   (progn
 			   (push '(?/ . ("/" . "/")) evil-surround-pairs-alist)
 			   (push '(?* . ("*" . "*")) evil-surround-pairs-alist)
 			   (push '(?~ . ("~" . "~")) evil-surround-pairs-alist)
 			   (push '(?= . ("=" . "=")) evil-surround-pairs-alist)
 			     ; this should be added for markdown mode, along with the asterisks and "`"
 			     ;(push '(?_ . ("_" . "_")) evil-surround-pairs-alist)
-			     ))
+			     )))
