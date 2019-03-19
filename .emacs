@@ -24,6 +24,13 @@
 (setq org-agenda-start-on-weekday 0)
 
 
+;; For consistency with colemak+evil navigation, set "e" for going to previous line
+;; At some point consider looking at org-evil for a more comprehensive solution
+(require 'org-agenda)
+(org-defkey org-agenda-mode-map "e" 'org-agenda-previous-line)
+(org-defkey org-agenda-mode-map "p" 'org-agenda-set-effort)
+
+
 
 ;; Orgmode + GTD
 ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
