@@ -69,7 +69,7 @@
 			   ))
 (setq org-agenda-custom-commands
       '(
-        ("b" "Berlin House Search" tags-todo "housing")
+        ("b" "Berlin House" tags-todo "housing")
         ("p" "Python Course" tags-todo "+python_intro")
         ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
         ("l" "Learning" tags-todo "learn")
@@ -81,8 +81,8 @@
            ((org-agenda-overriding-header "Writing Email")))
         ("g" "Groceries" tags-todo "@grocer"
            ((org-agenda-overriding-header "At the supermarket")))
-        ("o" "Office" tags-todo "@office"
-           ((org-agenda-overriding-header "At the office")))))
+        ("o" "Offline" tags-todo "@offline"
+           ((org-agenda-overriding-header "Things to do offline")))))
 (setq org-tag-persistent-alist
     '(
       ; Cogsys-related stuff
@@ -90,7 +90,7 @@
       ("cogsys" . ?c)
       (:grouptags)
       ("DCs" . ?d)
-      ("robosanta" . ?s)
+      ("robosanta")
       (:endgrouptag)
       ; Retresco-related stuff
       (:startgrouptag)
@@ -107,8 +107,10 @@
       ("housing" . ?i)
       ("finances" . ?f)
       ("optimize" . ?z)
+      ("software" . ?s)
       ; general contexts
-      ("@office" . ?o)
+      ("@offline" . ?o)
+      ("@office")
       ("@housework" . ?h)
       ("@bank" . ?b)
       ("@email" . ?e)
