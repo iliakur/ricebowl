@@ -119,9 +119,9 @@
       '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
 
 ; helm-bibtex config
-(setq bibtex-completion-notes-path "~/Dropbox/Readings/bibliography/notes/"
-      bibtex-completion-bibliography '("~/Dropbox/Readings/bibliography/references.bib")
-      bibtex-completion-library-path "~/Dropbox/Readings/bibliography/bibtex-pdfs/")
+(setq bibtex-completion-notes-path "~/Documents/Readings/bibliography/notes.org"
+      bibtex-completion-bibliography '("~/Documents/Readings/bibliography/references.bib")
+      bibtex-completion-library-path "~/Documents/Readings/bibliography/bibtex-pdfs/")
 (setq bibtex-completion-additional-search-fields '(keywords))
 
  (global-set-key (kbd "M-c") 'helm-bibtex)
