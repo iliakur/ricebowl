@@ -12,7 +12,7 @@
 (setq-default fill-column 80)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(set-register ?e '(file . "~/.emacs"))
+(set-register ?e '(file . "~/code/configs/.emacs"))
 
 ;; Default Orgmode
 (require 'org)
