@@ -43,7 +43,7 @@
 	(list "inbox" "gtd" "tickler")))
 
 (set-register ?i '(file . "~/Documents/org/inbox.org"))
-(set-register ?p '(file . "~/Documents/org/gtd.org"))
+(set-register ?g '(file . "~/Documents/org/gtd.org"))
 (set-register ?s '(file . "~/Documents/org/someday.org"))
 (set-register ?t '(file . "~/Documents/org/tickler.org"))
 
