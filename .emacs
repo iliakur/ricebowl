@@ -75,7 +75,7 @@
         ("l" "Learning" tags-todo "learn")
         ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
            ((org-agenda-overriding-header "Retresco work")))
-        ("h" "Housework" tags-todo "@housework"
+        ("h" "At Home" tags-todo "@home"
            ((org-agenda-overriding-header "Around the House")))
         ("e" "Email" tags-todo "@email"
            ((org-agenda-overriding-header "Writing Email")))
@@ -111,7 +111,7 @@
       ; general contexts
       ("@offline" . ?o)
       ("@office")
-      ("@housework" . ?h)
+      ("@home" . ?h)
       ("@bank" . ?b)
       ("@email" . ?e)
       ("@grocer" . ?g)))
