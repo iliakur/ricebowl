@@ -153,6 +153,7 @@
  '(display-line-numbers (quote visual))
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
+ '(olivetti-body-width 80)
  '(org-agenda-dim-blocked-tasks :invisible)
  '(org-agenda-span 4)
  '(org-agenda-tags-todo-honor-ignore-options t)
@@ -162,7 +163,7 @@
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
    (quote
-    (flyspell-correct ox-gfm evil-surround helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
+    (olivetti flyspell-correct ox-gfm evil-surround helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -205,3 +206,7 @@
 			     ; this should be added for markdown mode, along with the asterisks and "`"
 			     ;(push '(?_ . ("_" . "_")) evil-surround-pairs-alist)
 			     )))
+
+(define-globalized-minor-mode global-olivetti-mode olivetti-mode
+  (lambda () (olivetti-mode 1)))
+(global-olivetti-mode 1)
