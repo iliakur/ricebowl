@@ -205,6 +205,5 @@
 			     ;(push '(?_ . ("_" . "_")) evil-surround-pairs-alist)
 			     )))
 
-(define-globalized-minor-mode global-olivetti-mode olivetti-mode
-  (lambda () (olivetti-mode 1)))
-(global-olivetti-mode 1)
+(add-hook 'org-mode-hook 'olivetti-mode)
+(add-hook 'markdown-mode-hook 'olivetti-mode)
