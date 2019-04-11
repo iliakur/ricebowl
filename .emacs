@@ -151,7 +151,7 @@
  '(display-line-numbers (quote visual))
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
- '(olivetti-body-width 80)
+ '(olivetti-body-width 90)
  '(org-agenda-dim-blocked-tasks :invisible)
  '(org-agenda-span 4)
  '(org-agenda-tags-todo-honor-ignore-options t)
