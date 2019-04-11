@@ -83,14 +83,14 @@
            ((org-agenda-overriding-header "Retresco work")))))
 (setq org-tag-persistent-alist
     '(
-      ; Cogsys-related stuff
+      ;; Cogsys-related stuff
       (:startgrouptag)
       ("cogsys" . ?c)
       (:grouptags)
       ("DCs" . ?d)
       ("robosanta")
       (:endgrouptag)
-      ; Retresco-related stuff
+      ;; Retresco-related stuff
       (:startgrouptag)
       ("rtr" . ?r)
       (:grouptags)
@@ -99,18 +99,17 @@
       ("ling_svc")
       ("textengine_core")
       (:endgrouptag)
-      ; Other projects/areas of focus
+      ;; Other projects/areas of focus
       ("python_intro" . ?p)
       ("learn" . ?l)
       ("housing" . ?i)
       ("finances" . ?f)
       ("optimize" . ?z)
       ("software" . ?s)
-      ; general contexts
+      ;; general contexts
       ("@offline" . ?o)
       ("@office")
       ("@home" . ?h)
-      ("@bank" . ?b)
       ("@email" . ?e)
       ("@grocer" . ?g)))
 
@@ -118,7 +117,7 @@
 (setq org-todo-keyword-faces
       '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
 
-; helm-bibtex config
+;; helm-bibtex config
 (setq bibtex-completion-notes-path "~/Documents/Readings/bibliography/notes.org"
       bibtex-completion-bibliography '("~/Documents/Readings/bibliography/references.bib")
       bibtex-completion-library-path "~/Documents/Readings/bibliography/bibtex-pdfs/")
@@ -129,15 +128,15 @@
 (setq org-latex-pdf-process
       '("latexmk -dvi- -pdf %f"))
 
-; pomidor config
+;; pomidor config
 (global-set-key (kbd "<f12>") #'pomidor)
 (setq pomidor-sound-tick nil
       pomidor-sound-tack nil)
 
-; this is broken rn...
-; (require 'helm-bibtex)
-; (helm-delete-action-from-source "Insert BibTeX key" helm-source-bibtex)
-; (helm-add-action-to-source "Insert BibTeX key" 'bibtex-completion-insert-key helm-source-bibtex 0)
+;; this is broken rn...
+;; (require 'helm-bibtex)
+;; (helm-delete-action-from-source "Insert BibTeX key" helm-source-bibtex)
+;; (helm-add-action-to-source "Insert BibTeX key" 'bibtex-completion-insert-key helm-source-bibtex 0)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
