@@ -79,6 +79,8 @@
            ((org-agenda-overriding-header "At the supermarket")))
         ("o" "Offline" tags-todo "@offline"
            ((org-agenda-overriding-header "Things to do offline")))
+        ("f" "Finances" tags-todo "finances"
+           ((org-agenda-overriding-header "Money money money!")))
         ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
            ((org-agenda-overriding-header "Retresco work")))))
 (setq org-tag-persistent-alist
