@@ -70,11 +70,7 @@
 (setq org-agenda-custom-commands
       '(
         ("b" "Berlin House" tags-todo "housing")
-        ("p" "Python Course" tags-todo "+python_intro")
         ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
-        ("l" "Learning" tags-todo "learn")
-        ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
-           ((org-agenda-overriding-header "Retresco work")))
         ("h" "At Home" tags-todo "@home"
            ((org-agenda-overriding-header "Around the House")))
         ("e" "Email" tags-todo "@email"
@@ -82,7 +78,9 @@
         ("g" "Groceries" tags-todo "@grocer"
            ((org-agenda-overriding-header "At the supermarket")))
         ("o" "Offline" tags-todo "@offline"
-           ((org-agenda-overriding-header "Things to do offline")))))
+           ((org-agenda-overriding-header "Things to do offline")))
+        ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
+           ((org-agenda-overriding-header "Retresco work")))))
 (setq org-tag-persistent-alist
     '(
       ; Cogsys-related stuff
