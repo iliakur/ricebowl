@@ -150,7 +150,7 @@
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(display-line-numbers (quote visual))
- '(global-display-line-numbers-mode t)
+ '(global-display-line-numbers-mode (quote visual))
  '(inhibit-startup-screen t)
  '(olivetti-body-width 120)
  '(org-agenda-dim-blocked-tasks :invisible)
