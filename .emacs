@@ -158,7 +158,6 @@
  '(org-agenda-tags-todo-honor-ignore-options t)
  '(org-agenda-todo-ignore-with-date t)
  '(org-agenda-todo-list-sublevels nil)
- '(org-default-priority 67)
  '(org-enforce-todo-dependencies t)
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
  '(package-selected-packages
