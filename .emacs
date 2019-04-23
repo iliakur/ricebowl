@@ -75,6 +75,8 @@
            ((org-agenda-overriding-header "Around the House")))
         ("e" "Email" tags-todo "@email"
            ((org-agenda-overriding-header "Writing Email")))
+        ("p" "Phone" tags-todo "@phone"
+           ((org-agenda-overriding-header "While on Phone")))
         ("g" "Groceries" tags-todo "@grocer"
            ((org-agenda-overriding-header "At the supermarket")))
         ("o" "Offline" tags-todo "@offline"
@@ -102,7 +104,7 @@
       ("textengine_core")
       (:endgrouptag)
       ;; Other projects/areas of focus
-      ("python_intro" . ?p)
+      ("python_intro")
       ("learn" . ?l)
       ("housing" . ?i)
       ("finances" . ?f)
@@ -113,6 +115,7 @@
       ("@office")
       ("@home" . ?h)
       ("@email" . ?e)
+      ("@phone" . ?p)
       ("@grocer" . ?g)))
 
 (setq org-todo-keywords '((type "TODO" "WAITING" "|" "DONE")))
