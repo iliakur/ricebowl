@@ -8,8 +8,6 @@
 (package-initialize)
 
 (visual-line-mode 1)
-(add-hook 'text-mode-hook 'auto-fill-mode)
-(setq-default fill-column 80)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (set-register ?e '(file . "~/code/configs/.emacs"))
@@ -154,7 +152,7 @@
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(inhibit-startup-screen t)
- '(olivetti-body-width 120)
+ '(olivetti-body-width 80)
  '(org-agenda-dim-blocked-tasks :invisible)
  '(org-agenda-span 4)
  '(org-agenda-tags-todo-honor-ignore-options t)
@@ -170,7 +168,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-default ((t (:slant normal :weight normal :height 128 :width normal :foundry "PfEd" :family "Linux Biolinum O")))))
+ '(variable-pitch ((t (:slant normal :weight normal :height 160 :width normal :family "Linux Biolinum O")))))
 (require 'evil)
 (evil-mode 1)
 (global-evil-colemak-basics-mode)
@@ -209,7 +207,9 @@
 			     )))
 
 (add-hook 'org-mode-hook 'olivetti-mode)
+(add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'markdown-mode-hook 'olivetti-mode)
+(add-hook 'markdown-mode-hook 'variable-pitch-mode)
 
 ;; nicer bullet points for org
 (require 'org-bullets)
