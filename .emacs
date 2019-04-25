@@ -20,6 +20,7 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-log-done t)
+(setq org-hide-emphasis-markers t)
 
 (setq org-agenda-start-on-weekday 0)
 
