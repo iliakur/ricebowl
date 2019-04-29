@@ -88,8 +88,11 @@
            ((org-agenda-overriding-header "Things to do offline")))
         ("f" "Finances" tags-todo "finances"
            ((org-agenda-overriding-header "Money money money!")))
-        ("r" "Retresco Work" tags-todo "rtr&-@team_weekly"
-           ((org-agenda-overriding-header "Retresco work")))))
+        ("r" . "Retresco-related Stuff")
+        ("rr" "Retresco Work" tags-todo "rtr&-@team_weekly&-@email&-@office")
+	("ro" "At office" tags-todo "@office")
+	("re" "Email" tags-todo "rtr&@email")
+	("rt" "Team Weekly" tags-todo "@team_weekly")))
 (setq org-tag-persistent-alist
     '(
       ;; Cogsys-related stuff
