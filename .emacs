@@ -53,8 +53,14 @@
                               ("T" "Tickler" entry
                                (file+headline "tickler.org" "Tickler")
                                "* %i%? \n %t")
+                              ("m" "Movie to watch" entry
+                               (file+headline "references/movies.org" "Movies")
+                               "* %i%? :watchme:")
+                              ("b" "Book to read" entry
+                               (file+headline "references/books.org" "Books")
+                               "* %i%? :readme:")
                               ("d" "Diary" entry
-                               (file+olp+datetree "~/Documents/org/diary.org")
+                               (file+olp+datetree "diary.org")
                                "* Entered on %U\n %i%?")))
 (defun current-buffers ()
   (delq nil
