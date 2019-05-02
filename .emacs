@@ -1,6 +1,4 @@
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
+(set-register ?e '(file . "~/code/configs/.emacs"))
 ;; Package settings
 ;; Setting `package-enable-at-startup` to nil speeds up startup
 (require 'package)
@@ -15,10 +13,28 @@
     (package-refresh-contents)
     (package-install 'use-package))
 
+;; disable UI clutter
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
 (visual-line-mode 1)
+
+;; Simpler yes/no propmt
+(defalias 'yes-or-no-p 'y-or-n-p)
+;; Don't confirm when killing buffer
+(global-set-key [remap kill-buffer] #'kill-this-buffer)
+
+;; Remove whitespace when saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(set-register ?e '(file . "~/code/configs/.emacs"))
+;; Centralize creation of backup files
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+    backup-by-copying t    ; Don't delink hardlinks
+    version-control t      ; Use version numbers on backups
+    delete-old-versions t  ; Automatically delete excess backups
+    kept-new-versions 20   ; how many of the newest versions to keep
+    kept-old-versions 5    ; and how many of the old
+    )
 
 ;; Default Orgmode
 (require 'org)
