@@ -254,10 +254,18 @@
 ;; nicer bullet points for org
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-(add-hook 'org-mode-hook (lambda ()
-			   (progn
-			     (display-line-numbers-mode 1)
-			     (setq display-line-numbers 'visual))))
+
+;; Toggle line numbering
+(defun ik/toggle-line-numbering ()
+  (if (bound-and-true-p display-line-numbers)
+      (display-line-numbers-mode -1)
+    (progn
+      (display-line-numbers-mode 1)
+      (setq display-line-numbers 'visual))))
+(global-set-key (kbd "<f5>")
+		(lambda ()
+		  (interactive)
+		  (ik/toggle-line-numbering)))
 
 ;; Programming
 (use-package aggressive-indent
