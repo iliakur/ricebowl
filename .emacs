@@ -1,11 +1,19 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; Package settings
+;; Setting `package-enable-at-startup` to nil speeds up startup
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(setq package-enable-at-startup nil)
 (package-initialize)
+
+;; Bootstrap use-package
+(unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
 (visual-line-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -228,3 +236,19 @@
 			   (progn
 			     (display-line-numbers-mode 1)
 			     (setq display-line-numbers 'visual))))
+
+;; Programming
+(use-package aggressive-indent
+      :ensure t)
+
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+
+(use-package smartparens
+    :ensure t
+    :diminish smartparens-mode
+    :config
+    (add-hook 'prog-mode-hook 'smartparens-mode))
+(use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
