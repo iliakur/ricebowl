@@ -197,6 +197,9 @@
  '(org-agenda-todo-list-sublevels nil)
  '(org-enforce-todo-dependencies t)
  '(org-export-backends (quote (ascii html icalendar latex md odt)))
+ '(org-modules
+   (quote
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
     (org-bullets olivetti flyspell-correct ox-gfm evil-surround helm-bibtex evil-colemak-basics pomidor markdown-mode color-theme-solarized evil org))))
