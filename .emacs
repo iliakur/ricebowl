@@ -69,6 +69,8 @@
 (set-register ?g '(file . "~/Documents/org/gtd.org"))
 (set-register ?s '(file . "~/Documents/org/someday.org"))
 (set-register ?t '(file . "~/Documents/org/tickler.org"))
+(set-register ?r '(file . "~/Documents/org/references"))
+(set-register ?b '(file . "~/Documents/Readings/bibliography/references.bib"))
 
 
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
