@@ -271,13 +271,14 @@
 (use-package aggressive-indent
       :ensure t)
 
+;; Parentheses settings (primarily for lisp ofc)
 (add-hook 'prog-mode-hook 'electric-pair-mode)
-
 (use-package smartparens
     :ensure t
     :diminish smartparens-mode
     :config
     (add-hook 'prog-mode-hook 'smartparens-mode))
+;; Useful for all languages
 (use-package rainbow-delimiters
     :ensure t
     :config
