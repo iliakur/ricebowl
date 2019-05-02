@@ -118,7 +118,8 @@
         ("rr" "Retresco Work" tags-todo "rtr&-@team_weekly&-@email&-@office")
 	("ro" "At office" tags-todo "@office")
 	("re" "Email" tags-todo "rtr&@email")
-	("rt" "Team Weekly" tags-todo "@team_weekly")))
+	("rt" "Team Weekly" tags-todo "@team_weekly")
+        ("z" "Improve my Setup" tags-todo "optimize")))
 (setq org-tag-persistent-alist
     '(
       ;; Cogsys-related stuff
