@@ -17,7 +17,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-(visual-line-mode 1)
 
 ;; Simpler yes/no propmt
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -247,10 +246,16 @@
 			     ;(push '(?_ . ("_" . "_")) evil-surround-pairs-alist)
 			     )))
 
+;; These are essentially "writing" settings, consider bundling together
+;; - olivetti centers and limits available space for writing
+;; - variable-pitch switches font to non-monospace version
+;; - visual-line wraps lines
 (add-hook 'org-mode-hook 'olivetti-mode)
 (add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'markdown-mode-hook 'olivetti-mode)
 (add-hook 'markdown-mode-hook 'variable-pitch-mode)
+(add-hook 'markdown-mode-hook 'visual-line-mode)
 
 ;; nicer bullet points for org
 (require 'org-bullets)
