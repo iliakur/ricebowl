@@ -284,6 +284,12 @@
     :diminish smartparens-mode
     :config
     (add-hook 'prog-mode-hook 'smartparens-mode))
+
+;; Lisp Documentation
+;; (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+;; (add-hook 'lisp-interaction-mode-hook 'eldoc-mode)
+;; (add-hook 'ielm-mode-hook 'eldoc-mode)
+
 ;; Useful for all languages
 (use-package rainbow-delimiters
     :ensure t
