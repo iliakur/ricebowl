@@ -86,10 +86,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+j focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -147,7 +147,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "resize"
+bindsym $mod+r mode "resize"
 
 #####################
 # Additions from Ilia
