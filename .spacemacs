@@ -430,7 +430,7 @@ you should place your code here."
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
     (setq org-modules
           (quote
-          (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+          (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
 
     (set-register ?i '(file . "~/Documents/org/inbox.org"))
     (set-register ?g '(file . "~/Documents/org/gtd.org"))
