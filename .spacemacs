@@ -432,11 +432,6 @@ you should place your code here."
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
 
-    (add-hook 'org-mode-hook 'olivetti-mode)
-    (add-hook 'org-mode-hook 'variable-pitch-mode)
-    (add-hook 'org-mode-hook 'visual-line-mode)
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
     (set-register ?i '(file . "~/Documents/org/inbox.org"))
     (set-register ?g '(file . "~/Documents/org/gtd.org"))
     (set-register ?s '(file . "~/Documents/org/someday.org"))
@@ -446,14 +441,16 @@ you should place your code here."
     (set-register ?b '(file . "~/Documents/Readings/bibliography/references.bib"))
 
   )
-  (add-hook 'markdown-mode-hook 'olivetti-mode)
-  (add-hook 'markdown-mode-hook 'variable-pitch-mode)
-  (add-hook 'markdown-mode-hook 'visual-line-mode)
+  (add-hook 'text-mode-hook 'olivetti-mode)
+  (add-hook 'text-mode-hook 'variable-pitch-mode)
+  (add-hook 'text-mode-hook 'visual-line-mode)
   (setq olivetti-body-width 85)
   (setq markdown-hide-markup t)
   (global-hl-line-mode -1)
+
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
+
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode)
     )
