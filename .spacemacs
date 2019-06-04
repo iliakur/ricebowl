@@ -41,6 +41,7 @@ values."
      auto-completion
      better-defaults
      emacs-lisp
+     latex
      ;; git
      markdown
      pdf
