@@ -348,8 +348,11 @@ you should place your code here."
                                   (file+headline "references/movies.org" "Movies")
                                   "* %i%? :watchme:")
                                   ("b" "Book to read" entry
-                                  (file+headline "references/books.org" "Books")
+                                  (file+headline "references/books.org" "Reading List")
                                   "* %i%? :readme:")
+                                  ("l" "Listen to this!" entry
+                                  (file+headline "references/music.org" "Listen")
+                                  "* %i%?")
                                   ("d" "Diary" entry
                                   (file+olp+datetree "diary.org")
                                   "* Entered on %U\n %i%?")))
