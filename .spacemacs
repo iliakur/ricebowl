@@ -453,6 +453,21 @@ you should place your code here."
   (setq markdown-hide-markup t)
   (global-hl-line-mode -1)
 
+  ;; Toggle line numbering
+  (defun ik/toggle-line-numbering ()
+    (if (bound-and-true-p display-line-numbers)
+        (display-line-numbers-mode -1)
+      (progn
+        (display-line-numbers-mode 1)
+        (setq display-line-numbers 'visual))))
+  (global-set-key (kbd "<f5>")
+		              (lambda () (interactive) (ik/toggle-line-numbering)))
+
+  ;; other writing settings
+  (global-set-key (kbd "<f6>")
+                  (lambda () (interactive) (variable-pitch-mode)))
+
+
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -521,5 +536,5 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(variable-pitch ((t (:slant normal :weight normal :height 160 :width normal :family "Linux Biolinum O")))))
 )
