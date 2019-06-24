@@ -446,6 +446,12 @@ you should place your code here."
     (set-register ?b '(file . "~/Documents/Readings/bibliography/references.bib"))
 
   )
+  (with-eval-after-load 'evil
+    ;; Macro for turning line into org list item
+    (evil-set-register ?f [?I ?- ?  escape ?n])
+    ;; Macro for turning list item into checklist item
+    (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
+    )
   (add-hook 'text-mode-hook 'olivetti-mode)
   (add-hook 'text-mode-hook 'variable-pitch-mode)
   (add-hook 'text-mode-hook 'visual-line-mode)
