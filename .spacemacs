@@ -45,6 +45,7 @@ values."
      ;; git
      markdown
      pdf
+     restclient
      (org :variables org-enable-github-support t org-enable-reveal-js-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
