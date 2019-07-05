@@ -380,7 +380,10 @@ you should place your code here."
             ("p" "Phone" tags-todo "@phone"
               ((org-agenda-overriding-header "While on Phone")))
             ("g" "Groceries" tags-todo "@grocer"
-              ((org-agenda-overriding-header "At the supermarket")))
+             ((org-agenda-overriding-header "At the supermarket")
+              (org-agenda-prefix-format " ")
+              (org-agenda-remove-tags t))
+             ("~/Downloads/groceries.txt"))
             ("o" "Offline" tags-todo "@offline"
               ((org-agenda-overriding-header "Things to do offline")))
             ("f" "Finances" tags-todo "finances"
