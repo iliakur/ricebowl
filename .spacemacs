@@ -487,9 +487,9 @@ you should place your code here."
     (add-to-list 'ac-modes 'org-mode)
     )
   (with-eval-after-load 'helm-bibtex
-    (setq bibtex-completion-notes-path "~/Documents/Readings/bibliography/notes.org"
-          bibtex-completion-bibliography '("~/Documents/Readings/bibliography/references.bib")
-          bibtex-completion-library-path "~/Documents/Readings/bibliography/bibtex-pdfs/")
+    (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
+          bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
+          bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
     )
   )
