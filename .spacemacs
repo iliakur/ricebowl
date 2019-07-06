@@ -62,7 +62,6 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       olivetti
-                                      org-bullets
                                       helm-bibtex
                                       toml-mode
                                       )
