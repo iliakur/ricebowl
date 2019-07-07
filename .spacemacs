@@ -484,14 +484,13 @@ you should place your code here."
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   (with-eval-after-load 'auto-complete
-    (add-to-list 'ac-modes 'org-mode)
-    )
+    (add-to-list 'ac-modes 'org-mode))
   (with-eval-after-load 'helm-bibtex
     (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
           bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
           bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
-    )
+    (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
