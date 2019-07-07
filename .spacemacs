@@ -458,14 +458,13 @@ you should place your code here."
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     )
-  (add-hook 'text-mode-hook 'olivetti-mode)
-  (add-hook 'text-mode-hook 'variable-pitch-mode)
-  (add-hook 'text-mode-hook 'visual-line-mode)
-  (setq olivetti-body-width 85)
-  (setq markdown-hide-markup t)
-  (global-hl-line-mode -1)
 
-  ;; Toggle line numbering
+  ;; Olivetti mode
+  (add-hook 'text-mode-hook 'olivetti-mode)
+  (setq olivetti-body-width 85)
+
+  ;; Line Numbering
+  (add-hook 'text-mode-hook 'visual-line-mode)
   (defun ik/toggle-line-numbering ()
     (if (bound-and-true-p display-line-numbers)
         (display-line-numbers-mode -1)
@@ -475,10 +474,14 @@ you should place your code here."
   (global-set-key (kbd "<f5>")
 		              (lambda () (interactive) (ik/toggle-line-numbering)))
 
-  ;; other writing settings
+  ;; Variable Pitch
+  (add-hook 'text-mode-hook 'variable-pitch-mode)
   (global-set-key (kbd "<f6>")
                   (lambda () (interactive) (variable-pitch-mode)))
 
+  ;; Misc small writing tweaks
+  (setq markdown-hide-markup t)
+  (global-hl-line-mode -1)
 
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
