@@ -388,12 +388,9 @@ you should place your code here."
               ((org-agenda-overriding-header "Things to do offline")))
             ("f" "Finances" tags-todo "finances"
               ((org-agenda-overriding-header "Money money money!")))
-            ("r" . "Retresco-related Stuff")
-            ("rr" "Retresco Work" tags-todo "rtr&-@team_weekly&-@email&-@office")
-      ("ro" "At office" tags-todo "@office")
-      ("re" "Email" tags-todo "rtr&@email")
-      ("rt" "Team Weekly" tags-todo "@team_weekly")
-            ("z" "Improve my Setup" tags-todo "optimize")))
+            ("r" "Retresco-related Stuff" tags-todo "rtr")
+            ("z" "Improve my Setup" tags-todo "optimize")
+            ))
     (setq org-tag-persistent-alist
         '(
           ;; Cogsys-related stuff
