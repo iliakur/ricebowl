@@ -490,6 +490,8 @@ you should place your code here."
 
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; Golden-ratio
+  (golden-ratio-mode 1)
 
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
