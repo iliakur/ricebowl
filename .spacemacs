@@ -459,6 +459,14 @@ you should place your code here."
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     )
 
+  ;; Yaml Folding
+  ;; kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (outline-minor-mode)
+              (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
+              (setq outline-regexp "^ *")))
+
   ;; Olivetti mode
   (add-hook 'text-mode-hook 'olivetti-mode)
   (setq olivetti-body-width 85)
