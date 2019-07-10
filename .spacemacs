@@ -468,20 +468,9 @@ you should place your code here."
   (add-hook 'text-mode-hook 'olivetti-mode)
   (setq olivetti-body-width 85)
 
-  ;; Line Numbering
-  (add-hook 'text-mode-hook 'visual-line-mode)
-  (defun ik/toggle-line-numbering ()
-    (if (bound-and-true-p display-line-numbers)
-        (display-line-numbers-mode -1)
-      (progn
-        (display-line-numbers-mode 1)
-        (setq display-line-numbers 'visual))))
-  (global-set-key (kbd "<f5>")
-		              (lambda () (interactive) (ik/toggle-line-numbering)))
-
   ;; Variable Pitch
   (add-hook 'text-mode-hook 'variable-pitch-mode)
-  (global-set-key (kbd "<f6>")
+  (global-set-key (kbd "<f5>")
                   (lambda () (interactive) (variable-pitch-mode)))
 
   ;; Misc small writing tweaks
