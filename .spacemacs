@@ -482,6 +482,8 @@ you should place your code here."
   (defalias 'yes-or-no-p 'y-or-n-p)
   ;; Golden-ratio
   (golden-ratio-mode 1)
+  ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
+  (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
