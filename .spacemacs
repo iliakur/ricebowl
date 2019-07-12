@@ -383,7 +383,7 @@ you should place your code here."
              ((org-agenda-overriding-header "At the supermarket")
               (org-agenda-prefix-format " ")
               (org-agenda-remove-tags t))
-             ("~/Downloads/groceries.txt"))
+             ("~/Downloads/groceries.pdf"))
             ("i" "Inbox" tags-todo "inbox")
             ("o" "Offline" tags-todo "@offline"
               ((org-agenda-overriding-header "Things to do offline")))
