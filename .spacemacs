@@ -498,6 +498,9 @@ you should place your code here."
           bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
     (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
+  (with-eval-after-load 'magit
+    (setq magit-blame-styles
+          (append (cdr magit-blame-styles) (car magit-blame-styles))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
