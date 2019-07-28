@@ -498,6 +498,11 @@ you should place your code here."
           bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
     (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
+  ;; Magit by default displays blame information inline.
+  ;; I'm used to having it in a side bar with the code flow uninterrupted.
+  ;; To set this as default I cycle through the relevant list, taking
+  ;; advantage of the fact that my preference is the second option whereas whichever
+  ;; option is the first one is treated as default.
   (with-eval-after-load 'magit
     (setq magit-blame-styles
           (append (cdr magit-blame-styles) (car magit-blame-styles))))
