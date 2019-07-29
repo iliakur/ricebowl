@@ -500,12 +500,21 @@ you should place your code here."
     (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
   ;; Magit by default displays blame information inline.
   ;; I'm used to having it in a side bar with the code flow uninterrupted.
-  ;; To set this as default I cycle through the relevant list, taking
-  ;; advantage of the fact that my preference is the second option whereas whichever
-  ;; option is the first one is treated as default.
   (with-eval-after-load 'magit
     (setq magit-blame-styles
-          (append (cdr magit-blame-styles) (car magit-blame-styles))))
+          '((margin
+            (margin-format " %s%f" " %C %a" " %H")
+            ;; This width tends to be better in practice than the default "42".
+            (margin-width . 70)
+            (margin-face . magit-blame-margin)
+            (margin-body-face magit-blame-dimmed))
+           (headings
+            (heading-format . "%-20a %C %s\n"))
+           (highlight
+            (highlight-face . magit-blame-highlight))
+           (lines
+            (show-lines . t)
+            (show-message . t)))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
