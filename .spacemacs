@@ -514,7 +514,9 @@ you should place your code here."
             (highlight-face . magit-blame-highlight))
            (lines
             (show-lines . t)
-            (show-message . t)))))
+            (show-message . t))))
+    (setq magit-blame-disable-modes
+          (add-to-list 'magit-blame-disable-modes 'olivetti-mode)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
