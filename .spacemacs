@@ -330,6 +330,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (with-eval-after-load 'org
+    ;; Monospaced font in tables while maintaining variable pitch in text.
+    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
     (setq org-reveal-root "file:~/code/reveal.js")
     (setq org-log-done t)
     (setq org-hide-emphasis-markers t)
