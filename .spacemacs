@@ -43,7 +43,9 @@ values."
      auto-completion
      better-defaults
      emacs-lisp
-     latex
+     (latex :variables
+             latex-enable-folding t
+             latex-enable-auto-fill t)
      git
      markdown
      pdf
