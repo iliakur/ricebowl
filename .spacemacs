@@ -398,7 +398,7 @@ you should place your code here."
               ((org-agenda-overriding-header "Things to do offline")))
             ("f" "Finances" tags-todo "finances"
               ((org-agenda-overriding-header "Money money money!")))
-            ("r" "Retresco-related Stuff" tags-todo "rtr")
+            ("r" "Retresco-related Stuff" tags-todo "+rtr|+@office")
             ("z" "Improve my Setup" tags-todo "optimize")
             ))
     (setq org-tag-persistent-alist
