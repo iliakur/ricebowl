@@ -382,8 +382,8 @@ you should place your code here."
                                   "* Entered on %U\n %i%?")))
     (setq org-agenda-custom-commands
           '(
-            ("b" "Berlin House" tags-todo "housing")
-            ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
+            ;; GTD: inbox and contexts
+            ("i" "Inbox" tags-todo "inbox")
             ("h" "At Home" tags-todo "@home"
               ((org-agenda-overriding-header "Around the House")))
             ("e" "Email" tags-todo "@email"
@@ -395,12 +395,13 @@ you should place your code here."
               (org-agenda-prefix-format " ")
               (org-agenda-remove-tags t))
              ("~/Downloads/groceries.pdf"))
-            ("i" "Inbox" tags-todo "inbox")
             ("o" "Offline" tags-todo "@offline"
-              ((org-agenda-overriding-header "Things to do offline")))
+             ((org-agenda-overriding-header "Things to do offline")))
+            ;; Other big parts of life
+            ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
+            ("r" "Retresco-related Stuff" tags-todo "+rtr|+@office")
             ("f" "Finances" tags-todo "finances"
               ((org-agenda-overriding-header "Money money money!")))
-            ("r" "Retresco-related Stuff" tags-todo "+rtr|+@office")
             ("z" "Improve my Setup" tags-todo "optimize")
             ))
     (setq org-tag-persistent-alist
