@@ -452,15 +452,6 @@ you should place your code here."
     (setq org-modules
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
-
-    (set-register ?i '(file . "~/Documents/org/inbox.org"))
-    (set-register ?g '(file . "~/Documents/org/gtd.org"))
-    (set-register ?s '(file . "~/Documents/org/someday.org"))
-    (set-register ?t '(file . "~/Documents/org/tickler.org"))
-    (set-register ?d '(file . "~/Documents/org/diary.org"))
-    (set-register ?r '(file . "~/Documents/org/references"))
-    (set-register ?b '(file . "~/Documents/Readings/bibliography/references.bib"))
-
   )
   (with-eval-after-load 'evil
     ;; Macro for turning line into org list item
