@@ -1,0 +1,10 @@
+# Insert your preferred key mappings here.
+
+map l Vomnibar.activate
+map L Vomnibar.activateInNewTab
+
+map O goForward
+map o scrollRight
+
+map n previousTab
+map e nextTab
