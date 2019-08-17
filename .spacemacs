@@ -460,6 +460,10 @@ you should place your code here."
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     )
 
+  (with-eval-after-load 'avy
+    ;; Use Colemak home row keys for avy navigation.
+    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)))
+
   ;; Yaml Folding
   ;; kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
   (add-hook 'yaml-mode-hook
