@@ -340,10 +340,8 @@ you should place your code here."
 
     ;; I try to keep the lists of agenda files and refile targets short for better performance.
     (setq org-agenda-files
-          (mapcar
-          (lambda (name)
-            (concat org-directory name ".org"))
-          (list "inbox" "gtd" "tickler")))
+          (list (expand-file-name "gtd.org" org-directory)
+           (expand-file-name "tickler.org" org-directory)))
     ;; However it's just too convenient to treat currently open buffers as refile targets.
     (defun current-buffers ()
       (delq nil
