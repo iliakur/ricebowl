@@ -352,60 +352,93 @@ you should place your code here."
                                ("~/Documents/org/gtd.org" :maxlevel . 3)
                                ("~/Documents/org/someday.org" :maxlevel . 3)
                                ("~/Documents/org/tickler.org" :maxlevel . 2)
+                               ("~/Documents/org/groceries.org" :maxlevel . 2)
                                ))
 
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                   (file+headline "inbox.org" "Tasks")
                                   "* TODO %i%?")
-                                  ("r" "RTR Todo [inbox]" entry
-                                   (file+headline "inbox.org" "Tasks")
-                                   "* TODO %i%? :rtr:")
+
+                                  ("r" "Work Todo [inbox]" entry
+                                   (file+headline "work/inbox.org" "Tasks")
+                                   "* TODO %i%?")
+
                                   ("T" "Tickler" entry
                                   (file+headline "tickler.org" "Tickler")
                                   "* %i%? \n %t")
+
                                   ("m" "Movie to watch" entry
                                   (file+headline "references/movies.org" "Movies")
                                   "* %i%? :watchme:")
+
                                   ("b" "Book to read" entry
                                   (file+headline "references/books.org" "Reading List")
                                   "* %i%? :readme:")
+
                                   ("l" "Listen to this!" entry
                                   (file+headline "references/music.org" "Listen")
                                   "* %i%?")
+
                                   ("d" "Diary" entry
                                   (file+olp+datetree "diary.org")
                                   "* Entered on %U\n %i%?")))
 
     ;; Agenda-related settings
+    ;; By default I want to just focus on one day.
+    (setq org-agenda-span 1)
+    ;; I tend to review my tasks on Sunday, so the week starts with that day.
     (setq org-agenda-start-on-weekday 0)
-    (setq org-agenda-span 4)
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
     (setq org-agenda-todo-list-sublevels nil)
+    (setq org-agenda-compact-blocks t)
+    (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
+    (defconst ik/work-org-files
+      (list (expand-file-name "rtr.org" ik/work-org-directory)
+            (expand-file-name "rtr.org" ik/work-org-directory)))
     (setq org-agenda-custom-commands
-          '(
-            ;; GTD: inbox and contexts
-            ("i" "Inbox" tags-todo "inbox")
-            ("h" "At Home" tags-todo "@home"
-              ((org-agenda-overriding-header "Around the House")))
-            ("e" "Email" tags-todo "@email"
-              ((org-agenda-overriding-header "Writing Email")))
-            ("p" "Phone" tags-todo "@phone"
-              ((org-agenda-overriding-header "While on Phone")))
-            ("g" "Groceries" tags-todo "@grocer"
+          '(("g" "Groceries" tags-todo "@grocer"
              ((org-agenda-overriding-header "At the supermarket")
+              ;; When saving the view we aren't interested in seeing the tag or the prefix.
               (org-agenda-prefix-format " ")
+              (org-agenda-files (list (expand-file-name "groceries.org" org-directory)))
               (org-agenda-remove-tags t))
+             ;; Save to PDF because phones don't always understand txt files...
              ("~/Downloads/groceries.pdf"))
-            ("o" "Offline" tags-todo "@offline"
-             ((org-agenda-overriding-header "Things to do offline")))
-            ;; Other big parts of life
-            ("d" "Discourse Connectives" tags-todo "DCs&-learn&-@email")
-            ("r" "Retresco-related Stuff" tags-todo "+rtr|+@office")
-            ("f" "Finances" tags-todo "finances"
-              ((org-agenda-overriding-header "Money money money!")))
-            ("z" "Improve my Setup" tags-todo "optimize")
-            ))
+
+            ("n" . "Personal")
+            ("nn" "Personal daily"
+             ((agenda "")
+              (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
+              (tags-todo "@home" ((org-agenda-overriding-header "At home")))
+              (tags-todo "-@email&-@home" ((org-agenda-overriding-header "Misc tasks")))))
+            ("nr" "Personal weekly review"
+             ((agenda "" ((org-agenda-span 7)))
+              (alltodo "" ((org-agenda-overriding-header "Inbox")
+                           (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+                           (org-agenda-todo-ignore-with-date nil)))
+              (stuck "")))
+
+            ("t" . "Work-related")
+            ("tt" "Work-related daily"
+             ((agenda "")
+              (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
+              (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Misc tasks")))
+              (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
+             ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
+              (org-refile-targets ik/work-org-files)))
+            ("tr" "Work-related weekly review"
+             ((agenda "" ((org-agenda-span 7)
+                          ;; I currently do my weekly reviews on Wednesday,
+                          ;; so I start planning from Thursday onward.
+                          (org-agenda-start-on-weekday 4)
+                          (org-agenda-files
+                           (list (expand-file-name "gtd.org" ik/work-org-directory)))))
+              (alltodo "" ((org-agenda-overriding-header "Inbox")
+                           (org-agenda-files
+                            (list (expand-file-name "inbox.org" ik/work-org-directory)))
+                           (org-agenda-todo-ignore-with-date nil))))
+             ((org-refile-targets ik/work-org-files)))))
     (setq org-tag-persistent-alist
         '(
           ;; Cogsys-related stuff
