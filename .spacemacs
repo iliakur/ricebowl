@@ -330,13 +330,10 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (with-eval-after-load 'org
-    ;; Monospaced font in tables while maintaining variable pitch in text.
+    ;; Appearance: monospaced font in tables and hide markup symbols by default.
     (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-    (setq org-reveal-root "file:~/code/reveal.js")
-    (setq org-log-done t)
     (setq org-hide-emphasis-markers t)
 
-    (setq org-agenda-start-on-weekday 0)
     ;; Orgmode + GTD
     ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
     (setq org-directory (file-name-as-directory "~/Documents/org"))
@@ -380,6 +377,13 @@ you should place your code here."
                                   ("d" "Diary" entry
                                   (file+olp+datetree "diary.org")
                                   "* Entered on %U\n %i%?")))
+
+    ;; Agenda-related settings
+    (setq org-agenda-start-on-weekday 0)
+    (setq org-agenda-span 4)
+    (setq org-agenda-tags-todo-honor-ignore-options t)
+    (setq org-agenda-todo-ignore-with-date t)
+    (setq org-agenda-todo-list-sublevels nil)
     (setq org-agenda-custom-commands
           '(
             ;; GTD: inbox and contexts
@@ -438,17 +442,17 @@ you should place your code here."
           ("@phone" . ?p)
           ("@grocer" . ?g)))
 
+    ;; Managing TODOs
     (setq org-todo-keywords '((type "TODO" "WAITING" "|" "DONE")))
-    (setq org-todo-keyword-faces
-          '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
-    (setq org-agenda-span 4)
-    (setq org-agenda-tags-todo-honor-ignore-options t)
-    (setq org-agenda-todo-ignore-with-date t)
-    (setq org-agenda-todo-list-sublevels nil)
+    (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
     (setq org-enforce-todo-dependencies t)
+    (setq org-log-done t)
+
+    ;; Various extensions and modules
+    (setq org-export-backends (quote (ascii html icalendar latex md odt)))
     (setq org-latex-pdf-process
           '("latexmk -dvi- -pdf %f"))
-    (setq org-export-backends (quote (ascii html icalendar latex md odt)))
+    (setq org-reveal-root "file:~/code/reveal.js")
     (setq org-modules
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
