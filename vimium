@@ -9,8 +9,8 @@ map o scrollRight
 map n previousTab
 map e nextTab
 
-map G Vomnibar.activateTabSelection
-map g createTab
+map F Vomnibar.activateTabSelection
+map f createTab
 
 map t LinkHints.activateMode
 map T LinkHints.activateModeToOpenInNewTab
