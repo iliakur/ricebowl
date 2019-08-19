@@ -391,6 +391,7 @@ you should place your code here."
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
     (setq org-agenda-todo-list-sublevels nil)
+    (setq org-agenda-dim-blocked-tasks 'invisible)
     (setq org-agenda-compact-blocks t)
     (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
     (defconst ik/work-org-files
@@ -408,12 +409,14 @@ you should place your code here."
 
             ("n" . "Personal")
             ("nn" "Personal daily"
-             ((agenda "")
+             ((agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
               (tags-todo "@home" ((org-agenda-overriding-header "At home")))
-              (tags-todo "-@email&-@home" ((org-agenda-overriding-header "Misc tasks")))))
+              (tags-todo "-@email&-@home"
+                         ((org-agenda-overriding-header "Misc tasks")))))
             ("nr" "Personal weekly review"
-             ((agenda "" ((org-agenda-span 7)))
+             ((agenda "" ((org-agenda-span 7)
+                          (org-agenda-dim-blocked-tasks t)))
               (alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                            (org-agenda-todo-ignore-with-date nil)))
@@ -421,7 +424,7 @@ you should place your code here."
 
             ("t" . "Work-related")
             ("tt" "Work-related daily"
-             ((agenda "")
+             ((agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
               (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Misc tasks")))
               (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
@@ -432,6 +435,7 @@ you should place your code here."
                           ;; I currently do my weekly reviews on Wednesday,
                           ;; so I start planning from Thursday onward.
                           (org-agenda-start-on-weekday 4)
+                          (org-agenda-dim-blocked-tasks t)
                           (org-agenda-files
                            (list (expand-file-name "gtd.org" ik/work-org-directory)))))
               (alltodo "" ((org-agenda-overriding-header "Inbox")
