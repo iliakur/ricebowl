@@ -531,6 +531,14 @@ you should place your code here."
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
+  (defun ik/typing-exercises ()
+    "Open webpages I need to practice my typing.
+Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
+    (interactive)
+    (browse-url "https://listenonrepeat.com/")
+    (browse-url "https://www.keybr.com/")
+    (browse-url "https://www.bigtimer.net/?minutes=20"))
+
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
   (with-eval-after-load 'helm-bibtex
@@ -557,8 +565,7 @@ you should place your code here."
             (show-lines . t)
             (show-message . t))))
     (setq magit-blame-disable-modes
-          (add-to-list 'magit-blame-disable-modes 'olivetti-mode)))
-  )
+          (add-to-list 'magit-blame-disable-modes 'olivetti-mode))))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
