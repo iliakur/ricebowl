@@ -388,6 +388,8 @@ you should place your code here."
     (setq org-agenda-span 1)
     ;; I tend to review my tasks on Sunday, so the week starts with that day.
     (setq org-agenda-start-on-weekday 0)
+    ;; If I have scheduled a time to deal with a deadline, don't show it in the agenda.
+    (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
     (setq org-agenda-todo-list-sublevels nil)
