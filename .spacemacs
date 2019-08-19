@@ -493,8 +493,6 @@ you should place your code here."
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
   )
   (with-eval-after-load 'evil
-    ;; Macro for turning line into org list item
-    (evil-set-register ?f [?I ?- ?  escape ?n])
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     )
