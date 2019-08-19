@@ -428,7 +428,7 @@ you should place your code here."
             ("rr" "Work-related daily"
              ((agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
-              (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Misc tasks")))
+              (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Downtime tasks")))
               (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
              ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
               (org-refile-targets ik/work-org-files)))
