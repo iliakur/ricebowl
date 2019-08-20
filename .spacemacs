@@ -497,7 +497,9 @@ you should place your code here."
   (with-eval-after-load 'evil
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
-    )
+    ;; Splits python/yaml list by placing next item on separate line.
+    ;; Note that it's not intended to split lists where items contain spaces!
+    (evil-set-register ?a [?f ?  ?s return escape]))
 
   (with-eval-after-load 'avy
     ;; Use Colemak home row keys for avy navigation.
