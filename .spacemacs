@@ -359,7 +359,7 @@ you should place your code here."
                                   (file+headline "inbox.org" "Tasks")
                                   "* TODO %i%?")
 
-                                  ("r" "Work Todo [inbox]" entry
+                                  ("a" "Work Todo [inbox]" entry
                                    (file+headline "work/inbox.org" "Tasks")
                                    "* TODO %i%?")
 
@@ -416,7 +416,7 @@ you should place your code here."
               (tags-todo "@home" ((org-agenda-overriding-header "At home")))
               (tags-todo "-@email&-@home"
                          ((org-agenda-overriding-header "Misc tasks")))))
-            ("tw" "Personal weekly review"
+            ("tr" "Personal weekly review"
              ((agenda "" ((org-agenda-span 7)
                           (org-agenda-dim-blocked-tasks t)))
               (alltodo "" ((org-agenda-overriding-header "Inbox")
@@ -424,15 +424,15 @@ you should place your code here."
                            (org-agenda-todo-ignore-with-date nil)))
               (stuck "")))
 
-            ("r" . "Work-related")
-            ("rr" "Work-related daily"
+            ("a" . "Work-related")
+            ("aa" "Work-related daily"
              ((agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
               (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Downtime tasks")))
               (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
              ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
               (org-refile-targets ik/work-org-files)))
-            ("rw" "Work-related weekly review"
+            ("ar" "Work-related weekly review"
              ((agenda "" ((org-agenda-span 7)
                           ;; I currently do my weekly reviews on Wednesday,
                           ;; so I start planning from Thursday onward.
