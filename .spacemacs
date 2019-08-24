@@ -420,12 +420,15 @@ you should place your code here."
               (tags-todo "-@email&-@home"
                          ((org-agenda-overriding-header "Misc tasks")))))
             ("tr" "Personal weekly review"
-             ((agenda "" ((org-agenda-span 7)
-                          (org-agenda-dim-blocked-tasks t)))
-              (alltodo "" ((org-agenda-overriding-header "Inbox")
+             ((alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                            (org-agenda-todo-ignore-with-date nil)))
-              (stuck "")))
+              (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
+              (tags "weekly+LEVEL=2"
+                    ((org-agenda-overriding-header "Backlog for Weekly review")
+                     (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
+              (agenda "" ((org-agenda-span 7)
+                          (org-agenda-dim-blocked-tasks t)))))
 
             ("a" . "Work-related")
             ("aa" "Work-related daily"
@@ -436,17 +439,17 @@ you should place your code here."
              ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
               (org-refile-targets ik/work-org-files)))
             ("ar" "Work-related weekly review"
-             ((agenda "" ((org-agenda-span 7)
+             ((alltodo "" ((org-agenda-overriding-header "Inbox")
+                           (org-agenda-files
+                            (list (expand-file-name "inbox.org" ik/work-org-directory)))
+                           (org-agenda-todo-ignore-with-date nil)))
+              (agenda "" ((org-agenda-span 7)
                           ;; I currently do my weekly reviews on Wednesday,
                           ;; so I start planning from Thursday onward.
                           (org-agenda-start-on-weekday 4)
                           (org-agenda-dim-blocked-tasks t)
                           (org-agenda-files
-                           (list (expand-file-name "gtd.org" ik/work-org-directory)))))
-              (alltodo "" ((org-agenda-overriding-header "Inbox")
-                           (org-agenda-files
-                            (list (expand-file-name "inbox.org" ik/work-org-directory)))
-                           (org-agenda-todo-ignore-with-date nil))))
+                           (list (expand-file-name "gtd.org" ik/work-org-directory))))))
              ((org-refile-targets ik/work-org-files)))))
     (setq org-tag-persistent-alist
         '(
