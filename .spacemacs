@@ -523,8 +523,8 @@ you should place your code here."
               (setq outline-regexp "^ *")))
 
   ;; Olivetti mode
+  (add-hook 'text-mode-hook 'olivetti-mode)
   (with-eval-after-load 'olivetti
-    (add-hook 'text-mode-hook 'olivetti-mode)
     (setq olivetti-body-width 85))
 
   ;; Variable Pitch
