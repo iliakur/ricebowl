@@ -514,8 +514,9 @@ you should place your code here."
               (setq outline-regexp "^ *")))
 
   ;; Olivetti mode
-  (add-hook 'text-mode-hook 'olivetti-mode)
-  (setq olivetti-body-width 85)
+  (with-eval-after-load 'olivetti
+    (add-hook 'text-mode-hook 'olivetti-mode)
+    (setq olivetti-body-width 85))
 
   ;; Variable Pitch
   (add-hook 'text-mode-hook 'variable-pitch-mode)
@@ -523,7 +524,8 @@ you should place your code here."
                   (lambda () (interactive) (variable-pitch-mode)))
 
   ;; Misc small writing tweaks
-  (setq markdown-hide-markup t)
+  (with-eval-after-load 'markdown
+    (setq markdown-hide-markup t))
   ;; HL-line mode is really only use full in text mode buffers where lines regularly wrap.
   (global-hl-line-mode -1)
   (add-hook 'text-mode-hook 'hl-line-mode)
