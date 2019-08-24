@@ -407,7 +407,8 @@ you should place your code here."
              ((org-agenda-overriding-header "At the supermarket")
               ;; When saving the view we aren't interested in seeing the tag or the prefix.
               (org-agenda-prefix-format " ")
-              (org-agenda-files (list (expand-file-name "groceries.org" org-directory)))
+              (org-agenda-files (list (expand-file-name "groceries.org" org-directory)
+                                      (expand-file-name "gtd.org" org-directory)))
               (org-agenda-remove-tags t))
              ;; Save to PDF because phones don't always understand txt files...
              ("~/Downloads/groceries.pdf"))
@@ -417,7 +418,7 @@ you should place your code here."
              ((agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
               (tags-todo "@home" ((org-agenda-overriding-header "At home")))
-              (tags-todo "-@email&-@home"
+              (tags-todo "-@email&-@home&-@grocer"
                          ((org-agenda-overriding-header "Misc tasks")))))
             ("tr" "Personal weekly review"
              ((alltodo "" ((org-agenda-overriding-header "Inbox")
