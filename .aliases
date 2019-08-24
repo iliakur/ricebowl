@@ -11,7 +11,6 @@ alias cp="cp -v"
 # Other System-level stuff
 alias clean="rm -r ~/Downloads/*"
 alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
-alias readings="cd ~/Dropbox/Readings"
 
 # LaTeX
 alias cln-tex="latexmk -c; rm *.bbl"
@@ -26,7 +25,7 @@ alias nltkdev='cd ~/code/python/nltk'
 alias mut='python -m pytest --cov=nltk/lm --cov-report term-missing nltk/test/unit/lm'
 alias mdt='python -m pytest --cov=nltk/lm --cov-report term-missing --doctest-modules nltk/lm'
 alias mrt='python -m pytest --doctest-glob="*.doctest" nltk/test/lm.doctest'
-alias mat='tox -e py27 -e py35 nltk.test.unit.lm lm.doctest'
+alias mat='tox -e py37 -e py36 nltk.test.unit.lm lm.doctest'
 
 # Backup command (options):
 # -a		general archiving, useful
