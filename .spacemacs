@@ -392,7 +392,10 @@ you should place your code here."
     (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
+    ;; We don't want to see the children tasks in either agenda or tags matches.
     (setq org-agenda-todo-list-sublevels nil)
+    (setq org-agenda-todo-list-sublevels nil)
+    ;; We don't want to see blocked tasks either.
     (setq org-agenda-dim-blocked-tasks 'invisible)
     (setq org-agenda-compact-blocks t)
     (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
