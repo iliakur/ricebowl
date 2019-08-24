@@ -489,7 +489,7 @@ you should place your code here."
     ;; Managing TODOs
     ;; Add keys for faster access to different states instead of cycling through them.
     ;; Source: https://orgmode.org/manual/Fast-access-to-TODO-states.html#Fast-access-to-TODO-states
-    (setq org-todo-keywords '((type "TODO(t)" "WAITING(w)" "|" "DONE(d)")))
+    (setq org-todo-keywords '((type "TODO(t)" "WAITING(w)" "|" "DONE(n)")))
     (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
     (setq org-enforce-todo-dependencies t)
     (setq org-log-done t)
