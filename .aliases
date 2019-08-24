@@ -2,10 +2,6 @@
 # Editing this file with vim
 alias myalias="vim $HOME/.aliases"
 
-# Anaconda stuff
-alias sa='source activate'
-alias sd='source deactivate'
-
 # Aliasing system commands
 alias less="less -N"
 alias mv="mv -v"
@@ -44,44 +40,18 @@ alias mat='tox -e py27 -e py35 nltk.test.unit.lm lm.doctest'
 alias backmeup='rsync -arv --delete --files-from=backup-spec --ignore-existing
 --exclude=".*" --delete-excluded ~/ /media/quickbeam/5222-E566/backup'
 
-# Lets you set up an arbitrary tunnel
-function tunnel-medusa {
-    ssh -N -L $1\:localhost:$1 kurenkov@medusa.ling.uni-potsdam.de
-}
-
 # Jupyter shortcuts
 alias jc='jupyter console'
 alias jn='jupyter notebook'
-
-# Yapf
-alias autoformat='yapf --style="$HOME/code/configs/yapf.conf" -i'
-
-# Docker shortcuts
-function dckr_stop_rm {
-    docker stop $1 && docker rm $1
-}
-
-function dckr_prune_all {
-    docker container prune -f && docker image prune -f
-}
-
-function spin_up_sandbox {
-    NV_GPU=$1 nvidia-docker run -d \
-        --name=$2 -h pm2-sleep \
-    -v /srv/data/$3:/data \
-    -v /srv/projects/$2:/project \
-    -v /srv/scratchpad:/scratchpad \
-    --network=multi-host-net \
-    mlcog-up/$2
-}
 
 # Scheme tab completion
 # (requires rlwrap package) and the following file:
 # https://gist.githubusercontent.com/bobbyno/3325982/raw/fc0208d287e56adc12b4c76114fcd21a107082ad/mit_scheme_bindings.txt
 alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
 
-
-# RTR git checkout
+# RTR-related
+# -----------
+# git checkout
 function git_rtr_clone {
     git clone $1 && \
     echo "Moving into repo" && cd $(basename $1 .git) && \
@@ -90,6 +60,7 @@ function git_rtr_clone {
     git config --local user.name "Ilia Kurenkov"
 }
 
+# NVM setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
