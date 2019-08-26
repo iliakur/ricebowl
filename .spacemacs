@@ -433,9 +433,10 @@ you should place your code here."
 
             ("a" . "Work-related")
             ("aa" "Work-related daily"
-             ((agenda "" ((org-agenda-dim-blocked-tasks t)))
+             ((tags-todo "wip" ((org-agenda-overriding-header "Work in Progress")))
+              (agenda "" ((org-agenda-dim-blocked-tasks t)))
               (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
-              (tags-todo "-@email&-@office" ((org-agenda-overriding-header "Downtime tasks")))
+              (tags-todo "-@email&-@office&-wip" ((org-agenda-overriding-header "Downtime tasks")))
               (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
              ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
               (org-refile-targets ik/work-org-files)))
