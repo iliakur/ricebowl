@@ -420,6 +420,8 @@ you should place your code here."
               (tags-todo "@home" ((org-agenda-overriding-header "At home")))
               (tags-todo "-@email&-@home&-@grocer"
                          ((org-agenda-overriding-header "Misc tasks")))))
+            ("ti" "Quick inbox review"
+             alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))
             ("tr" "Personal weekly review"
              ((alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
@@ -500,11 +502,16 @@ you should place your code here."
     (setq org-enforce-todo-dependencies t)
     (setq org-log-done t)
 
-    ;; Various extensions and modules
+    ;; Settings related to exporting to other formats.
+    (setq org-export-with-toc nil)
+    (setq org-export-preserve-breaks t)
+    (setq org-export-with-broken-links 'mark)
+    (setq org-export-headline-levels 4)
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
     (setq org-latex-pdf-process
           '("latexmk -dvi- -pdf %f"))
     (setq org-reveal-root "file:~/code/reveal.js")
+
     (setq org-modules
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
