@@ -566,7 +566,7 @@ Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
     (interactive)
     (browse-url "https://listenonrepeat.com/")
     (browse-url "https://www.keybr.com/")
-    (browse-url "https://www.bigtimer.net/?minutes=20"))
+    (browse-url "https://duckduckgo.com/?q=timer+20+minutes"))
 
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
