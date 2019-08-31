@@ -369,11 +369,11 @@ you should place your code here."
 
                                   ("m" "Movie to watch" entry
                                   (file+headline "references/movies.org" "Movies")
-                                  "* %i%? :watchme:")
+                                  "* TOWATCH %i%?")
 
                                   ("b" "Book to read" entry
                                   (file+headline "references/books.org" "Reading List")
-                                  "* %i%? :readme:")
+                                  "* TOREAD %i%?")
 
                                   ("l" "Listen to this!" entry
                                   (file+headline "references/music.org" "Listen")
