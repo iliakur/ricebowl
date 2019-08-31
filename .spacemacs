@@ -337,6 +337,8 @@ you should place your code here."
     ;; Orgmode + GTD
     ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
     (setq org-directory (file-name-as-directory "~/Documents/org"))
+    (setq ik/references-directory
+          (file-name-as-directory (expand-file-name "references" org-directory)))
 
     ;; I try to keep the lists of agenda files and refile targets short for better performance.
     (setq org-agenda-files
@@ -412,6 +414,8 @@ you should place your code here."
               (org-agenda-remove-tags t))
              ;; Save to PDF because phones don't always understand txt files...
              ("~/Downloads/groceries.pdf"))
+            ("m" "Movies to watch" todo "TOWATCH"
+             ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))))
 
             ("t" . "Personal")
             ("tt" "Personal daily"
