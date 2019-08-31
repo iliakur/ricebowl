@@ -421,7 +421,8 @@ you should place your code here."
               (tags-todo "-@email&-@home&-@grocer"
                          ((org-agenda-overriding-header "Misc tasks")))))
             ("ti" "Quick inbox review"
-             alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))
+             alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+                         (org-agenda-todo-ignore-with-date nil)))
             ("tr" "Personal weekly review"
              ((alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
