@@ -542,8 +542,7 @@ you should place your code here."
 
   ;; Olivetti mode
   (add-hook 'text-mode-hook 'olivetti-mode)
-  (with-eval-after-load 'olivetti
-    (setq olivetti-body-width 85))
+  (setq olivetti-body-width 85)
 
   ;; Variable Pitch
   (add-hook 'text-mode-hook 'variable-pitch-mode)
