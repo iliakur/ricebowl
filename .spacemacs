@@ -403,7 +403,7 @@ you should place your code here."
     (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
     (defconst ik/work-org-files
       (list (expand-file-name "rtr.org" ik/work-org-directory)
-            (expand-file-name "rtr.org" ik/work-org-directory)))
+            (expand-file-name "gtd.org" ik/work-org-directory)))
     (setq org-agenda-custom-commands
           '(("g" "Groceries" tags-todo "@grocer"
              ((org-agenda-overriding-header "At the supermarket")
