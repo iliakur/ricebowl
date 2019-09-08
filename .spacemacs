@@ -521,6 +521,18 @@ you should place your code here."
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
   )
+
+  ;; Org-related keyboard shortcuts for useful toggles.
+  (defun ik/toggle-org-pomodoro-sounds ()
+    (interactive)
+    (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
+    (message "Org Pomodoro sounds turned %s"
+             (if org-pomodoro-play-sounds "on" "off")))
+  (spacemacs/set-leader-keys
+    "oh" 'org-habit-toggle-habits
+    "op" 'ik/toggle-org-pomodoro-sounds)
+
+
   (with-eval-after-load 'evil
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
