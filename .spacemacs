@@ -509,7 +509,6 @@ you should place your code here."
 
     ;; Settings related to exporting to other formats.
     (setq org-export-with-toc nil)
-    (setq org-export-preserve-breaks t)
     (setq org-export-with-broken-links 'mark)
     (setq org-export-headline-levels 4)
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
