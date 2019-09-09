@@ -52,6 +52,9 @@ alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
 # -----------
 # git checkout
 function git_rtr_clone {
+    # Add this to your bashrc or zshrc.
+    # Every time you open a new terminal you should be able to run:
+    # git_rtr_clone <URL_TO_YOUR_REPOSITORY>
     git clone $1 && \
     echo "Moving into repo" && cd $(basename $1 .git) && \
     echo "Setting RTR email" && \
