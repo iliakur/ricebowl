@@ -1,0 +1,10 @@
+EMAIL="ilia.kurenkov@retresco.de"
+UNAME="Ilia Kurenkov"
+
+set -e
+
+git clone $1 && \
+    echo "Moving into repo" && cd $(basename $1 .git) && \
+    echo "Setting RTR email" && \
+    git config --local user.email $EMAIL
+git config --local user.name $UNAME
