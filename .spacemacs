@@ -452,6 +452,7 @@ you should place your code here."
                            (org-agenda-files
                             (list (expand-file-name "inbox.org" ik/work-org-directory)))
                            (org-agenda-todo-ignore-with-date nil)))
+              (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))))
               (agenda "" ((org-agenda-span 7)
                           ;; I currently do my weekly reviews on Wednesday,
                           ;; so I start planning from Thursday onward.
