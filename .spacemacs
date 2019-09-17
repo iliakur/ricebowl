@@ -370,6 +370,10 @@ you should place your code here."
                                   (file+headline "tickler.org" "Tickler")
                                   "* %i%? \n %t")
 
+                                  ("h" "Habit" entry
+                                   (file+headline "tickler.org" "Tickler")
+                                   "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")
+
                                   ("m" "Movie to watch" entry
                                   (file+headline "references/movies.org" "Movies")
                                   "* TOWATCH %i%?")
