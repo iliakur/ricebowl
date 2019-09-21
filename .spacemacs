@@ -539,6 +539,12 @@ you should place your code here."
 
 
   (with-eval-after-load 'evil
+    ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
+    ;; https://github.com/Somelauw/evil-org-mode/issues/50
+    (evil-define-key 'normal evil-org-mode-map
+      (kbd "$") 'evil-end-of-line)
+    (evil-define-key 'normal evil-org-mode-map
+      (kbd "0") 'evil-beginning-of-line)
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     ;; Splits python/yaml list by placing next item on separate line.
