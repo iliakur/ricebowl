@@ -414,11 +414,11 @@ you should place your code here."
              ((org-agenda-overriding-header "At the supermarket")
               ;; When saving the view we aren't interested in seeing the tag or the prefix.
               (org-agenda-prefix-format " ")
+              (org-agenda-remove-tags t)
               (org-agenda-files (list (expand-file-name "groceries.org" org-directory)
-                                      (expand-file-name "gtd.org" org-directory)))
-              (org-agenda-remove-tags t))
-             ;; Save to PDF because phones don't always understand txt files...
-             ("~/Downloads/groceries.pdf"))
+                                      (expand-file-name "gtd.org" org-directory))))
+              ;; Save to PDF because phones don't always understand txt files...
+              ("~/Downloads/groceries.pdf"))
             ("m" "Movies to watch" todo "TOWATCH"
              ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))))
 
