@@ -537,6 +537,27 @@ you should place your code here."
     "oh" 'org-habit-toggle-habits
     "op" 'ik/toggle-org-pomodoro-sounds)
 
+  ;; Making org-mode subtree manipulation colemak-friendly.
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "si" 'org-demote-subtree)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sk" 'org-narrow-to-subtree)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sK" 'widen)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sn" 'org-move-subtree-down)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "se" 'org-move-subtree-up)
+  ;; Evil-org bindings for navigating subtrees are trickier to remap for colemak hnei
+  ;; because they conflict with a lot of existing `g` prefixed bindings.
+  ;; So instead we add them to the custom prefix for orgmode.
+  ;; For now, keep `gh` as the shortcut for org-up-element.
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "on" 'org-forward-element)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "oe" 'org-backward-element)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "oi" 'org-down-element)
 
   (with-eval-after-load 'evil
     ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
