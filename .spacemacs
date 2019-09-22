@@ -559,6 +559,10 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "oi" 'org-down-element)
 
+  ;; Open compiled LaTeX documents in PDF-Tools.
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook 'TeX-revert-document-buffer)
+
   (with-eval-after-load 'evil
     ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
     ;; https://github.com/Somelauw/evil-org-mode/issues/50
