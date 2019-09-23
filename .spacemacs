@@ -576,10 +576,6 @@ you should place your code here."
     ;; Note that it's not intended to split lists where items contain spaces!
     (evil-set-register ?a [?f ?  ?s return escape]))
 
-  (with-eval-after-load 'avy
-    ;; Use Colemak home row keys for avy navigation.
-    (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)))
-
   ;; Yaml Folding
   ;; kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
   (add-hook 'yaml-mode-hook
