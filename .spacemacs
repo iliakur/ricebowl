@@ -622,6 +622,14 @@ Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
     (browse-url "https://www.keybr.com/")
     (browse-url "https://duckduckgo.com/?q=timer+20+minutes"))
 
+  ;; It is very convenient to navigate to the beginning and end of functions,
+  ;; especially if they are big methods.
+  ;; The default emacs bindings for these commands are unwieldy, however,
+  ;; so add spacemacs hydras for them.
+  (spacemacs/set-leader-keys
+    "ja" 'beginning-of-defun
+    "je" 'end-of-defun)
+
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
 
