@@ -624,12 +624,16 @@ Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
 
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
+
+  ;; Settings for Helm-bibtex
   (with-eval-after-load 'helm-bibtex
     (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
           bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
           bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
     (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
+  (spacemacs/set-leader-keys "ob" 'helm-bibtex)
+
   ;; Magit by default displays blame information inline.
   ;; I'm used to having it in a side bar with the code flow uninterrupted.
   (with-eval-after-load 'magit
