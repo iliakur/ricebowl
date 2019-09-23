@@ -275,12 +275,12 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers '(:relative t
-                                         :enabled-for-modes
-                                         yaml-mode
-                                         prog-mode
-                                         :disabled-for-modes
-                                         text-mode)
+   dotspacemacs-line-numbers '(:visual t
+                                       :enabled-for-modes
+                                       yaml-mode
+                                       prog-mode
+                                       :disabled-for-modes
+                                       text-mode)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
