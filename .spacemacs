@@ -527,6 +527,13 @@ you should place your code here."
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
   )
 
+  (defun ik/org-cliplink (description)
+    "My version of cliplink only prompts for a link description."
+    (interactive "s")
+    (insert (org-make-link-string (current-kill 0 t) description)))
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "ol" 'ik/org-cliplink)
+
   ;; Org-related keyboard shortcuts for useful toggles.
   (defun ik/toggle-org-pomodoro-sounds ()
     (interactive)
