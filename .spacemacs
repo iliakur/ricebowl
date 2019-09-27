@@ -366,6 +366,10 @@ you should place your code here."
                                    (file+headline "work/inbox.org" "Tasks")
                                    "* TODO %i%?")
 
+                                  ("s" "School/studying Todo" entry
+                                   (file+headline "thesis/alltasks.org" "thesis inbox")
+                                   "* TODO %i%?")
+
                                   ("T" "Tickler" entry
                                   (file+headline "tickler.org" "Tickler")
                                   "* %i%? \n %t")
@@ -409,6 +413,7 @@ you should place your code here."
     (defconst ik/work-org-files
       (list (expand-file-name "rtr.org" ik/work-org-directory)
             (expand-file-name "gtd.org" ik/work-org-directory)))
+    (defconst ik/thesis-org-directory (file-name-as-directory (concat org-directory "thesis")))
     (setq org-agenda-custom-commands
           '(("g" "Groceries" tags-todo "@grocer"
              ((org-agenda-overriding-header "At the supermarket")
@@ -442,6 +447,28 @@ you should place your code here."
                      (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
               (agenda "" ((org-agenda-span 7)
                           (org-agenda-dim-blocked-tasks t)))))
+
+            ("s" . "School/Studying")
+            ("ss" "School/Studying Daily"
+             ((agenda "")
+              (alltodo "" ((org-agenda-overriding-header "Misc tasks"))))
+              ((org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+            ;; This is supposed to have custom refile targets, but I can't get them to work
+            ("sr" "School/Studying Review (weekly)"
+             ((tags-todo
+               "inbox"
+               ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
+                (org-agenda-overriding-header "Inbox")))
+              (stuck "" ((org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+              (agenda
+               ""
+               ((org-agenda-span 7)
+                (org-agenda-dim-blocked-tasks t)
+                (org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+              (tags-todo
+               "someday+LEVEL=2"
+               ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
+                (org-agenda-overriding-header "Consider these tasks next")))))
 
             ("a" . "Work-related")
             ("aa" "Work-related daily"
