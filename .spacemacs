@@ -676,8 +676,29 @@ Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
            "${=key=}.pdf\n"
            " :END:\n"
            "\n"))
+    (setq bibtex-completion-format-citation-functions
+          '((org-mode . bibtex-completion-format-citation-org-link-to-PDF)
+            (latex-mode . bibtex-completion-format-citation-cite)
+            (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+            (default . bibtex-completion-format-citation-default)))
 
-    (helm-add-action-to-source "Insert BibTex key" 'helm-bibtex-insert-key helm-source-bibtex 0))
+    (defun ik/bibtex-completion-insert-latex-citation (keys)
+      "Force insertion of LaTeX citation anywhere.
+Have to use a function for this because lambdas don't play nice with
+helm-bibtex-helmify-action"
+      (insert (bibtex-completion-format-citation-cite keys)))
+
+    ;; This is needed for my custom command to work with helm.
+    ;; See: https://github.com/tmalsburg/helm-bibtex#create-new-actions
+    (helm-bibtex-helmify-action
+     ik/bibtex-completion-insert-latex-citation
+     helm-bibtex-insert-latex-citation)
+    (helm-add-action-to-source
+     "Explicitly insert LaTeX citation"
+     'helm-bibtex-insert-latex-citation
+     helm-source-bibtex
+     0))
+
   (spacemacs/set-leader-keys "ob" 'helm-bibtex)
 
   ;; Magit by default displays blame information inline.
