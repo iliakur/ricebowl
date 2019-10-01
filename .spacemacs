@@ -444,8 +444,8 @@ you should place your code here."
               (tags "weekly+LEVEL=2"
                     ((org-agenda-overriding-header "Backlog for Weekly review")
                      (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
-              (agenda "" ((org-agenda-span 7)
-                          (org-agenda-dim-blocked-tasks t)))))
+              (agenda "" ((org-agenda-span 7)))
+              ((org-agenda-dim-blocked-tasks nil))))
 
             ("s" . "School/Studying")
             ("ss" "School/Studying Daily"
