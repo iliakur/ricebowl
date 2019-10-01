@@ -641,10 +641,8 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
   (defun ik/typing-exercises ()
-    "Open webpages I need to practice my typing.
-Currently that's listenonrepeat, keybr.com and a timer set to 20 minutes."
+    "Open webpages I need to practice my typing."
     (interactive)
-    (browse-url "https://listenonrepeat.com/")
     (browse-url "https://www.keybr.com/")
     (browse-url "https://duckduckgo.com/?q=timer+20+minutes"))
 
