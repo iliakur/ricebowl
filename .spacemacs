@@ -663,6 +663,8 @@ you should place your code here."
           bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
           bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
     (setq bibtex-completion-additional-search-fields '(keywords))
+    ;; Optional arguments for latex cite command aren't used by me.
+    (setq bibtex-completion-cite-prompt-for-optional-arguments nil)
     ;; Need to redefine bibtex notes template to support interleave.
     (setq bibtex-completion-notes-template-one-file
           (concat
