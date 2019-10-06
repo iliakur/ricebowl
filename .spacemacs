@@ -550,8 +550,7 @@ you should place your code here."
 
     (setq org-modules
           (quote
-          (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m)))
-  )
+          (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m))))
 
   (defun ik/org-cliplink (description)
     "My version of cliplink only prompts for a link description."
