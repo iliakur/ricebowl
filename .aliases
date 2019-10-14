@@ -1,3 +1,4 @@
+#-*-shell-script-*-
 # This file is separate from .zshrc so that I can also use it with bash.
 # Editing this file with vim
 alias myalias="vim $HOME/.aliases"
