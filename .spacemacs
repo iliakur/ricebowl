@@ -644,7 +644,7 @@ you should place your code here."
     "Open webpages I need to practice my typing."
     (interactive)
     (browse-url "https://www.keybr.com/")
-    (browse-url "https://duckduckgo.com/?q=timer+20+minutes"))
+    (browse-url "https://www.online-stopwatch.com/timer/20minutes"))
 
   ;; It is very convenient to navigate to the beginning and end of functions,
   ;; especially if they are big methods.
