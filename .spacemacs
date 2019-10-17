@@ -452,19 +452,19 @@ you should place your code here."
             ("ss" "School/Studying Daily"
              ((agenda "")
               (alltodo "" ((org-agenda-overriding-header "Misc tasks"))))
-              ((org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+              ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
             ;; This is supposed to have custom refile targets, but I can't get them to work
             ("sr" "School/Studying Review (weekly)"
              ((tags-todo
                "inbox"
                ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
                 (org-agenda-overriding-header "Inbox")))
-              (stuck "" ((org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+              (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
               (agenda
                ""
                ((org-agenda-span 7)
                 (org-agenda-dim-blocked-tasks t)
-                (org-agenda-files (list (expand-file-name "TODOS.org" ik/thesis-org-directory)))))
+                (org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
               (tags-todo
                "someday+LEVEL=2"
                ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
