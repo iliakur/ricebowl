@@ -455,8 +455,8 @@ you should place your code here."
               ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
             ;; This is supposed to have custom refile targets, but I can't get them to work
             ("sr" "School/Studying Review (weekly)"
-             ((tags-todo
-               "inbox"
+             ((tags
+               "inbox+LEVEL=2"
                ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
                 (org-agenda-overriding-header "Inbox")))
               (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
