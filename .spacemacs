@@ -635,8 +635,13 @@ you should place your code here."
 
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ;; GUI/visual stuff
   ;; Golden-ratio
   (golden-ratio-mode 1)
+  ;; Disable major and minor mode indicators by default for a leaner mode-line.
+  (setq spaceline-major-mode-p nil)
+  (setq spaceline-minor-modes-p nil)
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
