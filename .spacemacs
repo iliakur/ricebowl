@@ -542,11 +542,25 @@ you should place your code here."
 
     ;; Settings related to exporting to other formats.
     (setq org-export-with-toc nil)
+    (setq org-export-with-date nil)
+    ;; I'm not enough of a megalomaniac to attach my name automatically to everything I produce.
+    (setq org-export-with-author nil)
     (setq org-export-with-broken-links 'mark)
     (setq org-export-headline-levels 4)
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
+
+    ;; LaTeX-specific export settings
+    ;; I much prefer the Libertine/Biolinum combo to the default LaTeX font.
+    (setq org-latex-packages-alist
+          (append org-latex-packages-alist
+                  '(("" "libertine" nil)
+                    "\\renewcommand*\\familydefault{\\sfdefault}")))
+    (setq org-latex-hyperref-template
+          "\\hypersetup{\n colorlinks=true,\n citecolor=gray,\n  linkcolor=blue,\n  linktoc=page}\n")
     (setq org-latex-pdf-process
-          '("latexmk -dvi- -pdf %f"))
+          '("latexmk -dvi- -pdf %f -output-directory=%o"))
+
+    ;; Reveal.js settings
     (setq org-reveal-root "file:~/code/reveal.js")
 
     (setq org-modules
