@@ -617,6 +617,8 @@ you should place your code here."
   ;; Also in visual mode
   (define-key evil-visual-state-map "n" 'evil-next-visual-line)
   (define-key evil-visual-state-map "e" 'evil-previous-visual-line)
+  ;; Shift-B should take me to bottom of visible screen, vim-style.
+  (define-key evil-motion-state-map "B" 'evil-window-bottom)
 
   ;; Open compiled LaTeX documents in PDF-Tools.
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
