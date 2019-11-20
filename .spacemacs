@@ -563,6 +563,11 @@ you should place your code here."
     ;; Reveal.js settings
     (setq org-reveal-root "file:~/code/reveal.js")
 
+    ;; I only use the ODT exporter to produce documents I want to share with others.
+    ;; The ODT format itself isn't as good for that as .docx, which works seamlessly with MSOffice and GDocs.
+    ;; This setting allows me to export directly to .docx without having to manually convert the ODT.
+    (setq org-odt-preferred-output-format "docx")
+
     (setq org-modules
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m))))
