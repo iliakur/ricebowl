@@ -335,6 +335,10 @@ you should place your code here."
     (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
     (setq org-hide-emphasis-markers t)
 
+    ;; When editing headlines, ignore tags and asterisks
+    ;; at beginning/end of lines respectively.
+    (setq org-special-ctrl-a/e t)
+
     ;; Orgmode + GTD
     ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
     (setq org-directory (file-name-as-directory "~/Documents/org"))
