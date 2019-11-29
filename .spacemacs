@@ -677,6 +677,8 @@ you should place your code here."
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
+  ;; RS3 files are XML
+  (add-to-list 'auto-mode-alist '("\\.rs3$" . xml-mode))
 
   ;; Python-related
   (setq python-formatter 'black)
