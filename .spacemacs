@@ -677,6 +677,10 @@ you should place your code here."
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
+
+  ;; Python-related
+  (setq python-formatter 'black)
+
   (defun ik/typing-exercises ()
     "Open webpages I need to practice my typing."
     (interactive)
