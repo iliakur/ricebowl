@@ -467,6 +467,8 @@ you should place your code here."
               (agenda
                ""
                ((org-agenda-span 7)
+                ;; I currently do my weekly reviews on Saturday,
+                (org-agenda-start-on-weekday 6)
                 (org-agenda-dim-blocked-tasks t)
                 (org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
               (tags-todo
