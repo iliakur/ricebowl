@@ -684,6 +684,7 @@ you should place your code here."
 
   ;; Python-related
   (setq python-formatter 'black)
+  (setq python-test-runner 'pytest)
 
   (defun ik/typing-exercises ()
     "Open webpages I need to practice my typing."
