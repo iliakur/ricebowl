@@ -670,6 +670,11 @@ you should place your code here."
   ;; Simpler yes/no prompt
   (defalias 'yes-or-no-p 'y-or-n-p)
 
+  ;; Living dangerously: erasing buffers without prompting.
+  ;; I'm banking on my ability to quickly (literally one keystroke) undo that action.
+  ;; I also use it almost exclusively to clear scratch buffers.
+  (spacemacs/set-leader-keys "be" 'erase-buffer)
+
   ;; GUI/visual stuff
   ;; Golden-ratio
   (golden-ratio-mode 1)
