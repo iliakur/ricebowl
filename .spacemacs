@@ -75,6 +75,9 @@ values."
    dotspacemacs-excluded-packages '(
                                     pipenv
                                     yapfify
+                                    ;; Disabling importmagic until I have time to make it faster.
+                                    ;; This may be never...
+                                    importmagic
                                     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
