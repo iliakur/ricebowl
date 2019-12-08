@@ -694,6 +694,16 @@ you should place your code here."
   (setq python-formatter 'black)
   (setq python-test-runner 'pytest)
 
+  ;; General Programming
+  ;; While writing a comment, insert new comment line.
+  (global-set-key (kbd "<C-return>") 'comment-indent-new-line)
+  ;; Quickly escape enclosing items such as parentheses or quotes.
+  ;; Advantages over using the arrow key:
+  ;; - can jump out of any part of expression, not just the end
+  ;; - more ergonomic, no need to reach for the arrow key with pinky
+  (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
+
+  ;; Misc personal tasks
   (defun ik/typing-exercises ()
     "Open webpages I need to practice my typing."
     (interactive)
