@@ -175,6 +175,7 @@ exec --no-startup-id dunst
 exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
 # Dropbox
 exec --no-startup-id dropbox start
+exec --no-startup-id emacs --daemon
 
 exec --no-startup-id ~/bin/ikkbremaps
 # This unifies the xclipboard with the primary selection
@@ -182,7 +183,7 @@ exec --no-startup-id autocutsel -f
 exec --no-startup-id autocutsel -f -s PRIMARY
 
 # Shortcuts for favorite programs
-bindsym $mod+e exec emacs
+bindsym $mod+e exec emacsclient -c -a emacs
 bindsym $mod+i exec firefox
 bindsym $mod+o exec google-chrome
 # This currently doesn't quite work
