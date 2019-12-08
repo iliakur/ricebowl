@@ -703,6 +703,15 @@ you should place your code here."
   ;; - more ergonomic, no need to reach for the arrow key with pinky
   (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
 
+  ;; Remap keys for evil text objects.
+  ;; I needed a key for brackets and "b" fit that better than parentheses because
+  ;; it is mnemonic and also "B" references curly brackets, just like on a keyboard.
+  ;; For parentheses I use "c" which I think is kind of mnemonic due to its shape.
+  (define-key evil-inner-text-objects-map "b" 'evil-inner-bracket)
+  (define-key evil-outer-text-objects-map "b" 'evil-a-bracket)
+  (define-key evil-inner-text-objects-map "c" 'evil-inner-paren)
+  (define-key evil-outer-text-objects-map "c" 'evil-a-paren)
+
   ;; Misc personal tasks
   (defun ik/typing-exercises ()
     "Open webpages I need to practice my typing."
