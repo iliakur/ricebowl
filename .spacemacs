@@ -408,6 +408,7 @@ you should place your code here."
     (setq org-agenda-start-on-weekday 0)
     ;; If I have scheduled a time to deal with a deadline, don't show it in the agenda.
     (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
+    (setq org-agenda-skip-scheduled-if-done t)
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
     ;; We don't want to see the children tasks in either agenda or tags matches.
