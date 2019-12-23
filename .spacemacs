@@ -712,6 +712,15 @@ you should place your code here."
   (define-key evil-outer-text-objects-map "b" 'evil-a-bracket)
   (define-key evil-inner-text-objects-map "c" 'evil-inner-paren)
   (define-key evil-outer-text-objects-map "c" 'evil-a-paren)
+  ;; evil-surround, for some bizzarre reason has its own mapping for
+  ;; **inserting** objects, but NOT changing/deleting them.
+  ;; In the latter case it respects the default evil mapping. ¯\_(ツ)_/¯
+  (setq evil-surround-pairs-alist
+        (append
+         '((?c . ("(" . ")"))
+           (?b . ("[" . "]"))
+           (?B . ("{" . "}")))
+         evil-surround-pairs-alist))
 
   ;; Misc personal tasks
   (defun ik/typing-exercises ()
