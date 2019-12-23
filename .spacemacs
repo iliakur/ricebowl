@@ -437,7 +437,8 @@ you should place your code here."
             ("tr" "Personal weekly review"
              ((alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                           (org-agenda-todo-ignore-with-date nil)))
+                           (org-agenda-todo-ignore-with-date nil)
+                           (org-agenda-max-entries 1)))
               (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
               (tags "weekly+LEVEL=2"
                     ((org-agenda-overriding-header "Backlog for Weekly review")
@@ -455,7 +456,8 @@ you should place your code here."
              ((tags
                "inbox+LEVEL=2"
                ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
-                (org-agenda-overriding-header "Inbox")))
+                (org-agenda-overriding-header "Inbox")
+                (org-agenda-max-entries 1)))
               (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
               (agenda
                ""
@@ -482,7 +484,8 @@ you should place your code here."
              ((alltodo "" ((org-agenda-overriding-header "Inbox")
                            (org-agenda-files
                             (list (expand-file-name "inbox.org" ik/work-org-directory)))
-                           (org-agenda-todo-ignore-with-date nil)))
+                           (org-agenda-todo-ignore-with-date nil)
+                           (org-agenda-max-entries 1)))
               (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))))
               (agenda "" ((org-agenda-span 7)
                           ;; I currently do my weekly reviews on Wednesday,
