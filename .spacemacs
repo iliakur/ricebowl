@@ -423,16 +423,7 @@ you should place your code here."
             (expand-file-name "gtd.org" ik/work-org-directory)))
     (defconst ik/thesis-org-directory (file-name-as-directory (concat org-directory "thesis")))
     (setq org-agenda-custom-commands
-          '(("g" "Groceries" tags-todo "@grocer"
-             ((org-agenda-overriding-header "At the supermarket")
-              ;; When saving the view we aren't interested in seeing the tag or the prefix.
-              (org-agenda-prefix-format " ")
-              (org-agenda-remove-tags t)
-              (org-agenda-files (list (expand-file-name "groceries.org" org-directory)
-                                      (expand-file-name "gtd.org" org-directory))))
-              ;; Save to PDF because phones don't always understand txt files...
-              ("~/Downloads/groceries.pdf"))
-            ("m" "Movies to watch" todo "TOWATCH"
+          '(("m" "Movies to watch" todo "TOWATCH"
              ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))))
 
             ("t" . "Personal")
