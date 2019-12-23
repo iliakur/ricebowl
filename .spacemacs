@@ -424,7 +424,8 @@ you should place your code here."
     (defconst ik/thesis-org-directory (file-name-as-directory (concat org-directory "thesis")))
     (setq org-agenda-custom-commands
           '(("m" "Movies to watch" todo "TOWATCH"
-             ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))))
+             ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))
+              (org-agenda-max-entries 7)))
 
             ("t" . "Personal")
             ("tt" "Personal daily"
