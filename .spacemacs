@@ -430,10 +430,7 @@ you should place your code here."
             ("t" . "Personal")
             ("tt" "Personal daily"
              ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-              (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
-              (tags-todo "@home" ((org-agenda-overriding-header "At home")))
-              (tags-todo "-@email&-@home&-@grocer"
-                         ((org-agenda-overriding-header "Misc tasks")))))
+              (alltodo "" ((org-agenda-max-entries 3)))))
             ("ti" "Quick inbox review"
              alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                          (org-agenda-todo-ignore-with-date nil)))
