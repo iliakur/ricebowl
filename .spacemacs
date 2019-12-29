@@ -633,6 +633,25 @@ you should place your code here."
       (kbd "$") 'evil-end-of-line)
     (evil-define-key 'normal evil-org-mode-map
       (kbd "0") 'evil-beginning-of-line)
+    ;; Remap keys for evil text objects.
+    ;; I needed a key for brackets and "b" fit that better than parentheses because
+    ;; it is mnemonic and also "B" references curly brackets, just like on a keyboard.
+    ;; For parentheses I use "c" which I think is kind of mnemonic due to its shape.
+    (define-key evil-inner-text-objects-map "b" 'evil-inner-bracket)
+    (define-key evil-outer-text-objects-map "b" 'evil-a-bracket)
+    (define-key evil-inner-text-objects-map "c" 'evil-inner-paren)
+    (define-key evil-outer-text-objects-map "c" 'evil-a-paren)
+    ;; evil-surround, for some bizzarre reason has its own mapping for
+    ;; **inserting** objects, but NOT changing/deleting them.
+    ;; In the latter case it respects the default evil mapping. ¯\_(ツ)_/¯
+
+    (with-eval-after-load 'evil-surround
+      (setq evil-surround-pairs-alist
+            (append '((?c . ("(" . ")"))
+                      (?b . ("[" . "]"))
+                      (?B . ("{" . "}")))
+                    evil-surround-pairs-alist)))
+
     ;; Macro for turning list item into checklist item
     (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
     ;; Splits python/yaml list by placing next item on separate line.
@@ -695,24 +714,6 @@ you should place your code here."
   ;; - can jump out of any part of expression, not just the end
   ;; - more ergonomic, no need to reach for the arrow key with pinky
   (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
-
-  ;; Remap keys for evil text objects.
-  ;; I needed a key for brackets and "b" fit that better than parentheses because
-  ;; it is mnemonic and also "B" references curly brackets, just like on a keyboard.
-  ;; For parentheses I use "c" which I think is kind of mnemonic due to its shape.
-  (define-key evil-inner-text-objects-map "b" 'evil-inner-bracket)
-  (define-key evil-outer-text-objects-map "b" 'evil-a-bracket)
-  (define-key evil-inner-text-objects-map "c" 'evil-inner-paren)
-  (define-key evil-outer-text-objects-map "c" 'evil-a-paren)
-  ;; evil-surround, for some bizzarre reason has its own mapping for
-  ;; **inserting** objects, but NOT changing/deleting them.
-  ;; In the latter case it respects the default evil mapping. ¯\_(ツ)_/¯
-  (setq evil-surround-pairs-alist
-        (append
-         '((?c . ("(" . ")"))
-           (?b . ("[" . "]"))
-           (?B . ("{" . "}")))
-         evil-surround-pairs-alist))
 
   ;; Misc personal tasks
   (defun ik/typing-exercises ()
