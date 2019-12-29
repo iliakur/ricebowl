@@ -430,7 +430,8 @@ you should place your code here."
             ("t" . "Personal")
             ("tt" "Personal daily"
              ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-              (alltodo "" ((org-agenda-max-entries 3)))))
+              (todo "" ((org-agenda-overriding-header "Small tasks to do in between")
+                        (org-agenda-max-todos 5)))))
             ("ti" "Quick inbox review"
              alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                          (org-agenda-todo-ignore-with-date nil)))
@@ -494,7 +495,9 @@ you should place your code here."
                           (org-agenda-dim-blocked-tasks t)
                           (org-agenda-files
                            (list (expand-file-name "gtd.org" ik/work-org-directory))))))
-             ((org-refile-targets ik/work-org-files)))))
+             ((org-refile-targets ik/work-org-files)))
+            ("n" "Next todo"
+             alltodo "" ((org-agenda-max-entries 1)))))
     (setq org-tag-persistent-alist
         '(
           ;; Cogsys-related stuff
