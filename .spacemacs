@@ -669,6 +669,19 @@ you should place your code here."
               (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
               (setq outline-regexp "^ *")))
 
+  ;; Opening python files was very slow for me.
+  ;; After profiling showed that most of the time was spent in helm-projectile-find-file.
+  ;; According to issue linked below, enabling caching is the solution:
+  ;; https://github.com/syl20bnr/spacemacs/issues/4207
+  ;; Here's what I tried:
+  ;; none of it worked...
+  ;; (setq projectile-enable-caching t)
+  ;; (setq explicit-shell-file-name "/bin/bash")
+  ;; This only happens to python files, so it's probably something with pyenv
+  ;; Based on this:
+  ;; https://github.com/syl20bnr/spacemacs/issues/11317
+  ;; It's not importmagic, I disabled that too.
+
   ;; Olivetti mode
   (add-hook 'text-mode-hook 'olivetti-mode)
   (setq olivetti-body-width 85)
