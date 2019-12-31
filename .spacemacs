@@ -36,11 +36,7 @@ values."
      html
      yaml
      python
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
+     debug
      helm
      auto-completion
      better-defaults
@@ -58,7 +54,6 @@ values."
      ;;        shell-default-position 'bottom)
      (spell-checking :variables =enable-flyspell-auto-completion= t )
      syntax-checking
-     ;; version-control
      (keyboard-layout :variables kl-layout 'colemak-hnei)
      )
    ;; List of additional packages that will be installed without being
