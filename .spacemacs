@@ -38,6 +38,7 @@ values."
      python
      debug
      helm
+     bm
      auto-completion
      better-defaults
      emacs-lisp
