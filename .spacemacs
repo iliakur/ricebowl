@@ -40,7 +40,6 @@ values."
      helm
      bm
      auto-completion
-     better-defaults
      emacs-lisp
      (latex :variables
              latex-enable-folding t
