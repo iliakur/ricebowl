@@ -15,3 +15,6 @@
 ln -s /path/to/configs/workrave.ini ~/.workrave/
 ln -s /path/to/configs/workravectl.sh ~/bin/workravectl
 ```
+
+## Spacemacs ##
+Configuration lives in `.spacemacs` file and the `private` folder.
