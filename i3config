@@ -223,4 +223,3 @@ workspace 6 output eDP-1
 
 # Window assignments
 assign [class="^Mattermost$"] 3
-assign [class="pycharm"] 1
