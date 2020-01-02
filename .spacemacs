@@ -585,6 +585,10 @@ you should place your code here."
     (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
     (message "Org Pomodoro sounds turned %s"
              (if org-pomodoro-play-sounds "on" "off")))
+  ;; Make org-pomodoro notifications more prominent by sending them through libnotify
+  (with-eval-after-load 'alert
+    (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
+
   (spacemacs/set-leader-keys
     "oh" 'org-habit-toggle-habits
     "op" 'ik/toggle-org-pomodoro-sounds)

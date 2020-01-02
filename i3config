@@ -169,7 +169,6 @@ bar {
 # Stuff I want at startup: networking, redshift
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift
-exec --no-startup-id gnome-pomodoro
 exec --no-startup-id dunst
 # set background with feh
 exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
@@ -214,12 +213,6 @@ hide_edge_borders both
 bindsym $mod+m move scratchpad
 bindsym $mod+w scratchpad show
 
-# Gnome-Pomodoro control
-# Toggle state
-bindsym $mod+l exec gnome-pomodoro --start-stop
-# Restart pomodoro
-bindsym $mod+space exec gnome-pomodoro --stop && gnome-pomodoro --start
-
 # Workspace assignments
 workspace 1 output DP-1
 workspace 2 output DP-1
@@ -231,4 +224,3 @@ workspace 6 output eDP-1
 # Window assignments
 assign [class="^Mattermost$"] 3
 assign [class="pycharm"] 1
-for_window [class="Gnome-pomodoro"] move scratchpad
