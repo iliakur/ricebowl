@@ -417,82 +417,91 @@ you should place your code here."
       (list (expand-file-name "rtr.org" ik/work-org-directory)
             (expand-file-name "gtd.org" ik/work-org-directory)))
     (defconst ik/thesis-org-directory (file-name-as-directory (concat org-directory "thesis")))
+    (defconst ik/general-agendas
+      '(("m" "Movies to watch" todo "TOWATCH"
+         ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))
+          (org-agenda-max-entries 7)))
+        ("n" "Next todo"
+         alltodo "" ((org-agenda-max-entries 1)))))
+    (defconst ik/personal-agendas
+      '(("t" . "Personal")
+        ("tt" "Personal daily"
+         ((agenda "" ((org-agenda-dim-blocked-tasks t)))
+          (todo "" ((org-agenda-overriding-header "Small tasks to do in between")
+                    (org-agenda-max-todos 5)))))
+        ("ti" "Quick inbox review"
+         alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+                     (org-agenda-todo-ignore-with-date nil)))
+        ("tr" "Personal weekly review"
+         ((alltodo "" ((org-agenda-overriding-header "Inbox")
+                       (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+                       (org-agenda-todo-ignore-with-date nil)
+                       (org-agenda-max-entries 1)))
+          (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
+          (tags "weekly+LEVEL=2"
+                ((org-agenda-overriding-header "Backlog for Weekly review")
+                 (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
+          (agenda "" ((org-agenda-span 7))))
+         ((org-agenda-dim-blocked-tasks nil)))))
+    (defconst ik/school-agendas
+      '(("s" . "School/Studying")
+        ("ss" "School/Studying Daily"
+         ((agenda "" ((org-agenda-dim-blocked-tasks t)))
+          (todo ""
+                   ((org-agenda-overriding-header "Misc tasks")
+                    (org-agenda-max-todos 3))))
+         ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
+        ;; This is supposed to have custom refile targets, but I can't get them to work
+        ("sr" "School/Studying Review (weekly)"
+         ((tags
+           "inbox+LEVEL=2"
+           ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
+            (org-agenda-overriding-header "Inbox")
+            (org-agenda-max-entries 1)))
+          (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
+          (agenda
+           ""
+           ((org-agenda-span 7)
+            ;; I currently do my weekly reviews on Saturday,
+            (org-agenda-start-on-weekday 6)
+            (org-agenda-dim-blocked-tasks t)
+            (org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
+          (tags-todo
+           "someday+LEVEL=2"
+           ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
+            (org-agenda-overriding-header "Consider these tasks next")))))))
+    (defconst ik/work-agendas
+      '(("a" . "Work-related")
+        ("aa" "Work-related daily"
+         ((tags-todo "wip" ((org-agenda-overriding-header "Work in Progress")))
+          (agenda "" ((org-agenda-dim-blocked-tasks t)))
+          (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
+          (tags-todo "-@email&-@office&-wip" ((org-agenda-overriding-header "Downtime tasks")))
+          (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
+         ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
+          (org-refile-targets ik/work-org-files)))
+        ("ar" "Work-related weekly review"
+         ((alltodo "" ((org-agenda-overriding-header "Inbox")
+                       (org-agenda-files
+                        (list (expand-file-name "inbox.org" ik/work-org-directory)))
+                       (org-agenda-todo-ignore-with-date nil)
+                       (org-agenda-max-entries 1)))
+          (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))))
+          (agenda "" ((org-agenda-span 7)
+                      ;; I currently do my weekly reviews on Wednesday,
+                      ;; so I start planning from Thursday onward.
+                      (org-agenda-start-on-weekday 4)
+                      (org-agenda-dim-blocked-tasks t)
+                      (org-agenda-files
+                       (list (expand-file-name "gtd.org" ik/work-org-directory))))))
+         ((org-refile-targets ik/work-org-files)))))
     (setq org-agenda-custom-commands
-          '(("m" "Movies to watch" todo "TOWATCH"
-             ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))
-              (org-agenda-max-entries 7)))
+          (append
+           ik/general-agendas
+           ik/personal-agendas
+           ik/school-agendas
+           ik/work-agendas))
 
-            ("t" . "Personal")
-            ("tt" "Personal daily"
-             ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-              (todo "" ((org-agenda-overriding-header "Small tasks to do in between")
-                        (org-agenda-max-todos 5)))))
-            ("ti" "Quick inbox review"
-             alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                         (org-agenda-todo-ignore-with-date nil)))
-            ("tr" "Personal weekly review"
-             ((alltodo "" ((org-agenda-overriding-header "Inbox")
-                           (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                           (org-agenda-todo-ignore-with-date nil)
-                           (org-agenda-max-entries 1)))
-              (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
-              (tags "weekly+LEVEL=2"
-                    ((org-agenda-overriding-header "Backlog for Weekly review")
-                     (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
-              (agenda "" ((org-agenda-span 7))))
-              ((org-agenda-dim-blocked-tasks nil)))
-
-            ("s" . "School/Studying")
-            ("ss" "School/Studying Daily"
-             ((agenda "")
-              (alltodo "" ((org-agenda-overriding-header "Misc tasks"))))
-              ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-            ;; This is supposed to have custom refile targets, but I can't get them to work
-            ("sr" "School/Studying Review (weekly)"
-             ((tags
-               "inbox+LEVEL=2"
-               ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
-                (org-agenda-overriding-header "Inbox")
-                (org-agenda-max-entries 1)))
-              (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-              (agenda
-               ""
-               ((org-agenda-span 7)
-                ;; I currently do my weekly reviews on Saturday,
-                (org-agenda-start-on-weekday 6)
-                (org-agenda-dim-blocked-tasks t)
-                (org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-              (tags-todo
-               "someday+LEVEL=2"
-               ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
-                (org-agenda-overriding-header "Consider these tasks next")))))
-
-            ("a" . "Work-related")
-            ("aa" "Work-related daily"
-             ((tags-todo "wip" ((org-agenda-overriding-header "Work in Progress")))
-              (agenda "" ((org-agenda-dim-blocked-tasks t)))
-              (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
-              (tags-todo "-@email&-@office&-wip" ((org-agenda-overriding-header "Downtime tasks")))
-              (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
-             ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
-              (org-refile-targets ik/work-org-files)))
-            ("ar" "Work-related weekly review"
-             ((alltodo "" ((org-agenda-overriding-header "Inbox")
-                           (org-agenda-files
-                            (list (expand-file-name "inbox.org" ik/work-org-directory)))
-                           (org-agenda-todo-ignore-with-date nil)
-                           (org-agenda-max-entries 1)))
-              (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))))
-              (agenda "" ((org-agenda-span 7)
-                          ;; I currently do my weekly reviews on Wednesday,
-                          ;; so I start planning from Thursday onward.
-                          (org-agenda-start-on-weekday 4)
-                          (org-agenda-dim-blocked-tasks t)
-                          (org-agenda-files
-                           (list (expand-file-name "gtd.org" ik/work-org-directory))))))
-             ((org-refile-targets ik/work-org-files)))
-            ("n" "Next todo"
-             alltodo "" ((org-agenda-max-entries 1)))))
     (setq org-tag-persistent-alist
         '(
           ;; Cogsys-related stuff
@@ -585,6 +594,7 @@ you should place your code here."
     (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
     (message "Org Pomodoro sounds turned %s"
              (if org-pomodoro-play-sounds "on" "off")))
+
   ;; Make org-pomodoro notifications more prominent by sending them through libnotify
   (with-eval-after-load 'alert
     (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
