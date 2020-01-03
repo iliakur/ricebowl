@@ -397,6 +397,8 @@ you should place your code here."
                                   "* Entered on %U\n %i%?")))
 
     ;; Agenda-related settings
+    ;; Allow multiple agendas by letting each one stick around.
+    (setq org-agenda-sticky t)
     ;; By default I want to just focus on one day.
     (setq org-agenda-span 1)
     ;; I tend to review my tasks on Sunday, so the week starts with that day.
