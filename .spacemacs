@@ -364,6 +364,10 @@ you should place your code here."
                                   (file+headline "inbox.org" "Tasks")
                                   "* TODO %i%?")
 
+                                  ("n" "A Note" entry
+                                   (file+headline "inbox.org" "Notes")
+                                   "* %i%?")
+
                                   ("a" "Work Todo [inbox]" entry
                                    (file+headline "work/inbox.org" "Tasks")
                                    "* TODO %i%?")
@@ -422,8 +426,10 @@ you should place your code here."
       '(("m" "Movies to watch" todo "TOWATCH"
          ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))
           (org-agenda-max-entries 7)))
-        ("n" "Next todo"
-         alltodo "" ((org-agenda-max-entries 1)))))
+        ("e" "Next todo"
+         alltodo "" ((org-agenda-max-entries 1)))
+        ("n" "Notes"
+         tags "notes+LEVEL=2" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))))
     (defconst ik/personal-agendas
       '(("t" . "Personal")
         ("tt" "Personal daily"
