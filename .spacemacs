@@ -406,9 +406,8 @@ you should place your code here."
     (setq org-agenda-skip-scheduled-if-done t)
     (setq org-agenda-tags-todo-honor-ignore-options t)
     (setq org-agenda-todo-ignore-with-date t)
-    ;; We don't want to see the children tasks in either agenda or tags matches.
-    (setq org-agenda-todo-list-sublevels nil)
-    (setq org-agenda-todo-list-sublevels nil)
+    ;; With entry number limiting, we are not afraid to see children of tasks.
+    (setq org-agenda-todo-list-sublevels t)
     ;; We don't want to see blocked tasks either.
     (setq org-agenda-dim-blocked-tasks 'invisible)
     (setq org-agenda-compact-blocks t)
@@ -447,7 +446,7 @@ you should place your code here."
       '(("s" . "School/Studying")
         ("ss" "School/Studying Daily"
          ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-          (todo ""
+          (alltodo ""
                    ((org-agenda-overriding-header "Misc tasks")
                     (org-agenda-max-todos 3))))
          ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
