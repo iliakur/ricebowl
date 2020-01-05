@@ -429,7 +429,8 @@ you should place your code here."
         ("e" "Next todo"
          alltodo "" ((org-agenda-max-entries 1)))
         ("n" "Notes"
-         tags "notes+LEVEL=2" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))))
+         tags "notes+LEVEL=2"
+         ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))))
     (defconst ik/personal-agendas
       '(("t" . "Personal")
         ("tt" "Personal daily"
