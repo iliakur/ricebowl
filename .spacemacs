@@ -596,15 +596,16 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "ol" 'ik/org-cliplink)
 
-  ;; Org-related keyboard shortcuts for useful toggles.
+  ;; Org-pomodoro notifications
+  ;; By default off, but easily to toggle.
+  (with-eval-after-load 'org-pomodoro
+    (setq org-pomodoro-play-sounds nil))
+
   (defun ik/toggle-org-pomodoro-sounds ()
     (interactive)
     (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
     (message "Org Pomodoro sounds turned %s"
              (if org-pomodoro-play-sounds "on" "off")))
-
-  (with-eval-after-load 'interleave
-    (setq interleave-org-notes-dir-list '(".")))
 
   ;; Make org-pomodoro notifications more prominent by sending them through libnotify
   (with-eval-after-load 'alert
@@ -635,6 +636,9 @@ you should place your code here."
     "oe" 'org-backward-element)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "oi" 'interleave-mode)
+
+  (with-eval-after-load 'interleave
+    (setq interleave-org-notes-dir-list '(".")))
 
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "n" 'evil-next-visual-line)
