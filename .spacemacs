@@ -439,7 +439,9 @@ you should place your code here."
                     (org-agenda-max-todos 5)))))
         ("ti" "Quick inbox review"
          alltodo "" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                     (org-agenda-todo-ignore-with-date nil)))
+                     (org-agenda-todo-ignore-with-date nil)
+                     (org-agenda-todo-list-sublevels nil)
+                     (org-agenda-dim-blocked-tasks t)))
         ("tr" "Personal weekly review"
          ((alltodo "" ((org-agenda-overriding-header "Inbox")
                        (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
