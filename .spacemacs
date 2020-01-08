@@ -603,6 +603,9 @@ you should place your code here."
     (message "Org Pomodoro sounds turned %s"
              (if org-pomodoro-play-sounds "on" "off")))
 
+  (with-eval-after-load 'interleave
+    (setq interleave-org-notes-dir-list '(".")))
+
   ;; Make org-pomodoro notifications more prominent by sending them through libnotify
   (with-eval-after-load 'alert
     (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
