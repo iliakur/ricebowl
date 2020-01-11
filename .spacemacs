@@ -598,10 +598,12 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "ol" 'ik/org-cliplink)
 
-  ;; Org-pomodoro notifications
-  ;; By default off, but easily to toggle.
+  ;; Org-pomodoro sounds and notifications
+  ;; The book recommends having them all on by default, even the ticking sound.
+  ;; I guess I'll just have to always work in headphones when using the pomodoro.
   (with-eval-after-load 'org-pomodoro
-    (setq org-pomodoro-play-sounds nil))
+    (setq org-pomodoro-plays-sounds t)
+    (setq org-pomodoro-ticking-sound-p t))
 
   (defun ik/toggle-org-pomodoro-sounds ()
     (interactive)
