@@ -421,6 +421,8 @@ you should place your code here."
     ;; We don't want to see blocked tasks either.
     (setq org-agenda-dim-blocked-tasks 'invisible)
     (setq org-agenda-compact-blocks t)
+    ;; Warn about deadlines a month in advance, not 2 weeks.
+    (setq org-deadline-warning-days 30)
     (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
     (defconst ik/work-org-files
       (list (expand-file-name "rtr.org" ik/work-org-directory)
