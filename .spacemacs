@@ -575,11 +575,13 @@ you should place your code here."
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
 
     ;; LaTeX-specific export settings
-    ;; I much prefer the Libertine/Biolinum combo to the default LaTeX font.
     (setq org-latex-packages-alist
           (append org-latex-packages-alist
+                  ;; I much prefer the Libertine/Biolinum combo to the default LaTeX font.
                   '(("" "libertine" nil)
-                    "\\renewcommand*\\familydefault{\\sfdefault}")))
+                    "\\renewcommand*\\familydefault{\\sfdefault}"
+                    ;; I also need the xcolor for the hyperref colors.
+                    ("" "xcolor" nil))))
     (setq org-latex-hyperref-template
           "\\hypersetup{\n colorlinks=true,\n citecolor=gray,\n  linkcolor=blue,\n  linktoc=page}\n")
     (setq org-latex-pdf-process
