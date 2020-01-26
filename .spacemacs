@@ -572,6 +572,8 @@ you should place your code here."
     (setq org-export-with-author nil)
     (setq org-export-with-broken-links 'mark)
     (setq org-export-headline-levels 4)
+    ;; Captions should just be below all floats, even tables.
+    (setq org-latex-caption-above nil)
     (setq org-export-backends (quote (ascii html icalendar latex md odt)))
 
     ;; LaTeX-specific export settings
