@@ -620,14 +620,26 @@ you should place your code here."
     (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
     (message "Org Pomodoro sounds turned %s"
              (if org-pomodoro-play-sounds "on" "off")))
+  (defun ik/org-pomodoro-start-short-break ()
+    (interactive)
+    (org-pomodoro-start 'short-break))
+  (defun ik/org-pomodoro-start-long-break ()
+    (interactive)
+    (org-pomodoro-reset)
+    (org-pomodoro-start 'long-break))
 
   ;; Make org-pomodoro notifications more prominent by sending them through libnotify
   (with-eval-after-load 'alert
     (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
 
+  (spacemacs/declare-prefix "op" "org-pomodoro")
+  (spacemacs/declare-prefix "opb" "breaks")
   (spacemacs/set-leader-keys
     "oh" 'org-habit-toggle-habits
-    "op" 'ik/toggle-org-pomodoro-sounds)
+    "ops" 'ik/toggle-org-pomodoro-sounds
+    "opr" (lambda () (interactive) (org-pomodoro-reset))
+    "opbl" 'ik/org-pomodoro-start-long-break
+    "opbs" 'ik/org-pomodoro-start-short-break)
 
   ;; Making org-mode subtree manipulation colemak-friendly.
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
