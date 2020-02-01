@@ -744,7 +744,7 @@ you should place your code here."
   ;; Misc small writing tweaks
   (with-eval-after-load 'markdown
     (setq markdown-hide-markup t))
-  ;; HL-line mode is really only use full in text mode buffers where lines regularly wrap.
+  ;; HL-line mode is really only useful in text mode buffers where lines regularly wrap.
   (global-hl-line-mode -1)
   (add-hook 'text-mode-hook 'hl-line-mode)
 
