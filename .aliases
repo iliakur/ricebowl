@@ -28,17 +28,21 @@ alias mdt='python -m pytest --cov=nltk/lm --cov-report term-missing --doctest-mo
 alias mrt='python -m pytest --doctest-glob="*.doctest" nltk/test/lm.doctest'
 alias mat='tox -e py37 -e py36 nltk.test.unit.lm lm.doctest'
 
-# Backup command (options):
-# -a		general archiving, useful
-# -r		have to explicitly specify this when using --files-from
-# -v		gotta check this for now
-# --delete	delete files in dest which are missing in src
-# --files-from	read list of folders to back up from file
-# --ignore-existing	Don't update/recreate existing files. Might remove this later
-# --exclude=".*"	ignore hidden files
-# --delete-excluded	delete any stray hidden files found in dest. might get rid of this later
-alias backmeup='rsync -arv --delete --files-from=backup-spec --ignore-existing
---exclude=".*" --delete-excluded ~/ /media/quickbeam/5222-E566/backup'
+backup () {
+    # Rsync options:
+    # -a		general archiving, useful
+    # -v		need to explicitly check the results at first
+    # --delete	delete files in dest which are missing in src
+    # -L  turn symlinks into referent files/folders
+    rsync -aLkv --delete \
+          --exclude=".git" \
+          --exclude=".venv" \
+          ~/code/configs \
+          ~/code/cogsys/ms-thesis \
+          ~/Documents \
+          /run/media/quickbeam/PLINKETT/backup/ \
+}
+
 
 # Jupyter shortcuts
 alias jc='jupyter console'
