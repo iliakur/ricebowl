@@ -1,0 +1,288 @@
+* Writing
+** Nicer font
+  #+begin_src emacs-lisp :tangle yes
+
+  (add-hook 'text-mode-hook 'variable-pitch-mode)
+  (global-set-key (kbd "<f5>")
+                  (lambda () (interactive) (variable-pitch-mode)))
+  #+end_src
+** Line highlighting
+  HL-line mode is really only useful in text mode buffers where lines regularly wrap.
+#+begin_src emacs-lisp :tangle yes
+  (global-hl-line-mode -1)
+  (add-hook 'text-mode-hook 'hl-line-mode)
+#+end_src
+** Insert file path
+  I would like to be able to insert file paths into buffers with completion.
+
+  Kudos: https://www.emacswiki.org/emacs/InsertFileName
+
+  #+begin_src emacs-lisp :tangle yes
+  (defun ik/insert-file-name (filename &optional args)
+    "Insert name of file FILENAME into buffer after point.
+
+  Prefixed with \\[universal-argument], expand the file name to
+  its fully canocalized path.  See `expand-file-name'.
+
+  Prefixed with \\[negative-argument], use relative path to file
+  name from current directory, `default-directory'.  See
+  `file-relative-name'.
+
+  The default with no prefix is to insert the file name exactly as
+  it appears in the minibuffer prompt."
+    ;; Based on insert-file in Emacs -- ashawley 20080926
+    (interactive "*fInsert file name: \nP")
+    (cond ((eq '- args)
+           (insert (file-relative-name filename)))
+          ((not (null args))
+           (insert (expand-file-name filename)))
+          (t
+           (insert filename))))
+
+  (global-set-key (kbd "C-c i") 'ik/insert-file-name)
+  #+end_src
+** Insert new comment line
+  While writing a comment, insert a new comment line.
+ #+begin_src emacs-lisp :tangle yes
+  (global-set-key (kbd "<C-return>") 'comment-indent-new-line)
+ #+end_src
+** Exit enclosing delimiter
+  Quickly escape enclosing items such as parentheses or quotes.
+  Advantages over using the arrow key:
+  - can jump out of any part of expression, not just the end
+  - more ergonomic, no need to reach for the arrow key with pinky
+#+begin_src emacs-lisp :tangle yes
+  (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
+#+end_src
+* Markdown
+   #+begin_src emacs-lisp :tangle yes
+  (with-eval-after-load 'markdown
+    (setq markdown-hide-markup t))
+   #+end_src
+* Olivetti
+ #+begin_src emacs-lisp :tangle yes
+  (add-hook 'text-mode-hook 'olivetti-mode)
+  (setq olivetti-body-width 85)
+ #+end_src
+* Org
+** org modules
+*** org-pomodoro
+**** Sounds
+     The starting settings reflect the book's recommendations to have everything on by default, even the ticking sounds.
+    #+begin_src emacs-lisp :tangle yes
+      (with-eval-after-load 'org-pomodoro
+        (setq org-pomodoro-plays-sounds t)
+        (setq org-pomodoro-ticking-sound-p t))
+    #+end_src
+
+    I exposed a simple toggling function to turn all sounds on and off, in case I have to.
+#+begin_src emacs-lisp :tangle yes
+  (defun ik/toggle-org-pomodoro-sounds ()
+      (interactive)
+      (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
+      (message "Org Pomodoro sounds turned %s"
+               (if org-pomodoro-play-sounds "on" "off")))
+#+end_src
+
+**** Notifications
+     For those situations when I cannot have the volume on for whatever reason, I make org-pomodoro notifications more prominent by sending them through ~libnotify~.
+    #+begin_src emacs-lisp :tangle yes
+      (with-eval-after-load 'alert
+        (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
+    #+end_src
+
+**** Control Panel
+     Currently doesn't quite work.
+
+    #+begin_src emacs-lisp :tangle yes
+      (defun ik/org-pomodoro-start-short-break ()
+        (interactive)
+        (org-pomodoro-start 'short-break))
+      (defun ik/org-pomodoro-start-long-break ()
+        (interactive)
+        (org-pomodoro-reset)
+        (org-pomodoro-start 'long-break))
+
+      (spacemacs/declare-prefix "op" "org-pomodoro")
+      (spacemacs/declare-prefix "opb" "breaks")
+      (spacemacs/set-leader-keys
+        "ops" 'ik/toggle-org-pomodoro-sounds
+        "opr" (lambda () (interactive) (org-pomodoro-reset))
+        "opbl" 'ik/org-pomodoro-start-long-break
+        "opbs" 'ik/org-pomodoro-start-short-break)
+    #+end_src
+*** org-habits
+   #+begin_src emacs-lisp :tangle yes
+     (spacemacs/set-leader-keys
+       "oh" 'org-habit-toggle-habits)
+     (setq org-habit-preceding-days 30)
+   #+end_src
+** Colemak...
+  Making org-mode subtree manipulation colemak-friendly.
+  #+begin_src emacs-lisp :tangle yes
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "si" 'org-demote-subtree)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sk" 'org-narrow-to-subtree)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sK" 'widen)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "sn" 'org-move-subtree-down)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "se" 'org-move-subtree-up)
+  #+end_src
+
+  Evil-org bindings for navigating subtrees are trickier to remap for colemak hnei because they conflict with a lot of existing `g` prefixed bindings.
+  So instead we add them to the custom prefix for orgmode.
+  For now, keep `gh` as the shortcut for org-up-element.
+
+  #+begin_src emacs-lisp :tangle yes
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "on" 'org-forward-element)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "oe" 'org-backward-element)
+  #+end_src
+** Interleave integration
+   Interleave isn't really an org package but it relies heavily on orgmode syntax.
+  #+begin_src emacs-lisp :tangle yes
+    (spacemacs/set-leader-keys-for-major-mode 'org-mode
+      "oi" 'interleave-mode)
+    (with-eval-after-load 'interleave
+      (setq interleave-org-notes-dir-list '(".")))
+  #+end_src
+** Inserting links
+   I tried this as an alternative to org-cliplink which allowed me to enter the description of the link completely manually. This doesn't get used nearly as much as I thought it would be.
+
+#+begin_src emacs-lisp :tangle yes
+  (defun ik/org-cliplink (description)
+    "My version of cliplink only prompts for a link description."
+    (interactive "s")
+    (insert (org-make-link-string (current-kill 0 t) description)))
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "ol" 'ik/org-cliplink)
+#+end_src
+** Enable auto-completion
+#+begin_src emacs-lisp :tangle yes
+  (with-eval-after-load 'auto-complete
+    (add-to-list 'ac-modes 'org-mode))
+#+end_src
+* Gui elements and prompts
+** Simpler yes/no prompt:
+ #+begin_src emacs-lisp :tangle yes
+  (defalias 'yes-or-no-p 'y-or-n-p)
+ #+end_src
+** Golden ratio
+  #+begin_src emacs-lisp :tangle yes
+  (golden-ratio-mode 1)
+  #+end_src
+** Modeline
+  Disable major and minor mode indicators by default for a leaner mode-line.
+#+begin_src emacs-lisp :tangle yes
+  (setq spaceline-major-mode-p nil)
+  (setq spaceline-minor-modes-p nil)
+#+end_src
+* Navigating inside buffer
+** Lines
+  Make evil-mode up/down operate in screen lines instead of logical lines.
+  #+begin_src emacs-lisp :tangle yes
+  (define-key evil-motion-state-map "n" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "e" 'evil-previous-visual-line)
+  #+end_src
+  Also in visual mode
+  #+begin_src emacs-lisp :tangle yes
+  (define-key evil-visual-state-map "n" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "e" 'evil-previous-visual-line)
+  #+end_src
+** Bottom of screen, vim-style
+   Shift-B should take me to bottom of visible screen, vim-style.
+  #+begin_src emacs-lisp :tangle yes
+  (define-key evil-motion-state-map "B" 'evil-window-bottom)
+  #+end_src
+** Functions
+  It is very convenient to navigate to the beginning and end of functions, especially if they are big methods.
+  The default emacs bindings for these commands are unwieldy, however, so add spacemacs hydras for them.
+
+  #+begin_src emacs-lisp :tangle yes
+  (spacemacs/set-leader-keys
+    "ja" 'beginning-of-defun
+    "je" 'end-of-defun)
+  #+end_src
+* Bookmarks
+  These settings emulate VSCode's behavior, in case I ever (God forbid) need to switch.
+ #+begin_src emacs-lisp :tangle yes
+  (global-set-key (kbd "<C-f2>") 'bm-toggle)
+  (global-set-key (kbd "<f2>") 'bm-next)
+  (global-set-key (kbd "<S-f2>") 'bm-previous)
+ #+end_src
+* Python
+ #+begin_src emacs-lisp :tangle yes
+  (setq python-formatter 'black)
+  (setq python-test-runner 'pytest)
+ #+end_src
+* Yaml
+  Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
+ #+begin_src emacs-lisp :tangle yes
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+              (outline-minor-mode)
+              (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
+              (setq outline-regexp "^ *")))
+ #+end_src
+* helm-bibtex
+ #+begin_src emacs-lisp :tangle yes
+   (with-eval-after-load 'helm-bibtex
+       (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
+             bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
+             bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
+       (setq bibtex-completion-additional-search-fields '(keywords))
+       ;; Optional arguments for latex cite command aren't used by me.
+       (setq bibtex-completion-cite-prompt-for-optional-arguments nil)
+       ;; Need to redefine bibtex notes template to support interleave.
+       (setq bibtex-completion-notes-template-one-file
+             (concat
+              "* ${author-or-editor} (${year}): ${title}\n"
+              " :PROPERTIES:\n"
+              " :Custom_ID: ${=key=}\n"
+              " :Interleave_PDF: "
+              (file-name-as-directory bibtex-completion-library-path)
+              "${=key=}.pdf\n"
+              " :END:\n"
+              "\n"))
+       (setq bibtex-completion-format-citation-functions
+             '((org-mode . bibtex-completion-format-citation-org-link-to-PDF)
+               (latex-mode . bibtex-completion-format-citation-cite)
+               (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+               (default . bibtex-completion-format-citation-default)))
+
+       (defun ik/bibtex-completion-insert-latex-citation (keys)
+         "Force insertion of LaTeX citation anywhere.
+   Have to use a function for this because lambdas don't play nice with
+   helm-bibtex-helmify-action"
+         (insert (bibtex-completion-format-citation-cite keys)))
+
+       ;; This is needed for my custom command to work with helm.
+       ;; See: https://github.com/tmalsburg/helm-bibtex#create-new-actions
+       (helm-bibtex-helmify-action
+        ik/bibtex-completion-insert-latex-citation
+        helm-bibtex-insert-latex-citation)
+       (helm-add-action-to-source
+        "Explicitly insert LaTeX citation"
+        'helm-bibtex-insert-latex-citation
+        helm-source-bibtex
+        0))
+  (spacemacs/set-leader-keys "ob" 'helm-bibtex)
+ #+end_src
+* LaTeX
+  Open compiled LaTeX documents in PDF-Tools.
+ #+begin_src emacs-lisp :tangle yes
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook 'TeX-revert-document-buffer)
+ #+end_src
+* Typing Exercises
+ #+begin_src emacs-lisp :tangle yes
+   (defun ik/typing-exercises ()
+       "Open webpages I need to practice my typing."
+       (interactive)
+       (browse-url "https://www.keybr.com/")
+       (browse-url "https://www.online-stopwatch.com/timer/10minutes"))
+ #+end_src

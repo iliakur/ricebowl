@@ -601,83 +601,6 @@ you should place your code here."
           (quote
           (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m))))
 
-  (defun ik/org-cliplink (description)
-    "My version of cliplink only prompts for a link description."
-    (interactive "s")
-    (insert (org-make-link-string (current-kill 0 t) description)))
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "ol" 'ik/org-cliplink)
-
-  ;; Org-pomodoro sounds and notifications
-  ;; The book recommends having them all on by default, even the ticking sound.
-  ;; I guess I'll just have to always work in headphones when using the pomodoro.
-  (with-eval-after-load 'org-pomodoro
-    (setq org-pomodoro-plays-sounds t)
-    (setq org-pomodoro-ticking-sound-p t))
-
-  (defun ik/toggle-org-pomodoro-sounds ()
-    (interactive)
-    (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
-    (message "Org Pomodoro sounds turned %s"
-             (if org-pomodoro-play-sounds "on" "off")))
-  (defun ik/org-pomodoro-start-short-break ()
-    (interactive)
-    (org-pomodoro-start 'short-break))
-  (defun ik/org-pomodoro-start-long-break ()
-    (interactive)
-    (org-pomodoro-reset)
-    (org-pomodoro-start 'long-break))
-
-  ;; Make org-pomodoro notifications more prominent by sending them through libnotify
-  (with-eval-after-load 'alert
-    (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
-
-  (spacemacs/declare-prefix "op" "org-pomodoro")
-  (spacemacs/declare-prefix "opb" "breaks")
-  (spacemacs/set-leader-keys
-    "oh" 'org-habit-toggle-habits
-    "ops" 'ik/toggle-org-pomodoro-sounds
-    "opr" (lambda () (interactive) (org-pomodoro-reset))
-    "opbl" 'ik/org-pomodoro-start-long-break
-    "opbs" 'ik/org-pomodoro-start-short-break)
-
-  ;; Making org-mode subtree manipulation colemak-friendly.
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "si" 'org-demote-subtree)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "sk" 'org-narrow-to-subtree)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "sK" 'widen)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "sn" 'org-move-subtree-down)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "se" 'org-move-subtree-up)
-  ;; Evil-org bindings for navigating subtrees are trickier to remap for colemak hnei
-  ;; because they conflict with a lot of existing `g` prefixed bindings.
-  ;; So instead we add them to the custom prefix for orgmode.
-  ;; For now, keep `gh` as the shortcut for org-up-element.
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "on" 'org-forward-element)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "oe" 'org-backward-element)
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "oi" 'interleave-mode)
-
-  (with-eval-after-load 'interleave
-    (setq interleave-org-notes-dir-list '(".")))
-
-  ;; Make evil-mode up/down operate in screen lines instead of logical lines
-  (define-key evil-motion-state-map "n" 'evil-next-visual-line)
-  (define-key evil-motion-state-map "e" 'evil-previous-visual-line)
-  ;; Also in visual mode
-  (define-key evil-visual-state-map "n" 'evil-next-visual-line)
-  (define-key evil-visual-state-map "e" 'evil-previous-visual-line)
-  ;; Shift-B should take me to bottom of visible screen, vim-style.
-  (define-key evil-motion-state-map "B" 'evil-window-bottom)
-
-  ;; Open compiled LaTeX documents in PDF-Tools.
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
-  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook 'TeX-revert-document-buffer)
 
   (with-eval-after-load 'evil
     ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
@@ -711,14 +634,6 @@ you should place your code here."
     ;; Note that it's not intended to split lists where items contain spaces!
     (evil-set-register ?a [?f ?  ?s return escape]))
 
-  ;; Yaml Folding
-  ;; kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
-  (add-hook 'yaml-mode-hook
-            (lambda ()
-              (outline-minor-mode)
-              (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
-              (setq outline-regexp "^ *")))
-
   ;; Opening python files was very slow for me.
   ;; After profiling showed that most of the time was spent in helm-projectile-find-file.
   ;; According to issue linked below, enabling caching is the solution:
@@ -732,145 +647,22 @@ you should place your code here."
   ;; https://github.com/syl20bnr/spacemacs/issues/11317
   ;; It's not importmagic, I disabled that too.
 
-  ;; Olivetti mode
-  (add-hook 'text-mode-hook 'olivetti-mode)
-  (setq olivetti-body-width 85)
+  ;; Load configurations from an org file.
+  (require 'org)
+  (require 'ob-tangle)
+  (org-babel-load-file "./user-config.org")
 
-  ;; Variable Pitch
-  (add-hook 'text-mode-hook 'variable-pitch-mode)
-  (global-set-key (kbd "<f5>")
-                  (lambda () (interactive) (variable-pitch-mode)))
-
-  ;; Misc small writing tweaks
-  (with-eval-after-load 'markdown
-    (setq markdown-hide-markup t))
-  ;; HL-line mode is really only useful in text mode buffers where lines regularly wrap.
-  (global-hl-line-mode -1)
-  (add-hook 'text-mode-hook 'hl-line-mode)
-
-  ;; Simpler yes/no prompt
-  (defalias 'yes-or-no-p 'y-or-n-p)
-
-  ;; Bookmarks
-  (global-set-key (kbd "<C-f2>") 'bm-toggle)
-  (global-set-key (kbd "<f2>") 'bm-next)
-  (global-set-key (kbd "<S-f2>") 'bm-previous)
 
   ;; Living dangerously: erasing buffers without prompting.
   ;; I'm banking on my ability to quickly (literally one keystroke) undo that action.
   ;; I also use it almost exclusively to clear scratch buffers.
   (spacemacs/set-leader-keys "be" 'erase-buffer)
 
-  ;; GUI/visual stuff
-  ;; Golden-ratio
-  (golden-ratio-mode 1)
-  ;; Disable major and minor mode indicators by default for a leaner mode-line.
-  (setq spaceline-major-mode-p nil)
-  (setq spaceline-minor-modes-p nil)
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
   ;; RS3 files are XML
   (add-to-list 'auto-mode-alist '("\\.rs3$" . xml-mode))
-
-  ;; Python-related
-  (setq python-formatter 'black)
-  (setq python-test-runner 'pytest)
-
-  ;; General Programming
-  ;; While writing a comment, insert new comment line.
-  (global-set-key (kbd "<C-return>") 'comment-indent-new-line)
-  ;; Quickly escape enclosing items such as parentheses or quotes.
-  ;; Advantages over using the arrow key:
-  ;; - can jump out of any part of expression, not just the end
-  ;; - more ergonomic, no need to reach for the arrow key with pinky
-  (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
-
-  ;; Misc personal tasks
-  (defun ik/typing-exercises ()
-    "Open webpages I need to practice my typing."
-    (interactive)
-    (browse-url "https://www.keybr.com/")
-    (browse-url "https://www.online-stopwatch.com/timer/10minutes"))
-
-  ;; It is very convenient to navigate to the beginning and end of functions,
-  ;; especially if they are big methods.
-  ;; The default emacs bindings for these commands are unwieldy, however,
-  ;; so add spacemacs hydras for them.
-  (spacemacs/set-leader-keys
-    "ja" 'beginning-of-defun
-    "je" 'end-of-defun)
-
-  (with-eval-after-load 'auto-complete
-    (add-to-list 'ac-modes 'org-mode))
-
-  ;; Settings for Helm-bibtex
-  (with-eval-after-load 'helm-bibtex
-    (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
-          bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
-          bibtex-completion-library-path "~/Readings/bibliography/bibtex-pdfs/")
-    (setq bibtex-completion-additional-search-fields '(keywords))
-    ;; Optional arguments for latex cite command aren't used by me.
-    (setq bibtex-completion-cite-prompt-for-optional-arguments nil)
-    ;; Need to redefine bibtex notes template to support interleave.
-    (setq bibtex-completion-notes-template-one-file
-          (concat
-           "* ${author-or-editor} (${year}): ${title}\n"
-           " :PROPERTIES:\n"
-           " :Custom_ID: ${=key=}\n"
-           " :Interleave_PDF: "
-           (file-name-as-directory bibtex-completion-library-path)
-           "${=key=}.pdf\n"
-           " :END:\n"
-           "\n"))
-    (setq bibtex-completion-format-citation-functions
-          '((org-mode . bibtex-completion-format-citation-org-link-to-PDF)
-            (latex-mode . bibtex-completion-format-citation-cite)
-            (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-            (default . bibtex-completion-format-citation-default)))
-
-    (defun ik/bibtex-completion-insert-latex-citation (keys)
-      "Force insertion of LaTeX citation anywhere.
-Have to use a function for this because lambdas don't play nice with
-helm-bibtex-helmify-action"
-      (insert (bibtex-completion-format-citation-cite keys)))
-
-    ;; This is needed for my custom command to work with helm.
-    ;; See: https://github.com/tmalsburg/helm-bibtex#create-new-actions
-    (helm-bibtex-helmify-action
-     ik/bibtex-completion-insert-latex-citation
-     helm-bibtex-insert-latex-citation)
-    (helm-add-action-to-source
-     "Explicitly insert LaTeX citation"
-     'helm-bibtex-insert-latex-citation
-     helm-source-bibtex
-     0))
-
-  (spacemacs/set-leader-keys "ob" 'helm-bibtex)
-
-  ;; I would like to be able to insert file paths into buffers with completion.
-  ;; Kudos: https://www.emacswiki.org/emacs/InsertFileName
-  (defun ik/insert-file-name (filename &optional args)
-    "Insert name of file FILENAME into buffer after point.
-
-  Prefixed with \\[universal-argument], expand the file name to
-  its fully canocalized path.  See `expand-file-name'.
-
-  Prefixed with \\[negative-argument], use relative path to file
-  name from current directory, `default-directory'.  See
-  `file-relative-name'.
-
-  The default with no prefix is to insert the file name exactly as
-  it appears in the minibuffer prompt."
-    ;; Based on insert-file in Emacs -- ashawley 20080926
-    (interactive "*fInsert file name: \nP")
-    (cond ((eq '- args)
-           (insert (file-relative-name filename)))
-          ((not (null args))
-           (insert (expand-file-name filename)))
-          (t
-           (insert filename))))
-  (global-set-key (kbd "C-c i") 'ik/insert-file-name)
 
   ;; Magit by default displays blame information inline.
   ;; I'm used to having it in a side bar with the code flow uninterrupted.
