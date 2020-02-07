@@ -111,6 +111,19 @@
         "opbl" 'ik/org-pomodoro-start-long-break
         "opbs" 'ik/org-pomodoro-start-short-break)
     #+end_src
+
+**** TODO Measuring effort in Pomodoros
+     The first step is to configure effort values.
+     #+begin_src emacs-lisp :tangle yes
+       (setq org-global-properties '(("EFFORT_ALL" . "0 1 2 3 4 5 6 7 8")))
+     #+end_src
+
+     I then I need to add pomodoros as allowed duration units.
+    Then I should add something to org-duration-format. It's just a complicated variable.
+   #+begin_src emacs-lisp :tangle no
+     (setq org-duration-units)
+     (setq org-duration-format)
+   #+end_src
 *** org-habits
    #+begin_src emacs-lisp :tangle yes
      (spacemacs/set-leader-keys
@@ -166,6 +179,13 @@
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
 #+end_src
+** TODO org-file-apps
+   I discovered that attached openoffice documents were being opened with emacs, I'd like to change that.
+   Below is my first attempt at solving this, which doesn't work yet.
+   #+begin_src emacs-lisp :tangle no
+     (setq org-file-apps
+           (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
+   #+end_src
 * Gui elements and prompts
 ** Simpler yes/no prompt:
  #+begin_src emacs-lisp :tangle yes

@@ -343,10 +343,6 @@ you should place your code here."
     (setq ik/references-directory
           (file-name-as-directory (expand-file-name "references" org-directory)))
 
-    ;; Measuring effort in Pomodoros
-    (setq org-global-properties
-          '(("EFFORT_ALL" . "0 1 2 3 4 5 6 7 8")))
-
     ;; I try to keep the lists of agenda files and refile targets short for better performance.
     (setq org-agenda-files
           (list (expand-file-name "gtd.org" org-directory)
