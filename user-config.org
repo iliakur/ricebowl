@@ -65,6 +65,7 @@
   (setq olivetti-body-width 85)
  #+end_src
 * Org
+  By the time this config gets parsed and loaded we can assume that org is present since we're tangling with org-babel. That's why there is no need for ~with-eval-after-load~.
 ** org modules
 *** org-pomodoro
 **** Sounds
@@ -130,6 +131,14 @@
        "oh" 'org-habit-toggle-habits)
      (setq org-habit-preceding-days 30)
    #+end_src
+**** TODO habits on specific days
+     There's a [[https://github.com/oddious/org-habit-plus][package]] out there that acts as an extension to default habits, it would need a little work to integrate.
+     Alternatively, you can add a simple reminder instead of a todo and then use a time expression as shown in these answers:
+     - https://stackoverflow.com/a/28459330
+     - https://emacs.stackexchange.com/a/7865
+
+    You could even stop treating it as a habit and treat it more like the family update, where there's a reminder, but you do it as soon as you can.
+    Or you give up on doing it on weekends, I guess.
 ** Colemak...
   Making org-mode subtree manipulation colemak-friendly.
   #+begin_src emacs-lisp :tangle yes
