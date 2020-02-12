@@ -93,27 +93,32 @@
     #+end_src
 
 **** Control Panel
-     Currently doesn't quite work.
+     The short and long break commands don't quite work, but resetting the pomodoro count does.
 
     #+begin_src emacs-lisp :tangle yes
+      (defun ik/org-pomodoro-reset-count ()
+        (interactive)
+        (setq org-pomodoro-count 0))
+
       (defun ik/org-pomodoro-start-short-break ()
         (interactive)
         (org-pomodoro-start 'short-break))
+
       (defun ik/org-pomodoro-start-long-break ()
-        (interactive)
-        (org-pomodoro-reset)
-        (org-pomodoro-start 'long-break))
+          (interactive)
+          (ik/org-pomodoro-reset-count)
+          (org-pomodoro-start 'long-break))
 
       (spacemacs/declare-prefix "op" "org-pomodoro")
       (spacemacs/declare-prefix "opb" "breaks")
       (spacemacs/set-leader-keys
         "ops" 'ik/toggle-org-pomodoro-sounds
-        "opr" (lambda () (interactive) (org-pomodoro-reset))
+        "opr" 'ik/org-pomodoro-reset-count
         "opbl" 'ik/org-pomodoro-start-long-break
         "opbs" 'ik/org-pomodoro-start-short-break)
     #+end_src
-
-**** TODO Measuring effort in Pomodoros
+***** TODO fix short and long break dispatch
+**** TODO Measuring effort
      The first step is to configure effort values.
      #+begin_src emacs-lisp :tangle yes
        (setq org-global-properties '(("EFFORT_ALL" . "0 1 2 3 4 5 6 7 8")))
