@@ -585,6 +585,15 @@ you should place your code here."
     (setq org-latex-pdf-process
           '("latexmk -dvi- -pdf %f -output-directory=%o"))
 
+    (add-to-list 'org-latex-classes
+                 '("report-no-parts"
+                   "\\documentclass[11pt]{report}"
+                   ("\\chapter{%s}" . "\\chapter*{%s}")
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+
     ;; Reveal.js settings
     (setq org-reveal-root "file:~/code/reveal.js")
 
