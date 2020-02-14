@@ -92,6 +92,14 @@
         (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
     #+end_src
 
+**** Long breaks and blocks of pomodoros
+     I'm still a novice at the Pomodoro technique, so I'm following the recommendation of the book in setting the long break time to 25 minutes.
+     Moreover, I also set the expiration time for a block to that time because even if I did 3 or even 2 pomodoros and then took a long break, I have finished a block.
+    #+begin_src emacs-lisp :tangle yes :results silent
+      (setq org-pomodoro-long-break-length 25)
+      (setq org-pomodoro-expiry-time org-pomodoro-long-break-length)
+    #+end_src
+
 **** Control Panel
      The short and long break commands don't quite work, but resetting the pomodoro count does.
 
