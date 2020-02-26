@@ -593,6 +593,11 @@ you should place your code here."
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 
+    ;; Babel supports some more languages.
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((dot . t)
+       (shell . t)))
 
     ;; Reveal.js settings
     (setq org-reveal-root "file:~/code/reveal.js")
