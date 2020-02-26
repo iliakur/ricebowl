@@ -108,6 +108,12 @@
         (interactive)
         (setq org-pomodoro-count 0))
 
+      (defun ik/org-pomodoro-show-count ()
+        (interactive)
+        (message "%s pomodoro%s completed in this block"
+                         org-pomodoro-count
+                         (if (eq org-pomodoro-count 1) "" "s")))
+
       (defun ik/org-pomodoro-start-short-break ()
         (interactive)
         (org-pomodoro-start 'short-break))
@@ -122,6 +128,7 @@
       (spacemacs/set-leader-keys
         "ops" 'ik/toggle-org-pomodoro-sounds
         "opr" 'ik/org-pomodoro-reset-count
+        "opc" 'ik/org-pomodoro-show-count
         "opbl" 'ik/org-pomodoro-start-long-break
         "opbs" 'ik/org-pomodoro-start-short-break)
     #+end_src
