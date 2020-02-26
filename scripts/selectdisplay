@@ -10,7 +10,8 @@ if [ $(echo "$displays" | wc -l) -eq 2 ]; then
     action=`printf 'connect\ndisconnect' | dmenu -i -p "Detected an external display "$external". Choose action:"`
     echo "$action"
     if [ "$action" = "disconnect" ]; then
-        xrandr --output "$external" --off
+        xrandr --output "$internal" --scale 1.0x1.0 \
+               --output "$external" --off
     else
         direction=`printf 'right\nleft' | dmenu -i -p "Which side to place external on:"`
         rotation=`printf 'left\nright\nnormal' | dmenu -i -p "Rotation:"`
