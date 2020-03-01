@@ -95,10 +95,12 @@
 
 **** Long breaks and blocks of pomodoros
      I'm still a novice at the Pomodoro technique, so I'm following the recommendation of the book in setting the long break time to 25 minutes.
-     Moreover, I also set the expiration time for a block to that time because even if I did 3 or even 2 pomodoros and then took a long break, I have finished a block.
+     I then tweak the time when a block is considered over.
+     Here's how this timer works: from the moment I start the first pomodoro of a block, measure 3 pomodoros (90 min) and another 20, instead of the default 30 minutes.
+     This reflects the fact that sometimes I take a break after 3 pomodoros instead of 4 and want to be prompted to reset the timer in those cases even after a 20 minute break.
     #+begin_src emacs-lisp :tangle yes :results silent
       (setq org-pomodoro-long-break-length 25)
-      (setq org-pomodoro-expiry-time org-pomodoro-long-break-length)
+      (setq org-pomodoro-expiry-time 110)
     #+end_src
 
 **** Control Panel
