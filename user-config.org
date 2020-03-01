@@ -54,6 +54,7 @@
 #+begin_src emacs-lisp :tangle yes
   (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
 #+end_src
+*** TODO Make this work in org-mode
 * Markdown
    #+begin_src emacs-lisp :tangle yes
   (with-eval-after-load 'markdown
