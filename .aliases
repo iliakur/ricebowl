@@ -37,6 +37,7 @@ backup () {
     rsync -aLkv --delete \
           --exclude=".git" \
           --exclude=".venv" \
+          --exclude="__pycache__" \
           ~/code/configs \
           ~/code/cogsys/ms-thesis \
           ~/Documents \
