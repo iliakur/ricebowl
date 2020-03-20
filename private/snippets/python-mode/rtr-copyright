@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: rtr copyright
+# key: copyright
+# --
+# Copyright (c) `(format-time-string "%Y")` Retresco GmbH <support@retresco.de>
