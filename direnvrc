@@ -1,0 +1,4 @@
+# link to: ~/.config/direnv/direnvrc
+layout_activate() {
+    source env/bin/activate
+}
