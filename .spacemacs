@@ -677,20 +677,6 @@ you should place your code here."
   ;; Magit by default displays blame information inline.
   ;; I'm used to having it in a side bar with the code flow uninterrupted.
   (with-eval-after-load 'magit
-    (setq magit-blame-styles
-          '((margin
-            (margin-format " %s%f" " %C %a" " %H")
-            ;; This width tends to be better in practice than the default "42".
-            (margin-width . 70)
-            (margin-face . magit-blame-margin)
-            (margin-body-face magit-blame-dimmed))
-           (headings
-            (heading-format . "%-20a %C %s\n"))
-           (highlight
-            (highlight-face . magit-blame-highlight))
-           (lines
-            (show-lines . t)
-            (show-message . t))))
     (setq magit-blame-disable-modes
           (add-to-list 'magit-blame-disable-modes 'olivetti-mode))))
 
