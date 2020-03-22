@@ -266,6 +266,13 @@
   (setq python-formatter 'black)
   (setq python-test-runner 'pytest)
  #+end_src
+* Snippets
+  I have several snippets that contain other snippets and would like to be able to expand them.
+
+ #+begin_src emacs-lisp :tangle yes :results silent
+  (setq yas-triggers-in-field t)
+ #+end_src
+
 * Yaml
   Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
  #+begin_src emacs-lisp :tangle yes
