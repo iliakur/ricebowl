@@ -456,33 +456,6 @@ you should place your code here."
                  (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
           (agenda "" ((org-agenda-span 7))))
          ((org-agenda-dim-blocked-tasks nil)))))
-    (defconst ik/school-agendas
-      '(("s" . "School/Studying")
-        ("ss" "School/Studying Daily"
-         ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-          (alltodo ""
-                   ((org-agenda-overriding-header "Misc tasks")
-                    (org-agenda-max-todos 3))))
-         ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-        ;; This is supposed to have custom refile targets, but I can't get them to work
-        ("sr" "School/Studying Review (weekly)"
-         ((tags
-           "inbox+LEVEL=2"
-           ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
-            (org-agenda-overriding-header "Inbox")
-            (org-agenda-max-entries 1)))
-          (stuck "" ((org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-          (agenda
-           ""
-           ((org-agenda-span 7)
-            ;; I currently do my weekly reviews on Saturday,
-            (org-agenda-start-on-weekday 6)
-            (org-agenda-dim-blocked-tasks t)
-            (org-agenda-files (list (expand-file-name "TODOs.org" ik/thesis-org-directory)))))
-          (tags-todo
-           "someday+LEVEL=2"
-           ((org-agenda-files (list (expand-file-name "alltasks.org" ik/thesis-org-directory)))
-            (org-agenda-overriding-header "Consider these tasks next")))))))
     (defconst ik/work-agendas
       '(("a" . "Work-related")
         ("aa" "Work-related daily"
@@ -512,7 +485,6 @@ you should place your code here."
           (append
            ik/general-agendas
            ik/personal-agendas
-           ik/school-agendas
            ik/work-agendas))
 
     (setq org-tag-persistent-alist
