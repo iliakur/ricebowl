@@ -62,6 +62,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(olivetti
                                       helm-bibtex
+                                      bicycle
                                       interleave
                                       toml-mode)
    ;; A list of packages that cannot be updated.

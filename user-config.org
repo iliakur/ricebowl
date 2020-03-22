@@ -51,10 +51,20 @@
   Advantages over using the arrow key:
   - can jump out of any part of expression, not just the end
   - more ergonomic, no need to reach for the arrow key with pinky
-#+begin_src emacs-lisp :tangle yes
-  (global-set-key (kbd "<C-tab>") 'sp-forward-sexp)
+#+begin_src emacs-lisp :tangle yes results: silent
+  (global-set-key (kbd "<C-escape>") 'sp-forward-sexp)
 #+end_src
+
 *** TODO Make this work in org-mode
+** Code/text block folding
+#+begin_src emacs-lisp :tangle yes :results silent
+  (add-hook 'prog-mode-hook 'outline-minor-mode)
+  (add-hook 'prog-mode-hook 'hs-minor-mode)
+  (with-eval-after-load 'outline
+    (define-key outline-minor-mode-map (kbd "<C-tab>") 'bicycle-cycle)
+    (define-key outline-minor-mode-map (kbd "<backtab>") 'bicycle-cycle-global))
+#+end_src
+
 * Markdown
    #+begin_src emacs-lisp :tangle yes
   (with-eval-after-load 'markdown
