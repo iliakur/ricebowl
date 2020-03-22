@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Config ELisp block
+# key: celisp
+# --
+#+begin_src emacs-lisp :tangle yes :results silent
+$0
+#+end_src
