@@ -51,11 +51,11 @@
   Advantages over using the arrow key:
   - can jump out of any part of expression, not just the end
   - more ergonomic, no need to reach for the arrow key with pinky
+
 #+begin_src emacs-lisp :tangle yes results: silent
   (global-set-key (kbd "<C-escape>") 'sp-forward-sexp)
 #+end_src
 
-*** TODO Make this work in org-mode
 ** Code/text block folding
 #+begin_src emacs-lisp :tangle yes :results silent
   (add-hook 'prog-mode-hook 'outline-minor-mode)
