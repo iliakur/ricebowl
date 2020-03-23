@@ -332,6 +332,8 @@ you should place your code here."
   (with-eval-after-load 'org
     ;; Appearance: monospaced font in tables and hide markup symbols by default.
     (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
     (setq org-hide-emphasis-markers t)
 
     ;; When editing headlines, ignore tags and asterisks
