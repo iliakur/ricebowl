@@ -16,10 +16,6 @@ alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
 # Start Emacs in daemon mode from CLI
 alias emdmn="emacs --daemon"
 
-# LaTeX
-alias cln-tex="latexmk -c; rm *.bbl"
-alias mk-tex="latexmk -pdf"
-
 # Dot graphs
 alias dirgraph='dot -Tpdf -O'
 alias jpgraph='dot -Tjpg -O'
