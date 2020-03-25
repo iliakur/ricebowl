@@ -13,6 +13,9 @@ alias cp="cp -v"
 alias clean="rm -r ~/Downloads/*"
 alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
 
+# Start Emacs in daemon mode from CLI
+alias emdmn="emacs --daemon"
+
 # LaTeX
 alias cln-tex="latexmk -c; rm *.bbl"
 alias mk-tex="latexmk -pdf"
