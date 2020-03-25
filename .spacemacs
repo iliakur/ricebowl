@@ -48,6 +48,7 @@ values."
      markdown
      pdf
      restclient
+     (erc :variables erc-enable-notifications nil)
      (org :variables org-enable-github-support t org-enable-reveal-js-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
