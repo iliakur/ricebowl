@@ -1,6 +1,6 @@
 * Writing
 ** Nicer font
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
 
   (add-hook 'text-mode-hook 'variable-pitch-mode)
   (global-set-key (kbd "<f5>")
@@ -8,7 +8,7 @@
   #+end_src
 ** Line highlighting
   HL-line mode is really only useful in text mode buffers where lines regularly wrap.
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (global-hl-line-mode -1)
   (add-hook 'text-mode-hook 'hl-line-mode)
 #+end_src
@@ -17,7 +17,7 @@
 
   Kudos: https://www.emacswiki.org/emacs/InsertFileName
 
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (defun ik/insert-file-name (filename &optional args)
     "Insert name of file FILENAME into buffer after point.
 
@@ -43,7 +43,7 @@
   #+end_src
 ** Insert new comment line
   While writing a comment, insert a new comment line.
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (global-set-key (kbd "<C-return>") 'comment-indent-new-line)
  #+end_src
 ** Exit enclosing delimiter
@@ -51,13 +51,12 @@
   Advantages over using the arrow key:
   - can jump out of any part of expression, not just the end
   - more ergonomic, no need to reach for the arrow key with pinky
-
-#+begin_src emacs-lisp :tangle yes results: silent
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (global-set-key (kbd "<C-escape>") 'sp-forward-sexp)
 #+end_src
 
 ** Code/text block folding
-#+begin_src emacs-lisp :tangle yes :results silent
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (add-hook 'prog-mode-hook 'outline-minor-mode)
   (add-hook 'prog-mode-hook 'hs-minor-mode)
   (with-eval-after-load 'outline
@@ -66,12 +65,12 @@
 #+end_src
 
 * Markdown
-   #+begin_src emacs-lisp :tangle yes
+   #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (with-eval-after-load 'markdown
     (setq markdown-hide-markup t))
    #+end_src
 * Olivetti
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (add-hook 'text-mode-hook 'olivetti-mode)
   (setq olivetti-body-width 85)
  #+end_src
@@ -81,14 +80,14 @@
 *** org-pomodoro
 **** Sounds
      The starting settings reflect the book's recommendations to have everything on by default, even the ticking sounds.
-    #+begin_src emacs-lisp :tangle yes
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
       (with-eval-after-load 'org-pomodoro
         (setq org-pomodoro-plays-sounds t)
         (setq org-pomodoro-ticking-sound-p t))
     #+end_src
 
     I exposed a simple toggling function to turn all sounds on and off, in case I have to.
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (defun ik/toggle-org-pomodoro-sounds ()
       (interactive)
       (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
@@ -98,7 +97,7 @@
 
 **** Notifications
      For those situations when I cannot have the volume on for whatever reason, I make org-pomodoro notifications more prominent by sending them through ~libnotify~.
-    #+begin_src emacs-lisp :tangle yes
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
       (with-eval-after-load 'alert
         (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
     #+end_src
@@ -108,7 +107,7 @@
      I then tweak the time when a block is considered over.
      Here's how this timer works: from the moment I start the first pomodoro of a block, measure 3 pomodoros (90 min) and another 20, instead of the default 30 minutes.
      This reflects the fact that sometimes I take a break after 3 pomodoros instead of 4 and want to be prompted to reset the timer in those cases even after a 20 minute break.
-    #+begin_src emacs-lisp :tangle yes :results silent
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
       (setq org-pomodoro-long-break-length 25)
       (setq org-pomodoro-expiry-time 110)
     #+end_src
@@ -116,7 +115,7 @@
 **** Control Panel
      The short and long break commands don't quite work, but resetting the pomodoro count does.
 
-    #+begin_src emacs-lisp :tangle yes
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
       (defun ik/org-pomodoro-reset-count ()
         (interactive)
         (setq org-pomodoro-count 0))
@@ -148,18 +147,18 @@
 ***** TODO fix short and long break dispatch
 **** TODO Measuring effort
      The first step is to configure effort values.
-     #+begin_src emacs-lisp :tangle yes
+     #+begin_src emacs-lisp :tangle yes :exports none :results silent
        (setq org-global-properties '(("EFFORT_ALL" . "0 1 2 3 4 5 6 7 8")))
      #+end_src
 
      I then I need to add pomodoros as allowed duration units.
     Then I should add something to org-duration-format. It's just a complicated variable.
-   #+begin_src emacs-lisp :tangle no
+   #+begin_src emacs-lisp :tangle no :exports none :results silent
      (setq org-duration-units)
      (setq org-duration-format)
    #+end_src
 *** org-habits
-   #+begin_src emacs-lisp :tangle yes
+   #+begin_src emacs-lisp :tangle yes :exports none :results silent
      (spacemacs/set-leader-keys
        "oh" 'org-habit-toggle-habits)
      (setq org-habit-preceding-days 30)
@@ -174,7 +173,7 @@
     Or you give up on doing it on weekends, I guess.
 ** Colemak...
   Making org-mode subtree manipulation colemak-friendly.
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "si" 'org-demote-subtree)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
@@ -191,7 +190,7 @@
   So instead we add them to the custom prefix for orgmode.
   For now, keep `gh` as the shortcut for org-up-element.
 
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "on" 'org-forward-element)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
@@ -199,7 +198,7 @@
   #+end_src
 ** Interleave integration
    Interleave isn't really an org package but it relies heavily on orgmode syntax.
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
     (spacemacs/set-leader-keys-for-major-mode 'org-mode
       "oi" 'interleave-mode)
     (with-eval-after-load 'interleave
@@ -208,7 +207,7 @@
 ** Inserting links
    I tried this as an alternative to org-cliplink which allowed me to enter the description of the link completely manually. This doesn't get used nearly as much as I thought it would be.
 
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (defun ik/org-cliplink (description)
     "My version of cliplink only prompts for a link description."
     (interactive "s")
@@ -217,41 +216,41 @@
     "ol" 'ik/org-cliplink)
 #+end_src
 ** Enable auto-completion
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
 #+end_src
 ** TODO org-file-apps
    I discovered that attached openoffice documents were being opened with emacs, I'd like to change that.
    Below is my first attempt at solving this, which doesn't work yet.
-   #+begin_src emacs-lisp :tangle no
+   #+begin_src emacs-lisp :tangle no :exports none :results silent
      (setq org-file-apps
            (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
    #+end_src
 * Gui elements and prompts
 ** Simpler yes/no prompt:
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (defalias 'yes-or-no-p 'y-or-n-p)
  #+end_src
 ** Golden ratio
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (golden-ratio-mode 1)
   #+end_src
 ** Modeline
   Disable major and minor mode indicators by default for a leaner mode-line.
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
   (setq spaceline-major-mode-p nil)
   (setq spaceline-minor-modes-p nil)
 #+end_src
 * Navigating inside buffer
 ** Lines
   Make evil-mode up/down operate in screen lines instead of logical lines.
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (define-key evil-motion-state-map "n" 'evil-next-visual-line)
   (define-key evil-motion-state-map "e" 'evil-previous-visual-line)
   #+end_src
   Also in visual mode
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (define-key evil-visual-state-map "n" 'evil-next-visual-line)
   (define-key evil-visual-state-map "e" 'evil-previous-visual-line)
   #+end_src
@@ -259,33 +258,33 @@
   It is very convenient to navigate to the beginning and end of functions, especially if they are big methods.
   The default emacs bindings for these commands are unwieldy, however, so add spacemacs hydras for them.
 
-  #+begin_src emacs-lisp :tangle yes
+  #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (spacemacs/set-leader-keys
     "ja" 'beginning-of-defun
     "je" 'end-of-defun)
   #+end_src
 * Bookmarks
   These settings emulate VSCode's behavior, in case I ever (God forbid) need to switch.
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (global-set-key (kbd "<C-f2>") 'bm-toggle)
   (global-set-key (kbd "<f2>") 'bm-next)
   (global-set-key (kbd "<S-f2>") 'bm-previous)
  #+end_src
 * Python
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (setq python-formatter 'black)
   (setq python-test-runner 'pytest)
  #+end_src
 * Snippets
   I have several snippets that contain other snippets and would like to be able to expand them.
 
- #+begin_src emacs-lisp :tangle yes :results silent
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (setq yas-triggers-in-field t)
  #+end_src
 
 * Yaml
   Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (add-hook 'yaml-mode-hook
             (lambda ()
               (outline-minor-mode)
@@ -293,7 +292,7 @@
               (setq outline-regexp "^ *")))
  #+end_src
 * helm-bibtex
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
    (with-eval-after-load 'helm-bibtex
        (setq bibtex-completion-notes-path "~/Readings/bibliography/notes.org"
              bibtex-completion-bibliography '("~/Readings/bibliography/references.bib")
@@ -338,12 +337,12 @@
  #+end_src
 * LaTeX
   Open compiled LaTeX documents in PDF-Tools.
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
   (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook 'TeX-revert-document-buffer)
  #+end_src
 * Typing Exercises
- #+begin_src emacs-lisp :tangle yes
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
    (defun ik/typing-exercises ()
        "Open webpages I need to practice my typing."
        (interactive)
