@@ -275,6 +275,19 @@
   (setq python-formatter 'black)
   (setq python-test-runner 'pytest)
  #+end_src
+** Toggle True/False
+   #+begin_src emacs-lisp :tangle yes :exports none :results silent
+     (defun ik-python-toggle-bool ()
+       (interactive)
+       (let ((bool (thing-at-point 'word))
+             (bounds (bounds-of-thing-at-point 'word)))
+         (delete-region (car bounds) (cdr bounds))
+         (insert (format "%s" (if (string= bool "True") "False" "True")))))
+
+     (spacemacs/set-leader-keys-for-major-mode 'python-mode
+       "ob" 'ik-python-toggle-bool)
+   #+end_src
+
 * Snippets
   I have several snippets that contain other snippets and would like to be able to expand them.
 
