@@ -640,7 +640,7 @@ you should place your code here."
   ;; Load configurations from an org file.
   (require 'org)
   (require 'ob-tangle)
-  (org-babel-load-file "./user-config.org")
+  (org-babel-load-file (expand-file-name "user-config.org" dotspacemacs-directory))
 
 
   ;; Living dangerously: erasing buffers without prompting.
