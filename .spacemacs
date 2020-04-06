@@ -149,7 +149,11 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Inconsolata"
-                               :size 18
+                              ; I had to downgrade Inconsolata on Fedora because of this bug:
+                              ; https://bugzilla.redhat.com/show_bug.cgi?id=1786054
+                              ; https://github.com/googlefonts/Inconsolata/issues/42
+                              ; https://lists.gnu.org/archive/html/bug-gnu-emacs/2020-01/msg00509.html
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
