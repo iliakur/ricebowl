@@ -56,3 +56,6 @@ flycheck_*.el
 
 # Ignore auto-generated user-config.el
 user-config.el
+
+# Ignore spacemacs enviornment file for now
+.spacemacs.env
