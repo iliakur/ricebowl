@@ -76,7 +76,24 @@
  #+end_src
 * Org
   By the time this config gets parsed and loaded we can assume that org is present since we're tangling with org-babel. That's why there is no need for ~with-eval-after-load~.
-** org modules
+** Org Modules
+   Load the following modules:
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
+  (setq org-modules (quote
+                     (org-bbdb
+                      org-bibtex
+                      org-docview
+                      org-gnus
+                      org-habit
+                      org-drill
+                      org-info
+                      org-irc
+                      org-mhe
+                      org-rmail
+                      org-w3m)))
+#+end_src
+
+  Then define some module-specific settings.
 *** org-pomodoro
 **** Sounds
      The starting settings reflect the book's recommendations to have everything on by default, even the ticking sounds.
@@ -157,7 +174,7 @@
      (setq org-duration-units)
      (setq org-duration-format)
    #+end_src
-*** org-habits
+*** org-habit
    #+begin_src emacs-lisp :tangle yes :exports none :results silent
      (spacemacs/set-leader-keys
        "oh" 'org-habit-toggle-habits)
@@ -171,7 +188,16 @@
 
     You could even stop treating it as a habit and treat it more like the family update, where there's a reminder, but you do it as soon as you can.
     Or you give up on doing it on weekends, I guess.
-** Colemak...
+** Babel
+   Extend support to some more languages that I use.
+   #+begin_src emacs-lisp :tangle yes :exports none :results silent
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((dot . t)
+        (shell . t)))
+   #+end_src
+
+** Colemak
   Making org-mode subtree manipulation colemak-friendly.
   #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
@@ -215,6 +241,12 @@
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "ol" 'ik/org-cliplink)
 #+end_src
+** Editing headlines
+   When editing headlines, ignore tags and asterisks at beginning/end of lines respectively.
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
+    (setq org-special-ctrl-a/e t)
+#+end_src
+
 ** Enable auto-completion
 #+begin_src emacs-lisp :tangle yes :exports none :results silent
   (with-eval-after-load 'auto-complete
@@ -227,6 +259,91 @@
      (setq org-file-apps
            (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
    #+end_src
+** Appearance and Formatting
+    Monospaced font in tables and hide markup symbols by default.
+   #+begin_src emacs-lisp :tangle yes :exports none :results silent
+    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+   #+end_src
+** Exporting
+*** Disable formalities
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
+  (setq org-export-with-toc nil)
+  (setq org-export-with-date nil)
+  ;; I'm not enough of a megalomaniac to attach my name automatically to everything I produce.
+  (setq org-export-with-author nil)
+#+end_src
+*** Broken Links
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
+      (setq org-export-with-broken-links 'mark)
+    #+end_src
+*** More headlines
+#+begin_src emacs-lisp :tangle yes :exports none :results silent
+  (setq org-export-headline-levels 4)
+#+end_src
+
+*** Export Backends
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
+      (setq org-export-backends (quote (ascii html icalendar latex md odt)))
+    #+end_src
+
+*** LaTeX
+
+**** pdf-process
+     #+begin_src emacs-lisp :tangle yes :exports none :results silent
+       (setq org-latex-pdf-process
+             '("latexmk -dvi- -pdf %f -output-directory=%o"))
+     #+end_src
+
+**** Template for LaTeX exports
+     Font and hyperref setup.
+ #+begin_src emacs-lisp :tangle yes :exports none :results silent
+     (setq org-latex-packages-alist
+           (append org-latex-packages-alist
+                   ;; I much prefer the Libertine/Biolinum combo to the default LaTeX font.
+                   '(("" "libertine" nil)
+                     "\\renewcommand*\\familydefault{\\sfdefault}"
+                     ;; I also need the xcolor for the hyperref colors.
+                     ("" "xcolor" nil))))
+     (setq org-latex-hyperref-template
+           "\\hypersetup{\n colorlinks=true,\n citecolor=gray,\n  linkcolor=blue,\n  linktoc=page}\n")
+
+ #+end_src
+
+**** LaTeX classes
+     #+begin_src emacs-lisp :tangle yes :exports none :results silent
+       (add-to-list 'org-latex-classes
+                    '("report-no-parts"
+                      "\\documentclass[11pt]{report}"
+                      ("\\chapter{%s}" . "\\chapter*{%s}")
+                      ("\\section{%s}" . "\\section*{%s}")
+                      ("\\subsection{%s}" . "\\subsection*{%s}")
+                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+     #+end_src
+
+
+**** Table captions
+     Captions should just be below all floats, even tables.
+     #+begin_src emacs-lisp :tangle yes :exports none :results silent
+     (setq org-latex-caption-above nil)
+     #+end_src
+
+
+*** Reveal.js
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
+      (setq org-reveal-root "file:~/code/reveal.js")
+    #+end_src
+*** OpenOffice
+    I only use the ODT exporter to produce documents I want to share with others.
+    The ODT format itself isn't as good for that as .docx, which works seamlessly with MSOffice and GDocs.
+    This setting allows me to export directly to .docx without having to manually convert the ODT.
+    #+begin_src emacs-lisp :tangle yes :exports none :results silent
+      (setq org-odt-preferred-output-format "docx")
+    #+end_src
+
+
 * Gui elements and prompts
 ** Simpler yes/no prompt:
  #+begin_src emacs-lisp :tangle yes :exports none :results silent

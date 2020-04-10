@@ -335,15 +335,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (with-eval-after-load 'org
-    ;; Appearance: monospaced font in tables and hide markup symbols by default.
-    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
-    (setq org-hide-emphasis-markers t)
-
-    ;; When editing headlines, ignore tags and asterisks
-    ;; at beginning/end of lines respectively.
-    (setq org-special-ctrl-a/e t)
 
     ;; Orgmode + GTD
     ;; Inspiration: https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
@@ -540,57 +531,7 @@ you should place your code here."
     (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
     (setq org-enforce-todo-dependencies t)
     (setq org-log-done t)
-
-    ;; Settings related to exporting to other formats.
-    (setq org-export-with-toc nil)
-    (setq org-export-with-date nil)
-    ;; I'm not enough of a megalomaniac to attach my name automatically to everything I produce.
-    (setq org-export-with-author nil)
-    (setq org-export-with-broken-links 'mark)
-    (setq org-export-headline-levels 4)
-    ;; Captions should just be below all floats, even tables.
-    (setq org-latex-caption-above nil)
-    (setq org-export-backends (quote (ascii html icalendar latex md odt)))
-
-    ;; LaTeX-specific export settings
-    (setq org-latex-packages-alist
-          (append org-latex-packages-alist
-                  ;; I much prefer the Libertine/Biolinum combo to the default LaTeX font.
-                  '(("" "libertine" nil)
-                    "\\renewcommand*\\familydefault{\\sfdefault}"
-                    ;; I also need the xcolor for the hyperref colors.
-                    ("" "xcolor" nil))))
-    (setq org-latex-hyperref-template
-          "\\hypersetup{\n colorlinks=true,\n citecolor=gray,\n  linkcolor=blue,\n  linktoc=page}\n")
-    (setq org-latex-pdf-process
-          '("latexmk -dvi- -pdf %f -output-directory=%o"))
-
-    (add-to-list 'org-latex-classes
-                 '("report-no-parts"
-                   "\\documentclass[11pt]{report}"
-                   ("\\chapter{%s}" . "\\chapter*{%s}")
-                   ("\\section{%s}" . "\\section*{%s}")
-                   ("\\subsection{%s}" . "\\subsection*{%s}")
-                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-
-    ;; Babel supports some more languages.
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((dot . t)
-       (shell . t)))
-
-    ;; Reveal.js settings
-    (setq org-reveal-root "file:~/code/reveal.js")
-
-    ;; I only use the ODT exporter to produce documents I want to share with others.
-    ;; The ODT format itself isn't as good for that as .docx, which works seamlessly with MSOffice and GDocs.
-    ;; This setting allows me to export directly to .docx without having to manually convert the ODT.
-    (setq org-odt-preferred-output-format "docx")
-
-    (setq org-modules
-          (quote
-          (org-bbdb org-bibtex org-docview org-gnus org-habit org-drill org-info org-irc org-mhe org-rmail org-w3m))))
-
+    )
 
   (with-eval-after-load 'evil
     ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
