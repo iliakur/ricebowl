@@ -484,40 +484,9 @@ you should place your code here."
            ik/general-agendas
            ik/personal-agendas
            ik/work-agendas))
+    (setq org-agenda-custom-commands ik/personal-agendas)
 
-    (setq org-tag-persistent-alist
-        '(
-          ;; Cogsys-related stuff
-          (:startgrouptag)
-          ("cogsys" . ?c)
-          (:grouptags)
-          ("DCs" . ?d)
-          ("robosanta")
-          (:endgrouptag)
-          ;; Retresco-related stuff
-          (:startgrouptag)
-          ("rtr" . ?r)
-          (:grouptags)
-          ("@team_weekly")
-          ("laser" . ?a)
-          ("ling_svc")
-          ("textengine_core")
-          (:endgrouptag)
-          ;; Other projects/areas of focus
-          ("python_intro")
-          ("learn" . ?l)
-          ("housing" . ?b)
-          ("finances" . ?f)
-          ("optimize" . ?z)
-          ("software" . ?s)
-          ;; general contexts and GTD stuff
-          ("inbox" . ?i)
-          ("@offline" . ?o)
-          ("@office")
-          ("@home" . ?h)
-          ("@email" . ?e)
-          ("@phone" . ?p)
-          ("@grocer" . ?g)))
+
 
     ;; Managing TODOs
     ;; Add keys for faster access to different states instead of cycling through them.
