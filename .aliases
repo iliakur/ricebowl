@@ -63,6 +63,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Golang setup
 export PATH=$PATH:/usr/local/go/bin
-
-# Direnv
-eval "$(direnv hook zsh)"

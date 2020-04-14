@@ -108,6 +108,16 @@ fpath=(~/.zsh/completion $fpath)
 # my mite cli completion
 eval "$(_M_COMPLETE=source_zsh m)"
 
+
+# Direnv
+eval "$(direnv hook zsh)"
+
+# Kubectl
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -122,4 +132,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
