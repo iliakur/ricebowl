@@ -1,0 +1,21 @@
+account = "retresco"
+menu_keys="arstneio"
+
+[shortcuts]
+# Services
+k= "Kommunikation"
+e= "Entwicklung"
+q= {"pattern"= "QA", "match"= "strict"}
+# Projects
+c= "CoreEngine"
+n= "NLG-Plattform"
+i= "Intern"
+v= "Variant Suggestions"
+# Full activity shortcuts
+daily= ["c", "k", "daily stand-up"]
+amly= ["c", "k", "morning stand-up"]
+pmly= ["c", "k", "afternoon stand-up"]
+weekly= ["c", "k", "weekly team meeting"]
+retro= ["c", "k", "retrospective"]
+est= ["c", "k", "estimation meeting"]
+sotu= ["i", "k", "State Of The Union; aka company weekly"]
