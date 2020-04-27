@@ -6,6 +6,7 @@ menu_keys="arstneio"
 k= "Kommunikation"
 e= "Entwicklung"
 q= {"pattern"= "QA", "match"= "strict"}
+d="Dokumentation"
 # Projects
 c= "CoreEngine"
 n= "NLG-Plattform"
