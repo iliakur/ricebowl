@@ -14,7 +14,9 @@ alias clean="rm -r ~/Downloads/*"
 alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
 
 # Start Emacs in daemon mode from CLI
-alias emdmn="emacs --daemon"
+alias emacs="emacs --daemon"
+alias ec="emacsclient -c -a emacs"
+alias et="emacsclient -t -a emacs"
 
 # Dot graphs
 alias dirgraph='dot -Tpdf -O'
