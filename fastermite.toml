@@ -1,3 +1,5 @@
+#-> ~/.config/fastermite/config.toml
+
 account = "retresco"
 menu_keys="arstneio"
 

@@ -81,8 +81,11 @@ source $ZSH/oh-my-zsh.sh
 
 #######################
 # Modifications by Ilia
+# Link this file:
+#-> ~/.{name}
 # part 1: load aliases from file (shared with bash, just in case)
 source $HOME/.aliases
+source $HOME/.`hostname`.zshrc
 # allow changing dir without "cd" command
 setopt autocd
 # add tex-live to path variable
@@ -108,27 +111,20 @@ fpath=(~/.zsh/completion $fpath)
 # my mite cli completion
 eval "$(_M_COMPLETE=source_zsh m)"
 
-
 # Direnv
 eval "$(direnv hook zsh)"
 
-# Kubectl
-source <(kubectl completion zsh)
-alias k=kubectl
-complete -F __start_kubectl k
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh" ]; then
-        . "/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh" ]; then
+#         . "/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/quickbeam/.pyenv/versions/miniconda3-4.3.30/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
