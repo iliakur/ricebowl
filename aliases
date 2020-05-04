@@ -34,13 +34,5 @@ alias jn='jupyter notebook'
 # https://gist.githubusercontent.com/bobbyno/3325982/raw/fc0208d287e56adc12b4c76114fcd21a107082ad/mit_scheme_bindings.txt
 alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
 
-# RTR-related
-# -----------
-
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Golang setup
 export PATH=$PATH:/usr/local/go/bin
