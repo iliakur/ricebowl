@@ -1,1 +1,4 @@
-export PATH=/home/quickbeam/anaconda3/bin:$PATH
+#-> ~/{name}
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh --no-rehash)"
