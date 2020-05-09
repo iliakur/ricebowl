@@ -7,14 +7,14 @@ if [ $(echo "$displays" | wc -l) -eq 2 ]; then
     # handle dual display
     read internal external <<<$(echo $displays)
     echo $internal
-    action=`printf 'connect\ndisconnect' | dmenu -i -p "Detected an external display "$external". Choose action:"`
+    action=`printf 'connect\ndisconnect' | rofi -dmenu -i -p "Detected an external display "$external". Choose action:"`
     echo "$action"
     if [ "$action" = "disconnect" ]; then
         xrandr --output "$internal" --scale 1.0x1.0 \
                --output "$external" --off
     else
-        direction=`printf 'right\nleft' | dmenu -i -p "Which side to place external on:"`
-        rotation=`printf 'left\nright\nnormal' | dmenu -i -p "Rotation:"`
+        direction=`printf 'right\nleft' | rofi -dmenu -i -p "Which side to place external on:"`
+        rotation=`printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:"`
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
                --output "$external" --auto --scale 1.0x1.0 --"$direction"-of "$internal" --rotate "$rotation"
     fi
