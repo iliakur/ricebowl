@@ -2,8 +2,9 @@
 set -e
 
 displays=`xrandr | awk '$2=="connected" { print $1 }'`
+ndisplays=$(echo "$displays" | wc -l)
 
-if [ $(echo "$displays" | wc -l) -eq 2 ]; then
+if [ $ndisplays -eq 2 ]; then
     # handle dual display
     read internal external <<<$(echo $displays)
     echo $internal
@@ -16,10 +17,16 @@ if [ $(echo "$displays" | wc -l) -eq 2 ]; then
         direction=`printf 'right\nleft' | rofi -dmenu -i -p "Which side to place external on:"`
         rotation=`printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:"`
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
-               --output "$external" --auto --scale 1.0x1.0 --"$direction"-of "$internal" --rotate "$rotation"
+               --output "$external" --auto --scale 1.0x1.0 \
+               --"$direction"-of "$internal" --rotate "$rotation"
+        # For now this is copy/pasted here and in i3config, would be nice to have
+        # one place to keep this logic.
+        feh --bg-max --randomize ~/Pictures/wallpapers/* &
     fi
+elif [ $ndisplays -eq 1 ]; then
+    notify-send "Only found one display, nothing to do."
+    exit 0
 else
-    # do nothing if either 1 or more than 2 displays detected
-    notify-send "1 or more than 2 displays found, nothing to do"
+    notify-send "Found more than 2 displays, I don't know what to do."
     exit 0
 fi
