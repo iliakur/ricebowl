@@ -36,3 +36,5 @@ alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
 
 # Golang setup
 export PATH=$PATH:/usr/local/go/bin
+
+export SUDO_EDITOR="emacsclient"
