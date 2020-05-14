@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
+if [ "`hostname`" != "work" ]; then
+    echo "This is not work, no need for VPN!"
+    exit 0
+fi
+
+passwd=`rofi -dmenu -password -p "sudo password for rtr vpn"`
 echo "mesos-gate VPN"
 ovpn_pid=$(pgrep openvpn)
 if [ $? -eq 0 -a -n "${ovpn_pid}" ]; then
     echo "Restarting openvpn[${ovpn_pid}]..."
     sudo kill ${ovpn_pid}
 fi
-sudo openvpn \
-     --daemon \
-     --config $HOME/vpn/ikurenkov.ovpn \
-     --tls-auth ~/vpn/ta.key \
-     --auth-user-pass $HOME/vpn/username
+echo $passwd | sudo -S openvpn \
+                    --daemon \
+                    --config $HOME/vpn/ikurenkov.ovpn \
+                    --tls-auth ~/vpn/ta.key \
+                    --auth-user-pass $HOME/vpn/username

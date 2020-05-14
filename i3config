@@ -172,6 +172,7 @@ exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
 exec --no-startup-id dropbox start
 exec --no-startup-id emacs --daemon
 exec --no-startup-id ~/bin/ikkbremaps
+exec --no-startup-id ~/bin/startvpn
 # This unifies the xclipboard with the primary selection
 exec --no-startup-id autocutsel -f
 exec --no-startup-id autocutsel -f -s PRIMARY
