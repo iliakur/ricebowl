@@ -10,7 +10,7 @@ echo "mesos-gate VPN"
 ovpn_pid=$(pgrep openvpn)
 if [ $? -eq 0 -a -n "${ovpn_pid}" ]; then
     echo "Restarting openvpn[${ovpn_pid}]..."
-    sudo kill ${ovpn_pid}
+    echo $passwd | sudo kill ${ovpn_pid}
 fi
 echo $passwd | sudo -S openvpn \
                     --daemon \
