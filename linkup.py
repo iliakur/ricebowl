@@ -21,7 +21,7 @@ ignore_these_files = {
 for fpath in Path.cwd().iterdir():
     if fpath.is_file() and fpath.name not in ignore_these_files:
         with fpath.open() as fh:
-            links = re.findall("#->\s+(.+)", fh.read())
+            links = re.findall("# ->\s+(.+)", fh.read())
         for l in links:
             link_path = Path(l.format(name=fpath.name)).expanduser()
             robust_link(link_path, fpath)
