@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e
 
 # Use both shifts to cycle through layouts.
