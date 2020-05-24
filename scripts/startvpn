@@ -16,4 +16,4 @@ echo $passwd | sudo -S openvpn \
                     --daemon \
                     --config $HOME/vpn/ikurenkov.ovpn \
                     --tls-auth ~/vpn/ta.key \
-                    --auth-user-pass $HOME/vpn/username
+                    --auth-user-pass $HOME/.rtr-credentials
