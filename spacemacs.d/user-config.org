@@ -275,7 +275,7 @@
 *** Eisenhower matrix
     This can be run both on a particular buffer and in general, though in the latter case the output isn't very useful.
 #+begin_src emacs-lisp :tangle yes :exports none :results silent
-  (setq org-tag-persistent-alistersistent-alist
+  (setq org-tag-persistent-alist
         (append  org-tag-persistent-alist
                   '(("urgent" . ?u)
                     ("important" . ?i))))
