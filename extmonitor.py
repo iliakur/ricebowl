@@ -38,13 +38,20 @@ def main(debug):
         # The link below suggests checking the HOTPLUG attribute.
         # https://stackoverflow.com/a/5711868/4501212
         elif device.get("HOTPLUG") == "1":
-            currently_connected = len(
-                re.findall(
-                    "\sconnected", run("xrandr", capture_output=True).stdout.decode()
+            displays = run("xrandr", capture_output=True).stdout.decode()
+            currently_connected = re.findall(
+                "(.+) connected", displays
                 )
-            )
-            # For now only react to 2 plugged in monitors.
-            if currently_connected == 2:
+
+            if len(currently_connected) == 1:
+                xrandr_cmd = ["xrandr", "--output", currently_connected[0], "--scale", "1.0x1.0"]
+                disconnected = re.findall("(.+) disconnected", displays)
+                for d in disconnected:
+                    xrandr_cmd.extend(["--output", d, "--off"])
+                run(xrandr_cmd)
+            # This is inefficient because part of the work is again performed in `selectdisplay`.
+            # It's good enough for now ¯\_(ツ)_/¯
+            elif len(currently_connected) == 2:
                 run(homebin / "selectdisplay")
 
 
