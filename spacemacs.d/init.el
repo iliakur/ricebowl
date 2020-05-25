@@ -433,17 +433,17 @@ you should place your code here."
          tags "notes+LEVEL=2"
          ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))))
     (defconst ik/personal-agendas
-      '(("t" . "Personal")
-        ("tt" "Personal daily"
+      '(("p" . "Personal")
+        ("pp" "Personal daily"
          ((agenda "" ((org-agenda-dim-blocked-tasks t)))
           (todo "" ((org-agenda-overriding-header "Small tasks to do in between")
                     (org-agenda-max-todos 5)))))
-        ("ti" "Quick inbox review"
+        ("pi" "Quick inbox review"
          tags "inbox+LEVEL=2" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                      (org-agenda-todo-ignore-with-date nil)
                      (org-agenda-todo-list-sublevels nil)
                      (org-agenda-dim-blocked-tasks t)))
-        ("tr" "Personal weekly review"
+        ("pr" "Personal weekly review"
          ((tags "inbox+LEVEL=2" ((org-agenda-overriding-header "Inbox")
                        (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                        (org-agenda-todo-ignore-with-date nil)
