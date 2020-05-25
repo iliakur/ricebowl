@@ -435,9 +435,7 @@ you should place your code here."
     (defconst ik/personal-agendas
       '(("p" . "Personal")
         ("pp" "Personal daily"
-         ((agenda "" ((org-agenda-dim-blocked-tasks t)))
-          (todo "" ((org-agenda-overriding-header "Small tasks to do in between")
-                    (org-agenda-max-todos 5)))))
+         ((agenda "" ((org-agenda-dim-blocked-tasks t)))))
         ("pi" "Quick inbox review"
          tags "inbox+LEVEL=2" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
                      (org-agenda-todo-ignore-with-date nil)
@@ -449,6 +447,9 @@ you should place your code here."
                        (org-agenda-todo-ignore-with-date nil)
                        (org-agenda-max-entries 1)))
           (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
+          (todo "" ((org-agenda-overriding-header "Unscheduled tasks")
+                    (org-agenda-files (list (expand-file-name "gtd.org" org-directory)))
+                    (org-agenda-max-todos 5)))
           (tags "weekly+LEVEL=2"
                 ((org-agenda-overriding-header "Backlog for Weekly review")
                  (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
