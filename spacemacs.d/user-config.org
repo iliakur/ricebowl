@@ -234,17 +234,6 @@
     (with-eval-after-load 'interleave
       (setq interleave-org-notes-dir-list '(".")))
   #+end_src
-** Inserting links
-   I tried this as an alternative to org-cliplink which allowed me to enter the description of the link completely manually. This doesn't get used nearly as much as I thought it would be.
-
-#+begin_src emacs-lisp
-  (defun ik/org-cliplink (description)
-    "My version of cliplink only prompts for a link description."
-    (interactive "s")
-    (insert (org-make-link-string (current-kill 0 t) description)))
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode
-    "ol" 'ik/org-cliplink)
-#+end_src
 ** Editing headlines
    When editing headlines, ignore tags and asterisks at beginning/end of lines respectively.
 #+begin_src emacs-lisp
