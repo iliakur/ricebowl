@@ -134,9 +134,12 @@
      The short and long break commands don't quite work, but resetting the pomodoro count does.
 
     #+begin_src emacs-lisp
-      (defun ik/org-pomodoro-reset-count ()
-        (interactive)
-        (setq org-pomodoro-count 0))
+      (defun ik/org-pomodoro-reset-count (arg)
+        (interactive "P")
+        (let ((new-count (if arg arg 0)))
+          (progn
+            (setq org-pomodoro-count new-count)
+            (message "Reset pomodoro count to %s" new-count))))
 
       (defun ik/org-pomodoro-show-count ()
         (interactive)
