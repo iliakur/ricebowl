@@ -65,16 +65,16 @@
     (define-key outline-minor-mode-map (kbd "<backtab>") 'bicycle-cycle-global))
 #+end_src
 
+** Olivetti
+  #+begin_src emacs-lisp
+   (add-hook 'text-mode-hook 'olivetti-mode)
+   (setq olivetti-body-width 85)
+  #+end_src
 * Markdown
    #+begin_src emacs-lisp
   (with-eval-after-load 'markdown
     (setq markdown-hide-markup t))
    #+end_src
-* Olivetti
- #+begin_src emacs-lisp
-  (add-hook 'text-mode-hook 'olivetti-mode)
-  (setq olivetti-body-width 85)
- #+end_src
 * Org
   By the time this config gets parsed and loaded we can assume that org is present since we're tangling with org-babel. That's why there is no need for ~with-eval-after-load~.
 ** Org Modules
