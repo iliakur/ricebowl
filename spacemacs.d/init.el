@@ -442,19 +442,11 @@ you should place your code here."
                      (org-agenda-todo-list-sublevels nil)
                      (org-agenda-dim-blocked-tasks t)))
         ("pr" "Personal weekly review"
-         ((tags "inbox+LEVEL=2" ((org-agenda-overriding-header "Inbox")
-                       (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                       (org-agenda-todo-ignore-with-date nil)
-                       (org-agenda-max-entries 1)))
-          (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
+         ((stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
           (todo "" ((org-agenda-overriding-header "Unscheduled tasks")
                     (org-agenda-files (list (expand-file-name "gtd.org" org-directory)))
                     (org-agenda-max-todos 5)))
-          (tags "weekly+LEVEL=2"
-                ((org-agenda-overriding-header "Backlog for Weekly review")
-                 (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
-          (agenda "" ((org-agenda-span 7))))
-         ((org-agenda-dim-blocked-tasks nil)))))
+          (agenda "" ((org-agenda-span 7)))))))
     (defconst ik/work-agendas
       '(("a" . "Work-related")
         ("aa" "Work-related daily"
