@@ -109,9 +109,6 @@ fi
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 
-# my mite cli completion
-eval "$(_M_COMPLETE=source_zsh m)"
-
 # Direnv
 eval "$(direnv hook zsh)"
 
@@ -129,3 +126,6 @@ eval "$(direnv hook zsh)"
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
+
+# Added by fastermite
+source ~/.config/fastermite/zsh_completion
