@@ -15,4 +15,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias mytest="pytest --no-cov-on-fail"
 
-alias k8s-login="$HOME/code/k8s-rtr/scripts/k8s-dev-login.sh $(cat $HOME/.rtr-credentials)"
+function k8s-login(){
+    $HOME/code/k8s-rtr/scripts/k8s-dev-login.sh $(cat $HOME/.rtr-credentials)
+}
