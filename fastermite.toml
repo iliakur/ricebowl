@@ -1,4 +1,4 @@
-#-> ~/.config/fastermite/config.toml
+#-> ~/.config/miteclock/config.toml
 
 account = "retresco"
 menu_keys="arstneio"

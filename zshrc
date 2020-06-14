@@ -127,5 +127,5 @@ eval "$(direnv hook zsh)"
 # unset __conda_setup
 # <<< conda initialize <<<
 
-# Added by fastermite
-source ~/.config/fastermite/zsh_completion
+# Added by miteclock
+source ~/.config/miteclock/zsh_completion
