@@ -419,7 +419,28 @@
      (spacemacs/set-leader-keys-for-major-mode 'python-mode
        "ob" 'ik-python-toggle-bool)
    #+end_src
+** Code navigation
 
+   #+begin_src emacs-lisp
+     (spacemacs/declare-prefix-for-mode 'python-mode "n" "navigation")
+     (spacemacs/declare-prefix-for-mode 'python-mode "nf" "defun")
+     (spacemacs/set-leader-keys-for-major-mode 'python-mode
+       "nfa" 'python-nav-forward-defun
+       "nfe" 'python-nav-backward-defun
+       "nfm" 'python-nav-if-name-main)
+   #+end_src
+
+** Copy function name
+   Would be cool to tweak this to include the module name.
+#+begin_src emacs-lisp
+  (defun ik-python-copy-function-name ()
+    "Copy name of enclosing function to kill ring"
+    (interactive)
+    (kill-new
+     (car (last (split-string (python-info-current-defun) "\\.")))))
+  (spacemacs/set-leader-keys-for-major-mode 'python-mode
+    "oc" 'ik-python-copy-function-name)
+#+end_src
 * Snippets
   I have several snippets that contain other snippets and would like to be able to expand them.
 
