@@ -21,7 +21,7 @@ function k8s-login(){
 
 # This saves some typing when having to move data from one pod to another
 # as part of our data pipeline.
-function copy-embedded(){
+function move-embedded-to-ml-shell(){
     echo "Downloading file"
     kubectl cp \
             -n rtr-machine-learning \
