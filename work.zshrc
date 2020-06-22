@@ -18,3 +18,19 @@ alias mytest="pytest --no-cov-on-fail"
 function k8s-login(){
     $HOME/code/k8s-rtr/scripts/k8s-dev-login.sh $(cat $HOME/.rtr-credentials)
 }
+
+# This saves some typing when having to move data from one pod to another
+# as part of our data pipeline.
+function copy-embedded(){
+    echo "Downloading file"
+    kubectl cp \
+            -n rtr-machine-learning \
+            rtr-machine-learning36-02-79ccf84679-8tfwp:/home/makrutat/variant-suggestion-data/$1 \
+            $HOME/Downloads/$1
+    echo "Done downloading, starting upload."
+    kubectl cp \
+            -n rtr-machine-learning \
+            $HOME/Downloads/$1 \
+            ml-shell-59c4f5f9bd-4txxn:/home/makrutat/variant-suggestion-data/$1
+    echo "Done uploading!"
+}
