@@ -34,3 +34,11 @@ function move-embedded-to-ml-shell(){
             ml-shell-59c4f5f9bd-4txxn:/home/makrutat/variant-suggestion-data/$1
     echo "Done uploading!"
 }
+
+# Copy local file to polyaxon upload shell.
+function upload-to-plx(){
+    kubectl cp \
+            -n polyaxon \
+            $1 \
+            polyaxon-upload-shell-0:/plx-data/datasets/variants-suggestion/$1
+}
