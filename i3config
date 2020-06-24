@@ -195,11 +195,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 # ==============
 
 # Exiting without prompt.
-bindcode $mod+x exit
+bindsym $mod+x exit
 # Reload the configuration file.
-bindcode $mod+r reload
+bindsym $mod+r reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3).
-bindcode $mod+Shift+r restart
+bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session).
 bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
