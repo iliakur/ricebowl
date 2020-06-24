@@ -70,6 +70,13 @@
    (add-hook 'text-mode-hook 'olivetti-mode)
    (setq olivetti-body-width 85)
   #+end_src
+
+** Show Kill-Ring
+   #+begin_src emacs-lisp
+     (spacemacs/set-leader-keys
+            "ok" 'helm-show-kill-ring)
+   #+end_src
+
 * Markdown
    #+begin_src emacs-lisp
   (with-eval-after-load 'markdown
