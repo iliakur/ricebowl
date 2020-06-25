@@ -65,6 +65,7 @@ values."
    dotspacemacs-additional-packages '(olivetti
                                       helm-bibtex
                                       bicycle
+                                      default-text-scale
                                       interleave
                                       toml-mode)
    ;; A list of packages that cannot be updated.
