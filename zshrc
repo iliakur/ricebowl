@@ -132,3 +132,6 @@ eval "$(direnv hook zsh)"
 
 # Added by miteclock
 source ~/.config/miteclock/zsh_completion
+
+# Created by `userpath` on 2020-06-27 12:01:20
+export PATH="$PATH:/home/quickbeam/.local/bin"
