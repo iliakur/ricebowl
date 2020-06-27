@@ -60,6 +60,7 @@ plugins=(history-substring-search dnf colemak git docker)
 # Make sure to install the auto-notify plugin:
 # https://github.com/MichaelAquilina/zsh-auto-notify
 plugins=(auto-notify $plugins)
+AUTO_NOTIFY_IGNORE+=("docker" "ipython" "jupyter")
 
 source $ZSH/oh-my-zsh.sh
 
