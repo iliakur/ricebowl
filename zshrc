@@ -57,6 +57,9 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(history-substring-search dnf colemak git docker)
+# Make sure to install the auto-notify plugin:
+# https://github.com/MichaelAquilina/zsh-auto-notify
+plugins=(auto-notify $plugins)
 
 source $ZSH/oh-my-zsh.sh
 
