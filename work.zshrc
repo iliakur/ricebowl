@@ -42,3 +42,8 @@ function upload-to-plx(){
             $1 \
             polyaxon-upload-shell-0:/plx-data/datasets/variants-suggestion/$1
 }
+
+
+# pipx
+# Created by `userpath` on 2020-06-29 04:38:45
+export PATH="$PATH:/home/ilia/.local/bin"

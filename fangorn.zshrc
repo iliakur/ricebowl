@@ -25,3 +25,7 @@ backup () {
           ~/Documents \
           /run/media/quickbeam/PLINKETT/backup/ \
         }
+
+# Pipx
+# Created by `userpath` on 2020-06-27 12:01:20
+export PATH="$PATH:/home/quickbeam/.local/bin"
