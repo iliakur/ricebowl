@@ -77,6 +77,25 @@
             "ok" 'helm-show-kill-ring)
    #+end_src
 
+** Add Commas to Numbers
+   Based on this:
+   https://www.emacswiki.org/emacs/AddCommasToNumbers
+   #+begin_src emacs-lisp
+     (defun ik-add-number-grouping ()
+           (interactive)
+           (let
+               ((num (thing-at-point 'word))
+                (op ",")
+                (bounds (bounds-of-thing-at-point 'word)))
+
+             (delete-region (car bounds) (cdr bounds))
+             (while (string-match "\\(.*[0-9]\\)\\([0-9][0-9][0-9].*\\)" num)
+               (setq num (concat
+                          (match-string 1 num) op
+                          (match-string 2 num))))
+             (insert (format "%s" num))))
+   #+end_src
+
 * Markdown
    #+begin_src emacs-lisp
   (with-eval-after-load 'markdown
