@@ -400,6 +400,11 @@
   (setq spaceline-major-mode-p nil)
   (setq spaceline-minor-modes-p nil)
 #+end_src
+
+Disable responsiveness so that pomodoro is always visible.
+#+begin_src emacs-lisp
+(spacemacs/toggle-mode-line-responsive-off)
+#+end_src
 * Navigating inside buffer
 ** Lines
   Make evil-mode up/down operate in screen lines instead of logical lines.
