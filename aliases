@@ -38,3 +38,9 @@ alias scheme="rlwrap -r -c -f ~/.scheme/mit_scheme_bindings.txt scheme"
 export PATH=$PATH:/usr/local/go/bin
 
 export SUDO_EDITOR="emacsclient"
+
+# Testing
+# only run unit tests
+alias utst="pytest tests -m 'not integration'"
+# Run unit tests in a loop
+alias lut="utst -f"
