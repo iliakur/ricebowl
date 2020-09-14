@@ -9,9 +9,10 @@ passwd=`rofi -dmenu -password -p "sudo password for rtr vpn"`
 echo "mesos-gate VPN"
 ovpn_pid=$(pgrep openvpn)
 if [ $? -eq 0 -a -n "${ovpn_pid}" ]; then
-    echo "Restarting openvpn[${ovpn_pid}]..."
-    echo $passwd | sudo kill ${ovpn_pid}
+    echo "Stopping existing openvpn[${ovpn_pid}]..."
+    echo $passwd | sudo -S kill ${ovpn_pid}
 fi
+echo "Starting openvpn"
 echo $passwd | sudo -S openvpn \
                     --daemon \
                     --config $HOME/vpn/ikurenkov.ovpn \
