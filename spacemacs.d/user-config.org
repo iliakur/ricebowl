@@ -192,6 +192,14 @@
         "opbs" 'ik/org-pomodoro-start-short-break)
     #+end_src
 ***** TODO fix short and long break dispatch
+
+**** Count Pomodoros
+#+begin_src emacs-lisp
+  (defun ik/count-pomodoros (&optional rstart rend)
+   (interactive)
+   (how-many "CLOCK" rstart rend t))
+#+end_src
+
 **** TODO Measuring effort
      The first step is to configure effort values.
      #+begin_src emacs-lisp
