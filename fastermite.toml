@@ -9,6 +9,7 @@ k= "Kommunikation"
 e= "Entwicklung"
 q= {"pattern"= "QA", "match"= "strict"}
 d="Dokumentation"
+z= {"pattern"= "Konzeption", "match"= "strict"}
 # Projects
 c= "CoreEngine"
 n= "NLG-Plattform"
