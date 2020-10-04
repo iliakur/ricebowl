@@ -17,8 +17,8 @@ alias cpwd='printf %s "$(pwd)" | xclip -selection clipboard'
 
 # Start Emacs in daemon mode from CLI
 alias emd="emacs --daemon"
-alias ec="emacsclient -c -a"
-alias et="emacsclient -t -a"
+alias ec="emacsclient -c -a ''"
+alias et="emacsclient -t -a ''"
 
 # Dot graphs
 alias dirgraph='dot -Tpdf -O'
