@@ -13,7 +13,7 @@ z= {"pattern"= "Konzeption", "match"= "strict"}
 # Projects
 c= "CoreEngine"
 n= "NLG-Plattform"
-i= "Intern"
+i= "Intern_"
 v= "Variant Suggestions"
 w="M3_Grammar"
 # Full activity shortcuts
