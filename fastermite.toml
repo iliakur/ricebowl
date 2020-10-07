@@ -15,7 +15,7 @@ c= "CoreEngine"
 n= "NLG-Plattform"
 i= "Intern_"
 v= "Variant Suggestions"
-w="M3_Grammar"
+w="M6_Transformationsregeln"
 # Full activity shortcuts
 daily= ["c", "k", "daily stand-up"]
 amly= ["c", "k", "morning stand-up"]
