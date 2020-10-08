@@ -16,6 +16,7 @@ c= "CoreEngine"
 n= "NLG-Plattform"
 i= "Intern_"
 v= "Variant Suggestions"
+# Current Westermann project
 w="M6_Transformationsregeln"
 # Full activity shortcuts
 meet = ["i", "k"]
