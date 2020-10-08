@@ -9,7 +9,8 @@ k= "Kommunikation"
 e= "Entwicklung"
 q= {"pattern"= "QA", "match"= "strict"}
 d="Dokumentation"
-z= {"pattern"= "Konzeption", "match"= "strict"}
+z= "Entwickler-Konzeption"
+r = "Research"
 # Projects
 c= "CoreEngine"
 n= "NLG-Plattform"
@@ -17,14 +18,15 @@ i= "Intern_"
 v= "Variant Suggestions"
 w="M6_Transformationsregeln"
 # Full activity shortcuts
-daily= ["c", "k", "daily stand-up"]
-amly= ["c", "k", "morning stand-up"]
-pmly= ["c", "k", "afternoon stand-up"]
-weekly= ["c", "k", "weekly team meeting"]
-retro= ["c", "k", "retrospective"]
-est= ["c", "k", "estimation meeting"]
-prepest= ["c", "e", "estimate tickets before meeting"]
-sotu= ["i", "k", "State Of The Union; aka company weekly"]
-devb=["i", "k", "dev breakfast"]
+meet = ["i", "k"]
+daily= ["meet", "daily stand-up"]
+amly= ["meet", "morning stand-up"]
+pmly= ["meet", "afternoon stand-up"]
+weekly= ["meet", "weekly team meeting"]
+retro= ["meet", "retrospective"]
+est= ["meet", "estimation meeting"]
+prepest= ["meet", "estimate tickets before meeting"]
+sotu= ["meet", "State Of The Union; aka company weekly"]
+devb=["meet", "dev breakfast"]
 sprintrev=["w", "k", "sprint review"]
-mlguild=["i", "e", "machine learning guild"]
+mlguild=["i", "r", "machine learning guild"]
