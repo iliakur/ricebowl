@@ -68,7 +68,7 @@
 ** Olivetti
   #+begin_src emacs-lisp
    (add-hook 'text-mode-hook 'olivetti-mode)
-   (setq olivetti-body-width 85)
+   (setq olivetti-body-width 93)
   #+end_src
 
 ** Show Kill-Ring
