@@ -57,8 +57,8 @@ values."
      ;;        shell-default-position 'bottom)
      (spell-checking :variables enable-flyspell-auto-completion t )
      syntax-checking
-     (keyboard-layout :variables kl-layout 'colemak-hnei)
-     )
+     ;; Important to keep this layer last!
+     (keyboard-layout :variables kl-layout 'colemak-hnei))
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
