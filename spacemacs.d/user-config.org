@@ -434,6 +434,14 @@ Disable responsiveness so that pomodoro is always visible.
     "ja" 'beginning-of-defun
     "je" 'end-of-defun)
   #+end_src
+** Cursor to last line in screen
+   "I" is mapped to bottom of screen (the opposite of "L") in all modes but org-mode by the spacemacs colemak-evil remapping. In org-mode it is inexplicably set to ~evil-org-insert-line~, while "L" is mapped to ~evil-insert-line~.
+   This block fixes the problem.
+   #+begin_src emacs-lisp
+     (with-eval-after-load 'evil-org
+       (evil-define-key 'normal evil-org-mode-map "I" 'evil-window-bottom)
+       (evil-define-key 'normal evil-org-mode-map "L" 'evil-org-insert-line))
+   #+end_src
 * Bookmarks
   These settings emulate VSCode's behavior, in case I ever (God forbid) need to switch.
  #+begin_src emacs-lisp
