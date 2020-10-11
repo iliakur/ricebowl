@@ -43,6 +43,7 @@ function upload-to-plx(){
             polyaxon-upload-shell-0:/plx-data/datasets/variants-suggestion/$1
 }
 
+alias piptoolz="pip install pytest-xdist pytest-sugar ipdb"
 
 # pipx
 # Created by `userpath` on 2020-06-29 04:38:45
