@@ -112,7 +112,6 @@
                       org-docview
                       org-gnus
                       org-habit
-                      org-drill
                       org-info
                       org-irc
                       org-mhe
