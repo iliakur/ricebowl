@@ -2,4 +2,4 @@
 # name: Return Type annotation
 # key: rt
 # --
- ->${0}
+ -> ${0}
