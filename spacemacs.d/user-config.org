@@ -285,7 +285,7 @@
      (setq org-file-apps
            (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
    #+end_src
-** Appearance and Formatting
+** Code Blocks and Tables
     Monospaced font in tables and hide markup symbols by default.
    #+begin_src emacs-lisp
      (with-eval-after-load 'org
