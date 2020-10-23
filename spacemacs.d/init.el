@@ -55,7 +55,7 @@ values."
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     (spell-checking :variables enable-flyspell-auto-completion t )
+     spell-checking
      syntax-checking
      ;; Important to keep this layer last!
      (keyboard-layout :variables kl-layout 'colemak-hnei))
