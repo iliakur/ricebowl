@@ -299,20 +299,83 @@
   (setq org-tag-persistent-alist '())
 #+end_src
 
+Bring together the different agenda views defined in subsections.
+#+begin_src emacs-lisp :var ike-matrix=ike-matrix personal=personal work=work
+  (setq org-agenda-custom-commands
+        (append
+         personal
+         work
+         ike-matrix))
+#+end_src
+
 *** Eisenhower matrix
     This can be run both on a particular buffer and in general, though in the latter case the output isn't very useful.
-#+begin_src emacs-lisp
-  (setq org-tag-persistent-alist
-        (append  org-tag-persistent-alist
-                  '(("urgent" . ?u)
-                    ("important" . ?i))))
-  (setq org-agenda-custom-commands
-        (append org-agenda-custom-commands
+#+name: ike-matrix
+#+begin_src emacs-lisp :results value :tangle no
+  ;; (setq org-tag-persistent-alist
+  ;;       (append  org-tag-persistent-alist
+  ;;                 '(("urgent" . ?u)
+  ;;                   ("important" . ?i))))
+  ;; (setq org-agenda-custom-commands
+  ;;       (append org-agenda-custom-commands
                 '(("i" "Eisenhower Matrix"
                     ((tags "important&urgent")
                     (tags "important&-urgent")
                     (tags "urgent&-important")
-                    (tags "-urgent&-important"))))))
+                    (tags "-urgent&-important"))))
+;; ))
+#+end_src
+
+*** Personal Agendas
+#+name: personal
+#+begin_src emacs-lisp :results value :tangle no
+  '(("p" . "Personal")
+    ("pp" "Personal daily"
+     ((agenda "" ((org-agenda-dim-blocked-tasks t)))))
+    ("pi" "Quick inbox review"
+     tags "inbox+LEVEL=2"
+     ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+      (org-agenda-todo-ignore-with-date nil)
+      (org-agenda-todo-list-sublevels nil)
+      (org-agenda-dim-blocked-tasks t)))
+    ("pr" "Personal weekly review"
+     ((tags "inbox+LEVEL=2"
+            ((org-agenda-overriding-header "Inbox")
+             (org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
+             (org-agenda-todo-ignore-with-date nil)
+             (org-agenda-max-entries 1)))
+      (stuck ""
+             ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
+      (todo ""
+            ((org-agenda-overriding-header "Unscheduled tasks")
+             (org-agenda-files (list (expand-file-name "gtd.org" org-directory)))
+             (org-agenda-max-todos 5)))
+      (tags "weekly+LEVEL=2"
+            ((org-agenda-overriding-header "Backlog for Weekly review")
+             (org-agenda-files (list (expand-file-name "someday.org" org-directory)))))
+      (agenda "" ((org-agenda-span 7))))
+     ((org-agenda-dim-blocked-tasks nil))))
+#+end_src
+
+*** Work Agendas
+#+name: work
+#+begin_src emacs-lisp :results value :tangle no
+  '(("w" . "Work")
+    ("ww" "Work daily"
+     ((agenda "" ((org-agenda-dim-blocked-tasks t) (org-agenda-files (list (expand-file-name "work/gtd.org" org-directory)))))))
+    ("wr" "Weekly Review"
+     ((stuck ""
+             ((org-agenda-files (list (expand-file-name "work/gtd.org" org-directory)))))
+      (todo ""
+            ((org-agenda-overriding-header "Unscheduled tasks")
+             (org-agenda-files (list (expand-file-name "work/gtd.org" org-directory)))
+             (org-agenda-max-todos 5)))
+      (agenda ""
+              ((org-agenda-span 5)
+               (org-agenda-start-on-weekday 1)
+               (org-agenda-files
+                (list
+                 (expand-file-name "work/gtd.org" org-directory))))))))
 #+end_src
 
 ** Exporting
