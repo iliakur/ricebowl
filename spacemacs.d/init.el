@@ -359,8 +359,7 @@ you should place your code here."
                                ("~/Documents/org/gtd.org" :maxlevel . 3)
                                ("~/Documents/org/someday.org" :maxlevel . 3)
                                ("~/Documents/org/tickler.org" :maxlevel . 2)
-                               ("~/Documents/org/groceries.org" :maxlevel . 2)
-                               ))
+                               ("~/Documents/org/work/gtd.org" :maxlevel . 3)))
 
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                   (file+headline "inbox.org" "Tasks")
