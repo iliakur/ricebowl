@@ -505,6 +505,11 @@ Disable responsiveness so that pomodoro is always visible.
        (evil-define-key 'normal evil-org-mode-map "I" 'evil-window-bottom)
        (evil-define-key 'normal evil-org-mode-map "L" 'evil-org-insert-line))
    #+end_src
+* Workspaces/Buffer Groups
+   #+begin_src emacs-lisp
+     (spacemacs/set-leader-keys
+            "od" 'desktop-clear)
+   #+end_src
 * Bookmarks
   These settings emulate VSCode's behavior, in case I ever (God forbid) need to switch.
  #+begin_src emacs-lisp
