@@ -500,6 +500,23 @@ Disable responsiveness so that pomodoro is always visible.
        (evil-define-key 'normal evil-org-mode-map "I" 'evil-window-bottom)
        (evil-define-key 'normal evil-org-mode-map "L" 'evil-org-insert-line))
    #+end_src
+* Projectile
+  According to the discussion in [[https://github.com/bbatsov/projectile/issues/1302][this issue]], the error I keep getting when I try using projectile for the first time after startup, can be addressed with this:
+  #+begin_src emacs-lisp
+    ;; (setq projectile-git-submodule-command nil)
+  #+end_src
+ [[https://github.com/bbatsov/projectile/issues/1302#issuecomment-471513156][This comment]] also suggests installing and adding a program called ~gettext~ to path. In any case I don't understand *why* all this is necessary or why it works...
+
+ I've disabled it for now because it actually results in exactly the error it claims to address when I run projectile for the first time.
+
+ Here's the error for the record:
+#+begin_quote
+Waiting for git... [2 times]
+In ‘Projectile files’ source: ‘(closure (helm-projectile-current-project-root helm-ag-base-command t) nil (if (projectile-project-p) (progn (save-current-buffer (set-buffer (or (and (buffer-live-p helm-current-buffer) helm-current-buffer) (setq helm-current-buffer (current-buffer)))) (let* ((root (projectile-project-root)) (--cl-var-- (projectile-current-project-files)) (display nil) (--cl-var-- nil)) (while (consp --cl-var--) (setq display (car --cl-var--)) (setq --cl-var-- (cons (cons display (expand-file-name display root)) --cl-var--)) (setq --cl-var-- (cdr --cl-var--))) (nreverse --cl-var--))))))’
+ (file-missing "Setting current directory" "No such file or directory" "/home/quickbeam/fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+/")
+#+end_quote
 * Workspaces/Buffer Groups
    #+begin_src emacs-lisp
      (spacemacs/set-leader-keys
