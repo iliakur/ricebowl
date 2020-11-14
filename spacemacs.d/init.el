@@ -524,7 +524,7 @@ you should place your code here."
                     evil-surround-pairs-alist)))
 
     ;; Macro for turning list item into checklist item
-    (evil-set-register ?c [?0 ?f ?- ?a ?  ?\[ ?  ?\] escape ?n])
+    (evil-set-register ?c [?0 ?l ?\[ ?  ?\] ?  escape ?n])
     ;; Splits python/yaml list by placing next item on separate line.
     ;; Note that it's not intended to split lists where items contain spaces!
     (evil-set-register ?a [?f ?  ?s return escape]))
