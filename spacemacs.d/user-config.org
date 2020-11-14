@@ -71,12 +71,6 @@
    (setq olivetti-body-width 93)
   #+end_src
 
-** Show Kill-Ring
-   #+begin_src emacs-lisp
-     (spacemacs/set-leader-keys
-            "ok" 'helm-show-kill-ring)
-   #+end_src
-
 ** Add Commas to Numbers
    Based on this:
    https://www.emacswiki.org/emacs/AddCommasToNumbers
