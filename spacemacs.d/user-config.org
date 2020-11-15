@@ -562,6 +562,16 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
   (spacemacs/set-leader-keys-for-major-mode 'python-mode
     "oc" 'ik-python-copy-function-name)
 #+end_src
+
+** Pytest
+*** TODO add marker to test parameter
+    It's still a bit unclear whether this is useful for just one item or for several in a batch.
+    For one item it is indeed quite handy, should just make it for that for now.
+
+    Outline, assuming point is somewhere inside the parameter parentheses
+    1. Go to closing parens with ~sp-end-of-sexp~, insert comma followed by ~marks=pytest.mark.VAR~. Should be able to interactively select var, would be extra cool to auto-complete registered marks on the fly.
+    2. Go to opening parenthesis with (~sp-beginning-of-sexp~ or ~lisp-state-beginning-of-sexp~), add ~pytest.param~
+    3. escape and maybe move down one line?
 * Snippets
   I have several snippets that contain other snippets and would like to be able to expand them.
 
