@@ -180,7 +180,7 @@ exec --no-startup-id autocutsel -f -s PRIMARY
 # Shortcuts for Common Programs
 # =============================
 
-bindsym $mod+e exec emacsclient -c -a emacs
+bindsym $mod+e exec emacsclient -c --alternate-editor=""
 bindsym $mod+i exec firefox
 bindsym $mod+Shift+i exec firefox --private-window
 bindsym $mod+o exec google-chrome
