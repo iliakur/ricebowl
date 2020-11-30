@@ -477,6 +477,10 @@ Disable responsiveness so that pomodoro is always visible.
   (define-key evil-visual-state-map "n" 'evil-next-visual-line)
   (define-key evil-visual-state-map "e" 'evil-previous-visual-line)
   #+end_src
+** highlight cursor position
+   #+begin_src emacs-lisp
+     (beacon-mode 1)
+   #+end_src
 ** Functions
   It is very convenient to navigate to the beginning and end of functions, especially if they are big methods.
   The default emacs bindings for these commands are unwieldy, however, so add spacemacs hydras for them.
