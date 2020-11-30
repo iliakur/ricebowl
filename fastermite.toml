@@ -11,6 +11,8 @@ q= {"pattern"= "QA", "match"= "strict"}
 d="Dokumentation"
 z= "Entwickler-Konzeption"
 r = "Research"
+# This is separate from the "Intern" project.
+is = "RTR intern"
 # Projects
 c= "CoreEngine"
 n= "NLG-Plattform"
