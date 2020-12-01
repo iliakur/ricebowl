@@ -23,6 +23,8 @@ w="M6_Transformationsregeln"
 # Full activity shortcuts
 meet = ["i", "k"]
 tio = ["n", "e"]
+orgam = ["i", "is", "morning task/email review"]
+orgpm = ["i", "is", "task/email review at end of day"]
 daily= ["meet", "daily stand-up"]
 amly= ["meet", "morning stand-up"]
 pmly= ["meet", "afternoon stand-up"]
