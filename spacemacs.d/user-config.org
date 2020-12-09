@@ -465,6 +465,12 @@ Disable responsiveness so that pomodoro is always visible.
 #+begin_src emacs-lisp
 (spacemacs/toggle-mode-line-responsive-off)
 #+end_src
+** Toggle theme between dark/light
+   #+begin_src emacs-lisp
+     (spacemacs/set-leader-keys
+       "oT"
+       'spacemacs/cycle-spacemacs-theme)
+   #+end_src
 * Navigating inside buffer
 ** Lines
   Make evil-mode up/down operate in screen lines instead of logical lines.
