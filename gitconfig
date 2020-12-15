@@ -11,7 +11,7 @@
 [merge]
 	tool = meld
 [core]
-	editor = vim
+	editor = emacsclient -t --alternate-editor=\"\"
 [diff]
 	tool = meld
 [push]
