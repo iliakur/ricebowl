@@ -20,6 +20,9 @@ alias emd="emacs --daemon"
 alias ec='emacsclient -c --alternate-editor=""'
 alias et='emacsclient -t --alternate-editor=""'
 
+# Remove byte-compiled elisp files
+alias elclean="cd ~/.emacs.d && find . -name \"*.elc\" -type f | xargs rm -fv"
+
 # Dot graphs
 alias dirgraph='dot -Tpdf -O'
 alias jpgraph='dot -Tjpg -O'
