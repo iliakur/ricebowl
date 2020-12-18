@@ -367,6 +367,14 @@ Bring together the different agenda views defined in subsections.
                  (expand-file-name "work/gtd.org" org-directory))))))))
 #+end_src
 
+** Refiling
+  [[https://stackoverflow.com/a/21335010/4501212][This link]] finally explains the meaning of that variable the way the docs don't.
+  Basically, it lets you treat files as refile targets, with the item being refiled added to the file as a top-level heading.
+   #+begin_src emacs-lisp
+     (setq org-refile-use-outline-path 'file)
+   #+end_src
+
+*** TODO move refiling targets here
 ** Exporting
 *** Disable formalities
 #+begin_src emacs-lisp
