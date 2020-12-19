@@ -396,8 +396,8 @@ you should place your code here."
     (setq org-agenda-sticky t)
     ;; By default I want to just focus on one day.
     (setq org-agenda-span 1)
-    ;; I tend to review my tasks on Sunday, so the week starts with that day.
-    (setq org-agenda-start-on-weekday 0)
+    ;; Weekly reviews happen on different days, set agenda to whichever day it happens to be.
+    (setq org-agenda-start-on-weekday nil)
     ;; If I have scheduled a time to deal with a deadline, don't show it in the agenda.
     (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
     (setq org-agenda-skip-scheduled-if-done t)
