@@ -348,11 +348,12 @@ you should place your code here."
 
     ;; I try to keep the lists of agenda files and refile targets short for better performance.
     (setq org-agenda-files
-          (list (expand-file-name "gtd.org" org-directory)
+          (list
+           (expand-file-name "gtd.org" org-directory)
            (expand-file-name "tickler.org" org-directory)))
 
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                  (file+headline "inbox.org" "Tasks")
+                                  (file+headline "inbox.org" "Inbox")
                                   "* TODO %i%?")
 
                                   ("n" "A Note" entry
