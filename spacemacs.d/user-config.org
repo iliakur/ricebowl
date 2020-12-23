@@ -370,8 +370,11 @@ Bring together the different agenda views defined in subsections.
 ** Refiling
   [[https://stackoverflow.com/a/21335010/4501212][This link]] finally explains the meaning of the variable ~org-refile-use-outline-path~ the way the docs don't.
   Basically, it lets you treat files as refile targets, with the item being refiled added to the file as a top-level heading.
+  Disabling completion in steps is needed to play nice with Helm. See
+  Disabling completion in steps is needed to play nice with Helm. See [[https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html][this]]  for an explanation.
    #+begin_src emacs-lisp
      (setq org-refile-use-outline-path 'file)
+     (setq org-outline-path-complete-in-steps nil)
      (setq org-refile-targets
            '(("~/Documents/org/gtd.org" :maxlevel . 2)
              ("~/Documents/org/someday.org" :maxlevel . 2)
@@ -457,7 +460,6 @@ Bring together the different agenda views defined in subsections.
     #+begin_src emacs-lisp
       (setq org-odt-preferred-output-format "docx")
     #+end_src
-
 
 * Gui elements and prompts
 ** Simpler yes/no prompt:
