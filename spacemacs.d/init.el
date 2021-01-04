@@ -315,6 +315,8 @@ values."
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
+   ;; Had to specify this explicitly because it contained an invalid field by default.
+   dotspacemacs-mode-line-theme '(spacemacs :separator wave)
    ;; Delete whitespace while saving buffer. Possible values are `all'
    ;; to aggressively delete empty line and long sequences of whitespace,
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
