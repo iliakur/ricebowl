@@ -297,6 +297,80 @@ Bring together the different agenda views defined in subsections.
          ike-matrix))
 #+end_src
 
+*** Agendas
+
+**** Item appearance
+     #+begin_src emacs-lisp
+       (setq org-agenda-prefix-format
+             '((agenda . " %i %?-12t% s")
+               (todo . " %i ")
+               (tags . " %i ")
+               (search . " %i ")))
+     #+end_src
+**** agendas
+     #+begin_src emacs-lisp
+       (org-super-agenda-mode 1)
+       (setq org-agenda-custom-commands
+             '(("i" "Inbox"
+                tags "LEVEL=2"
+                ((org-agenda-files
+                  (list (expand-file-name "inbox.org" org-directory)))
+                 (org-agenda-todo-ignore-with-date nil)
+                 (org-agenda-todo-list-sublevels nil)
+                 (org-agenda-dim-blocked-tasks t)
+                 (org-super-agenda-groups
+                  '((:auto-parent t)))))
+               ("w" . "Work")
+               ("ww" "Work Daily"
+                ((agenda
+                  ""
+                  ((org-agenda-span 'day)
+                   (org-agenda-files (list (expand-file-name "work/tasks.org" org-directory)))
+                   (org-super-agenda-groups
+                    '((:name "Clocked"
+                             :log "clocked")
+                      (:name "Today"
+                             :time-grid t
+                             :date today
+                             :todo "TODAY"
+                             :scheduled today
+                             :deadline today
+                             :order 1)
+                      (:name "Overdue"
+                             :deadline past
+                             :scheduled past
+                             :order 2)
+                      (:name "In progress" :tag "wip")))))
+                 (alltodo
+                  ""
+                  ((org-agenda-files (list (expand-file-name "work/tasks.org" org-directory)))
+                   (org-super-agenda-groups
+                    '((:name "In progress" :tag "wip")
+                      (:name "Waiting/Blocked" :todo "WAITING")
+                      (:auto-parent t)
+                      (:auto-tags t)))))))
+               ("p" . "Personal")
+               ("pp" "Personal Daily"
+                ((agenda
+                  ""
+                  ((org-agenda-dim-blocked-tasks t)
+                   (org-super-agenda-groups
+                    '((:name "Habits" :habit t :order 2)
+                      (:name "Schedule" :scheduled t :deadline t :order 1)
+                      (:name none :discard (:anything t))))))
+                 (alltodo
+                  ""
+                  ((org-agenda-overriding-header "")
+                   (org-super-agenda-groups
+                    '((:name none :discard (:pred blocked-invisible-p))
+                      (:name "Waiting" :todo "WAITING" :order 50)
+                      (:auto-parent t)
+                      (:auto-tags t)))))))))
+       (defun blocked-invisible-p (item)
+         "Check if item is blocked and invisible."
+         (eq (get-text-property 0 'org-todo-blocked item) 'invisible))
+     #+end_src
+
 *** Eisenhower matrix
     This can be run both on a particular buffer and in general, though in the latter case the output isn't very useful.
 #+name: ike-matrix
