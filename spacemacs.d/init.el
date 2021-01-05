@@ -364,37 +364,13 @@ you should place your code here."
                                    (file+headline "inbox.org" "Notes")
                                    "* %i%?")
 
-                                  ("a" "Work Todo [inbox]" entry
-                                   (file+headline "work/inbox.org" "Tasks")
-                                   "* TODO %i%?")
-
-                                  ("s" "School/studying Todo" entry
-                                   (file+headline "thesis/alltasks.org" "thesis inbox")
-                                   "* TODO %i%?")
-
                                   ("T" "Tickler" entry
                                   (file+headline "tickler.org" "Tickler")
                                   "* %i%? \n %t")
 
                                   ("h" "Habit" entry
                                    (file+headline "tickler.org" "Tickler")
-                                   "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")
-
-                                  ("m" "Movie to watch" entry
-                                  (file+headline "references/movies.org" "Movies")
-                                  "* TOWATCH %i%?")
-
-                                  ("b" "Book to read" entry
-                                  (file+headline "references/books.org" "Reading List")
-                                  "* TOREAD %i%?")
-
-                                  ("l" "Listen to this!" entry
-                                  (file+headline "references/music.org" "Listen")
-                                  "* %i%?")
-
-                                  ("d" "Diary" entry
-                                  (file+olp+datetree "diary.org")
-                                  "* Entered on %U\n %i%?")))
+                                   "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")))
 
     ;; Agenda-related settings
     ;; Allow multiple agendas by letting each one stick around.
