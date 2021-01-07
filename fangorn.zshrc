@@ -3,6 +3,9 @@
 
 # Stuff for home
 
+# Git email address
+export EMAIL=ilia.kurenkov@gmail.com
+
 # Aliases for working with NLTK
 alias nltkdev='cd ~/code/python/nltk'
 alias mut='python -m pytest --cov=nltk/lm --cov-report term-missing nltk/test/unit/lm'

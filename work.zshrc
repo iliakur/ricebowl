@@ -3,6 +3,9 @@
 
 # Stuff for work
 
+# Git email address
+export EMAIL="ilia.kurenkov@retresco.de"
+
 # Kubectl
 source <(kubectl completion zsh)
 alias k=kubectl

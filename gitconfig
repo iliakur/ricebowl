@@ -1,7 +1,8 @@
 #-> ~/.{name}
 [user]
 	name = Ilia Kurenkov
-	email = ilia.kurenkov@gmail.com
+  # Email address is deliberately left out here. It is set to different values on my personal and work machines and controlled with an envvar:
+  # https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
 [credential]
 	helper = cache
 [alias]
