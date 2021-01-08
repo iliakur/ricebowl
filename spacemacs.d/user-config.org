@@ -345,8 +345,10 @@ Bring together the different agenda views defined in subsections.
                   ""
                   ((org-agenda-files (list (expand-file-name "work/tasks.org" org-directory)))
                    (org-super-agenda-groups
-                    '((:name "In progress" :tag "wip")
-                      (:name "Waiting/Blocked" :todo "WAITING")
+                    '((:name "Waiting/Blocked"
+                             :todo "WAITING"
+                             :order 2)
+                      (:name "In progress" :tag "wip")
                       (:auto-parent t)
                       (:auto-tags t)))))))
                ("p" . "Personal")
