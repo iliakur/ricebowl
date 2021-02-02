@@ -674,6 +674,27 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
     1. Go to closing parens with ~sp-end-of-sexp~, insert comma followed by ~marks=pytest.mark.VAR~. Should be able to interactively select var, would be extra cool to auto-complete registered marks on the fly.
     2. Go to opening parenthesis with (~sp-beginning-of-sexp~ or ~lisp-state-beginning-of-sexp~), add ~pytest.param~
     3. escape and maybe move down one line?
+* helm-dash
+  Mostly per-mode configurations for [[https://kapeli.com/dash][dash document viewer]].
+** general
+   #+begin_src emacs-lisp
+     (setq helm-dash-enable-debugging nil)
+   #+end_src
+** Python
+   #+begin_src emacs-lisp
+     (add-hook 'python-mode-hook
+               (lambda ()
+                 (setq-local dash-docs-docsets
+                             '("Python_3" "click"))))
+   #+end_src
+** Elm
+   #+begin_src emacs-lisp
+     (add-hook 'elm-mode-hook
+               (lambda ()
+                 (setq-local dash-docs-docsets
+                             '("Elm"))))
+
+   #+end_src
 * Snippets
   I have several snippets that contain other snippets and would like to be able to expand them.
 
