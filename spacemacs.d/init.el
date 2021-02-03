@@ -37,6 +37,7 @@ values."
      (dash :variables
            dash-docs-docset-newpath "~/code/docsets"
            dash-docs-docsets-path "~/code/docsets")
+     helpful
      json
      html
      yaml
