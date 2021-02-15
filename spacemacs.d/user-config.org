@@ -320,8 +320,7 @@ Bring together the different agenda views defined in subsections.
                  (org-agenda-dim-blocked-tasks t)
                  (org-super-agenda-groups
                   '((:auto-parent t)))))
-               ("w" . "Work")
-               ("ww" "Work Daily"
+               ("w" "Work Daily"
                 ((agenda
                   ""
                   ((org-agenda-span 'day)
@@ -351,15 +350,13 @@ Bring together the different agenda views defined in subsections.
                       (:name "In progress" :tag "wip")
                       (:auto-parent t)
                       (:auto-tags t)))))))
-               ("p" . "Personal")
-               ("pp" "Personal Daily"
+               ("p" "Personal Daily"
                 ((agenda
                   ""
                   ((org-agenda-dim-blocked-tasks t)
                    (org-super-agenda-groups
                     '((:name "Habits" :habit t :order 2)
-                      (:name "Schedule" :scheduled t :deadline t :order 1)
-                      (:name none :discard (:anything t))))))
+                      (:name "Schedule" :scheduled t :deadline t :time-grid t :order 1)))))
                  (alltodo
                   ""
                   ((org-agenda-overriding-header "")
