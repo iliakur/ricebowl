@@ -67,8 +67,11 @@
 
 ** Olivetti
   #+begin_src emacs-lisp
-   (add-hook 'text-mode-hook 'olivetti-mode)
-   (setq olivetti-body-width 93)
+    (defun ik-olivetti-mode ()
+      (unless (member major-mode '(yaml-mode toml-mode))
+        (olivetti-mode 1)))
+    (add-hook 'text-mode-hook 'ik-olivetti-mode)
+    (setq olivetti-body-width 93)
   #+end_src
 
 ** Add Commas to Numbers
