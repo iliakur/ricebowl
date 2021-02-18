@@ -13,6 +13,7 @@ z= "Entwickler-Konzeption"
 r = "Research"
 # This is separate from the "Intern" project.
 is = "RTR intern"
+it = "IT-Administration"
 # Projects
 c= "CoreEngine"
 n="NLG-Plattform"
