@@ -35,6 +35,7 @@ values."
      lsp
      graphviz
      (dash :variables
+           dash-docs-enable-debugging nil
            dash-docs-docset-newpath "~/code/docsets"
            dash-docs-docsets-path "~/code/docsets")
      helpful
