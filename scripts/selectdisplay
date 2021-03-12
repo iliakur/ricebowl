@@ -18,7 +18,7 @@ if [ $ndisplays -eq 2 ]; then
         rotation=`printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:"`
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
                --output "$external" --auto --scale 1.0x1.0 \
-               --"$direction"-of "$internal" --rotate "$rotation"
+               --"$direction"-of "$internal" --rotate "$rotation" --primary
         # For now this is copy/pasted here and in i3config, would be nice to have
         # one place to keep this logic.
         feh --bg-max --randomize ~/Pictures/wallpapers/* &
