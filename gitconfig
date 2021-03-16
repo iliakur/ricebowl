@@ -1,8 +1,10 @@
 #-> ~/.{name}
 [user]
 	name = Ilia Kurenkov
-  # Email address is deliberately left out here. It is set to different values on my personal and work machines and controlled with an envvar:
-  # https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
+  # Until Magit supports Git's environment variables, there's no easy obvious way to
+  # set email differently for work and home machines.
+  # The simplest for now is to make sure I use `git-rtr-clone` to set those correctly per repository
+  email = ilia.kurenkov@gmail.com
 [credential]
 	helper = cache
 [alias]
