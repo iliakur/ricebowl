@@ -143,3 +143,6 @@ eval "$(pyenv init - --no-rehash zsh)"
 
 # Added by miteclock
 source ~/.config/miteclock/zsh_completion
+
+# System-wide Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
