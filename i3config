@@ -135,9 +135,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 # Workspace assignments
-workspace 1 output DP-1
-workspace 2 output eDP-1
-workspace 3 output DP-1
+workspace 1 output primary DP-1 HDMI-A-0
+workspace 2 output eDP-1 eDP
 # "Toggle" between 2 consecutively visited workspaces by pressing just one workspace number.
 workspace_auto_back_and_forth yes
 
@@ -152,7 +151,7 @@ workspace_auto_back_and_forth yes
 # The second one could pop up on demand while the first one would be always there.
 # For now keeping the simplest option.
 bar {
-        status_command py3status -c ~/.i3/i3status.conf --dbus-notify --interval 0.3
+        status_command ~/.local/bin/py3status -c ~/.i3/i3status.conf --dbus-notify --interval 0.3
         position top
         font pango:DejaVu Sans Mono, Awesome 18
         tray_output primary
@@ -173,8 +172,8 @@ exec --no-startup-id ~/bin/startvpn
 # Monitors for changes in external keyboards and screens.
 exec --no-startup-id ~/bin/extmonitor &
 # This unifies the xclipboard with the primary selection
-exec --no-startup-id autocutsel -f
-exec --no-startup-id autocutsel -f -s PRIMARY
+# exec --no-startup-id autocutsel -f
+# exec --no-startup-id autocutsel -f -s PRIMARY
 
 
 # Shortcuts for Common Programs

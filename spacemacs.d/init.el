@@ -42,7 +42,8 @@ values."
      json
      html
      yaml
-     python
+     (python :variables python-backend 'lsp python-lsp-server 'pyright)
+     ;; python
      elm
      debug
      helm
