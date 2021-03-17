@@ -1,10 +1,14 @@
+#!/usr/bin/env bash
+# -*- mode:shell-script; -*-
 EMAIL="ilia.kurenkov@retresco.de"
 UNAME="Ilia Kurenkov"
 
-set -e
+set -eo pipefail
 
-git clone $1 && \
-    echo "Moving into repo" && cd $(basename $1 .git) && \
-    echo "Setting RTR email" && \
-    git config --local user.email $EMAIL
+cd ~/code
+git clone $1
+echo "Moving into repo"
+cd $(basename $1 .git)
+echo "Setting RTR email"
+git config --local user.email $EMAIL
 git config --local user.name $UNAME
