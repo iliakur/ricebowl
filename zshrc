@@ -131,18 +131,9 @@ eval "$(direnv hook zsh)"
 # unset __conda_setup
 # <<< conda initialize <<<
 
-# Poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-
-# pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - --no-rehash zsh)"
-
 
 # Added by miteclock
 source ~/.config/miteclock/zsh_completion
 
 # System-wide Poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+# export PATH="$HOME/.poetry/bin:$PATH"
