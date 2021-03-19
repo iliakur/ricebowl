@@ -1,0 +1,7 @@
+* TODO pyenv
+* TODO pipx
+* i3
+** py3status
+   #+begin_src sh
+     pipx install py3status && pipx inject py3status pytz tzlocal
+   #+end_src
