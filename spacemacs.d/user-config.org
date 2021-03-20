@@ -165,9 +165,12 @@
 
       (defun ik/org-pomodoro-show-count ()
         (interactive)
-        (message "%s pomodoro%s completed in this block"
-                         org-pomodoro-count
-                         (if (eq org-pomodoro-count 1) "" "s")))
+        (let
+            ((pomodoro-count
+              (if (bound-and-true-p org-pomodoro-count) org-pomodoro-count 0)))
+          (message "%s pomodoro%s completed in this block"
+                   pomodoro-count
+                   (if (eq pomodoro-count 1) "" "s"))))
 
       (defun ik/org-pomodoro-start-short-break ()
         (interactive)
