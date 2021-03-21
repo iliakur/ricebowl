@@ -1,5 +1,7 @@
 * TODO pyenv
 * TODO pipx
+* my scripts
+  ~pyudev~ package is needed by the ~extmonitor~ script, honestly consider turning it into a simple package so that you can install it in a sandbox with all its dependencies using pipx.
 * i3
 ** py3status
    #+begin_src sh
