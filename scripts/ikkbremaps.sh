@@ -7,6 +7,6 @@ set -e
 # Swap left control, alt, super for better emacs experience.
 # Capslock key is swapped with Esc for better vim experience.
 setxkbmap \
-    -layout us,ru,us \
-    -variant colemak,, \
+    -layout us,ru \
+    -variant colemak, \
     -option grp:shifts_toggle,ctrl:swap_lalt_lctl_lwin,caps:swapescape
