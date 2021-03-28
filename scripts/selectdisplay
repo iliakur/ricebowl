@@ -24,7 +24,8 @@ if [ $ndisplays -eq 2 ]; then
         feh --bg-max --randomize ~/Pictures/wallpapers/* &
     fi
 elif [ $ndisplays -eq 1 ]; then
-    notify-send "Only found one display, nothing to do."
+    notify-send "Only found one display, resetting it."
+    xrandr --output "$displays" --auto --scale 1.0x1.0 --primary
     exit 0
 else
     notify-send "Found more than 2 displays, I don't know what to do."
