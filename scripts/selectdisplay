@@ -14,7 +14,7 @@ if [ $ndisplays -eq 2 ]; then
         xrandr --output "$internal" --scale 1.0x1.0 \
                --output "$external" --off
     else
-        direction=`printf 'nleft\right' | rofi -dmenu -i -p "Which side to place external on:"`
+        direction=`printf 'left\nright' | rofi -dmenu -i -p "Which side to place external on:"`
         rotation=`printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:"`
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
                --output "$external" --auto --scale 1.0x1.0 \
