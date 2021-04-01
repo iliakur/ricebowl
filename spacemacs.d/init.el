@@ -48,6 +48,7 @@ values."
      helm
      bm
      auto-completion
+     shell-scripts
      emacs-lisp
      (latex :variables
              latex-enable-folding t
