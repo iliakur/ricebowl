@@ -4,6 +4,28 @@
   ~pyudev~ package is needed by the ~extmonitor~ script, honestly consider turning it into a simple package so that you can install it in a sandbox with all its dependencies using pipx.
 * Shell scripts
   Need to install https://github.com/koalaman/shellcheck for shell scripts layer to work.
+* packages
+  This command should just install the packages that are needed from the very beginning
+  #+begin_src sh
+    sudo dnf install -y \
+         i3 \
+         the_silver_searcher \
+         ShellCheck \
+         acpi \
+         arandr \
+         levien-inconsolata-fonts \
+         linux-libertine-biolinum-fonts \
+         htop \
+         dunst \
+         redshift \
+         network-manager-applet \
+         rofi
+  #+end_src
+* Battery Status
+  add this to your crontab:
+  #+begin_src
+*/3 * * * * $HOME/code/configs/battery_status_check.sh
+  #+end_src
 * i3
 ** py3status
    #+begin_src sh
