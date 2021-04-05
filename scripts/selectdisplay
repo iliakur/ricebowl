@@ -1,21 +1,28 @@
 #!/bin/bash
 set -e
 
-displays=`xrandr | awk '$2=="connected" { print $1 }'`
+displays=$(xrandr | awk '$2=="connected" { print $1 }')
 ndisplays=$(echo "$displays" | wc -l)
 
-if [ $ndisplays -eq 2 ]; then
-    # handle dual display
-    read internal external <<<$(echo $displays)
-    echo $internal
-    action=`printf 'connect\ndisconnect' | rofi -dmenu -i -p "Detected an external display "$external". Choose action:"`
+if [ "$ndisplays" -eq 2 ]; then
+    # ShellCheck is wrong here, read relies on the newline added by `echo`
+    # to parse the variables and double quotes around variable are not necessary
+    # because here-strings don't perform word splitting.
+    # All in all, I spent some time trying to make ShellCheck happy here but every
+    # attempt would break the functionality that I actually desired.
+    # References:
+    # https://askubuntu.com/questions/678915/whats-the-difference-between-and-in-bash
+    # https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
+    read -r internal external <<<$(echo $displays)
+    echo "$internal"
+    action=$(printf 'connect\ndisconnect' | rofi -dmenu -i -p "Detected an external display \"$external\". Choose action:")
     echo "$action"
     if [ "$action" = "disconnect" ]; then
         xrandr --output "$internal" --scale 1.0x1.0 \
                --output "$external" --off
     else
-        direction=`printf 'left\nright' | rofi -dmenu -i -p "Which side to place external on:"`
-        rotation=`printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:"`
+        direction=$(printf 'left\nright' | rofi -dmenu -i -p "Which side to place external on:")
+        rotation=$(printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:")
         xrandr --output "$internal" --auto --scale 1.0x1.0 \
                --output "$external" --auto --scale 1.0x1.0 \
                --"$direction"-of "$internal" --rotate "$rotation" --primary
@@ -23,7 +30,7 @@ if [ $ndisplays -eq 2 ]; then
         # one place to keep this logic.
         feh --bg-max --randomize ~/Pictures/wallpapers/* &
     fi
-elif [ $ndisplays -eq 1 ]; then
+elif [ "$ndisplays" -eq 1 ]; then
     notify-send "Only found one display, resetting it."
     xrandr --output "$displays" --auto --scale 1.0x1.0 --primary
     exit 0
