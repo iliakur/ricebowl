@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
 
-if [ "`hostname`" != "work" ]; then
+set -eo pipefail
+
+if [ "$(hostname)" != "work" ]; then
     echo "This is not work, no need for VPN!"
     exit 0
 fi
 
-passwd=`rofi -dmenu -password -p "sudo password for rtr vpn"`
+credentials_file="$HOME"/.rtr-credentials
+if [ -f "$credentials_file" ]; then
+    passwd=$(sed "2q;d" "$credentials_file" | tr -d "\n")
+else
+    passwd=$(rofi -dmenu -password -p "sudo password for rtr vpn")
+fi
 echo "mesos-gate VPN"
 ovpn_pid=$(pgrep openvpn)
-if [ $? -eq 0 -a -n "${ovpn_pid}" ]; then
+if [ "$?" -eq 0 ] && [ -n "${ovpn_pid}" ]; then
     echo "Stopping existing openvpn[${ovpn_pid}]..."
-    echo $passwd | sudo -S kill ${ovpn_pid}
+    echo "$passwd" | sudo -S kill "$ovpn_pid"
 fi
 echo "Starting openvpn"
-echo $passwd | sudo -S openvpn \
+echo "$passwd" | sudo -S openvpn \
                     --daemon \
-                    --config $HOME/vpn/ikurenkov.ovpn \
-                    --tls-auth ~/vpn/ta.key \
-                    --auth-user-pass $HOME/.rtr-credentials
+                    --config "$HOME/vpn/ikurenkov.ovpn" \
+                    --tls-auth "$HOME/vpn/ta.key" \
+                    --auth-user-pass "$credentials_file"
