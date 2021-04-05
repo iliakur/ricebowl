@@ -1,8 +1,39 @@
 #!/bin/bash
-set -e
+set -eo pipefail
 
 displays=$(xrandr | awk '$2=="connected" { print $1 }')
 ndisplays=$(echo "$displays" | wc -l)
+
+
+function disconnect_external(){
+    internal="$1"
+    external="$2"
+    xrandr --output "$internal" --scale 1.0x1.0 --primary \
+           --output "$external" --off
+}
+
+
+function connect_external(){
+    internal="$1"
+    external="$2"
+    if [ -z "$3" ]; then
+        direction=$(printf 'left\nright' | rofi -dmenu -i -p "Which side to place external on:")
+    else
+        direction="$3"
+    fi
+    if [ -z "$4" ]; then
+        rotation=$(printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:")
+    else
+        rotation="$4"
+    fi
+    xrandr --output "$internal" --auto --scale 1.0x1.0 \
+           --output "$external" --auto --scale 1.0x1.0 \
+           --"$direction"-of "$internal" --rotate "$rotation" --primary
+    # For now this is copy/pasted here and in i3config, would be nice to have
+    # one place to keep this logic.
+    feh --bg-max --randomize ~/Pictures/wallpapers/* &
+}
+
 
 if [ "$ndisplays" -eq 2 ]; then
     # ShellCheck is wrong here, read relies on the newline added by `echo`
@@ -14,22 +45,24 @@ if [ "$ndisplays" -eq 2 ]; then
     # https://askubuntu.com/questions/678915/whats-the-difference-between-and-in-bash
     # https://stackoverflow.com/questions/918886/how-do-i-split-a-string-on-a-delimiter-in-bash
     read -r internal external <<<$(echo $displays)
-    echo "$internal"
-    action=$(printf 'connect\ndisconnect' | rofi -dmenu -i -p "Detected an external display \"$external\". Choose action:")
-    echo "$action"
-    if [ "$action" = "disconnect" ]; then
-        xrandr --output "$internal" --scale 1.0x1.0 \
-               --output "$external" --off
+    if [ -z "$1" ]
+       then
+           action=$(printf 'connect\ndisconnect\nreconnect' | rofi -dmenu -i -p "Detected an external display \"$external\". Choose action:")
     else
-        direction=$(printf 'left\nright' | rofi -dmenu -i -p "Which side to place external on:")
-        rotation=$(printf 'left\nright\nnormal' | rofi -dmenu -i -p "Rotation:")
-        xrandr --output "$internal" --auto --scale 1.0x1.0 \
-               --output "$external" --auto --scale 1.0x1.0 \
-               --"$direction"-of "$internal" --rotate "$rotation" --primary
-        # For now this is copy/pasted here and in i3config, would be nice to have
-        # one place to keep this logic.
-        feh --bg-max --randomize ~/Pictures/wallpapers/* &
+        action="$1"
     fi
+    case ${action} in
+        "disconnect")
+            disconnect_external "$internal" "$external"
+            ;;
+        "connect")
+            connect_external "$internal" "$external" "$2" "$3"
+            ;;
+        "reconnect")
+            disconnect_external "$internal" "$external"
+            connect_external "$internal" "$external" "$2" "$3"
+            ;;
+    esac
 elif [ "$ndisplays" -eq 1 ]; then
     notify-send "Only found one display, resetting it."
     xrandr --output "$displays" --auto --scale 1.0x1.0 --primary
