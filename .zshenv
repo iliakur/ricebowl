@@ -1,4 +1,6 @@
 #-> ~/{name}
+# Emacs as editor everywhere!
+export EDITOR="emacsclient -t --alternate-editor=\"\""
 # Path modifications should be available to both login and non-login shells.
 export PATH="$HOME/.cargo/bin:$PATH"
 # pyenv settings
