@@ -13,6 +13,7 @@
          ShellCheck \
          acpi \
          arandr \
+         xrandr \
          levien-inconsolata-fonts \
          linux-libertine-biolinum-fonts \
          htop \
