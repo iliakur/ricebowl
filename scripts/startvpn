@@ -13,8 +13,10 @@ if [ -f "${credentials_file}" ]; then
 else
     passwd=$(rofi -dmenu -password -p "sudo password for rtr vpn")
 fi
+set +e
 ovpn_pid=$(pgrep openvpn)
-if [ "$?" -eq 0 ] && [ -n "${ovpn_pid}" ]; then
+set -e
+if [ -n "${ovpn_pid}" ]; then
     notify-send "Stopping existing openvpn[${ovpn_pid}]..."
     echo "${passwd}" | sudo -S kill "${ovpn_pid}"
 fi
