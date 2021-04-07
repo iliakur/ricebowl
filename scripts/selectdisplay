@@ -2,14 +2,14 @@
 set -eo pipefail
 
 displays=$(xrandr | awk '$2=="connected" { print $1 }')
-ndisplays=$(echo "$displays" | wc -l)
+ndisplays=$(echo "${displays}" | wc -l)
 
 
 function disconnect_external(){
     internal="$1"
     external="$2"
-    xrandr --output "$internal" --scale 1.0x1.0 --primary \
-           --output "$external" --off
+    xrandr --output "${internal}" --scale 1.0x1.0 --primary \
+           --output "${external}" --off
 }
 
 
@@ -26,16 +26,16 @@ function connect_external(){
     else
         rotation="$4"
     fi
-    xrandr --output "$internal" --auto --scale 1.0x1.0 \
-           --output "$external" --auto --scale 1.0x1.0 \
-           --"$direction"-of "$internal" --rotate "$rotation" --primary
+    xrandr --output "${internal}" --auto --scale 1.0x1.0 \
+           --output "${external}" --auto --scale 1.0x1.0 \
+           --"${direction}"-of "${internal}" --rotate "${rotation}" --primary
     # For now this is copy/pasted here and in i3config, would be nice to have
     # one place to keep this logic.
     feh --bg-max --randomize ~/Pictures/wallpapers/* &
 }
 
 
-if [ "$ndisplays" -eq 2 ]; then
+if [ "${ndisplays}" -eq 2 ]; then
     # ShellCheck is wrong here, read relies on the newline added by `echo`
     # to parse the variables and double quotes around variable are not necessary
     # because here-strings don't perform word splitting.
@@ -53,19 +53,19 @@ if [ "$ndisplays" -eq 2 ]; then
     fi
     case ${action} in
         "disconnect")
-            disconnect_external "$internal" "$external"
+            disconnect_external "${internal}" "${external}"
             ;;
         "connect")
-            connect_external "$internal" "$external" "$2" "$3"
+            connect_external "${internal}" "${external}" "$2" "$3"
             ;;
         "reconnect")
-            disconnect_external "$internal" "$external"
-            connect_external "$internal" "$external" "$2" "$3"
+            disconnect_external "${internal}" "${external}"
+            connect_external "${internal}" "${external}" "$2" "$3"
             ;;
     esac
-elif [ "$ndisplays" -eq 1 ]; then
+elif [ "${ndisplays}" -eq 1 ]; then
     notify-send "Only found one display, resetting it."
-    xrandr --output "$displays" --auto --scale 1.0x1.0 --primary
+    xrandr --output "${displays}" --auto --scale 1.0x1.0 --primary
     exit 0
 else
     notify-send "Found more than 2 displays, I don't know what to do."
