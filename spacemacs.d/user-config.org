@@ -286,7 +286,20 @@
            (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
    #+end_src
 ** Code Blocks and Tables
-    Monospaced font in tables and hide markup symbols by default. I ended up doing it through ~customize-group org-faces~, see that part of ~init.el~.
+*** font
+   Monospaced font in tables and hide markup symbols by default. I ended up doing it through ~customize-group org-faces~, see that part of ~init.el~.
+*** Auto-indent code blocks
+    Adapted from [[https://emacs.stackexchange.com/a/5853][here]].
+    #+begin_src emacs-lisp
+      (defun indent-org-src-block-automatically ()
+        (interactive)
+        (when (org-in-src-block-p)
+          (org-edit-special)
+          (indent-region (point-min) (point-max))
+          (org-edit-src-exit)))
+      (add-hook 'before-save-hook #'indent-org-src-block-automatically)
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode "i" 'indent-org-src-block-automatically)
+    #+end_src
 
 ** Agendas and Tags
    By default the variable is set to nil, initialize it as an empty list so as to add stuff incrementally to it.
@@ -539,6 +552,7 @@ Bring together the different agenda views defined in subsections.
       (setq org-odt-preferred-output-format "docx")
     #+end_src
 
+
 * Gui elements and prompts
 ** Simpler yes/no prompt:
  #+begin_src emacs-lisp
@@ -676,6 +690,17 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
     1. Go to closing parens with ~sp-end-of-sexp~, insert comma followed by ~marks=pytest.mark.VAR~. Should be able to interactively select var, would be extra cool to auto-complete registered marks on the fly.
     2. Go to opening parenthesis with (~sp-beginning-of-sexp~ or ~lisp-state-beginning-of-sexp~), add ~pytest.param~
     3. escape and maybe move down one line?
+
+      I don't understand why this stopped working after I changed it a bit.
+      #+begin_src emacs-lisp
+        (defun ik/pytest-param-with-id ()
+          (interactive)
+          (let ((inner-paren (evil-select-paren "(" ")" nil nil nil 1 nil))
+                (outer-paren (evil-select-paren "(" ")" nil nil nil 1 t)))
+            ((evil-visual-select (car inner-paren) (car (cdr inner-paren)))
+             (yas-expand-snippet "pytest.param($0, id=\"$1\")" (car outer-paren) (car (cdr outer-paren))))))
+      #+end_src
+
 * helm-dash
   Mostly per-mode configurations for [[https://kapeli.com/dash][dash document viewer]].
 ** general
