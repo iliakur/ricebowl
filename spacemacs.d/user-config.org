@@ -298,7 +298,7 @@
           (indent-region (point-min) (point-max))
           (org-edit-src-exit)))
       (add-hook 'before-save-hook #'indent-org-src-block-automatically)
-      (spacemacs/set-leader-keys-for-major-mode 'org-mode "i" 'indent-org-src-block-automatically)
+      (spacemacs/set-leader-keys-for-major-mode 'org-mode "od" 'indent-org-src-block-automatically)
     #+end_src
 
 ** Agendas and Tags
