@@ -47,3 +47,6 @@ export SUDO_EDITOR="emacsclient"
 alias utst="pytest tests -m 'not integration'"
 # Run unit tests in a loop
 alias lut="utst -f"
+
+# Utilities
+alias ht="htop"
