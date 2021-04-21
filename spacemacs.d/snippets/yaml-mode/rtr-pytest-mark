@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Pytest Mark
+# key: mark
+# --
+pytest_marks: ${1:debug}
