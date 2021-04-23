@@ -697,8 +697,11 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
           (interactive)
           (let ((inner-paren (evil-select-paren "(" ")" nil nil nil 1 nil))
                 (outer-paren (evil-select-paren "(" ")" nil nil nil 1 t)))
-            ((evil-visual-select (car inner-paren) (car (cdr inner-paren)))
-             (yas-expand-snippet "pytest.param($0, id=\"$1\")" (car outer-paren) (car (cdr outer-paren))))))
+            (progn
+              (evil-visual-select (car inner-paren) (car (cdr inner-paren)))
+              (yas-expand-snippet "pytest.param($0, id=\"$1\")"
+                                  (car outer-paren)
+                                  (car (cdr outer-paren))))))
       #+end_src
 
 * helm-dash
