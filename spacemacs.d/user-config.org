@@ -225,6 +225,18 @@
 
     You could even stop treating it as a habit and treat it more like the family update, where there's a reminder, but you do it as soon as you can.
     Or you give up on doing it on weekends, I guess.
+** Roam
+   Enable globally:
+   #+begin_src emacs-lisp
+     (add-hook 'after-init-hook 'org-roam-mode)
+   #+end_src
+
+   Apply my settings:
+   #+begin_src emacs-lisp
+     (with-eval-after-load 'org-roam
+       (setq org-roam-directory "~/Documents/org/roam"))
+   #+end_src
+
 ** Babel
    Extend support to some more languages that I use.
    #+begin_src emacs-lisp
