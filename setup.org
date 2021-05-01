@@ -9,7 +9,7 @@
   #+begin_src sh
     sudo dnf install -y \
          i3 \
-         the_silver_searcher \
+         ripgrep \
          ShellCheck \
          acpi \
          arandr \
