@@ -487,6 +487,15 @@ Bring together the different agenda views defined in subsections.
              ("~/Documents/org/work/rtr.org" :maxlevel . 5)))
    #+end_src
 
+** Remove WIP after it's done
+   Remove "wip" tag from entries being archived.
+#+begin_src emacs-lisp
+  (defun ik/remove-wip-tag ()
+    (when (org-entry-is-done-p)
+      (org-toggle-tag "wip" 'off)))
+  (add-hook 'org-after-todo-state-change-hook 'ik/remove-wip-tag)
+#+end_src
+
 ** Exporting
 *** Disable formalities
 #+begin_src emacs-lisp
