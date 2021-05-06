@@ -369,8 +369,7 @@ Bring together the different agenda views defined in subsections.
                       (:name "Overdue"
                              :deadline past
                              :scheduled past
-                             :order 2)
-                      (:name "In progress" :tag "wip")))))
+                             :order 2)))))
                  (alltodo
                   ""
                   ((org-agenda-files (list (expand-file-name "work/tasks.org" org-directory)))
@@ -379,6 +378,7 @@ Bring together the different agenda views defined in subsections.
                              :todo "WAITING"
                              :order 2)
                       (:name "In progress" :tag "wip")
+                      (:name "Important" :tag "important")
                       (:auto-parent t)
                       (:auto-tags t)))))))
                ("p" "Personal Daily"
