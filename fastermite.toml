@@ -21,7 +21,7 @@ i= "Intern_"
 v= "Variant Suggestions"
 g="Guilds"
 # Current Westermann project: QA and Hardening
-w="M8_Productive"
+w="SLA :: Westermann :: Workbook"
 # Full activity shortcuts
 meet = ["i", "k"]
 tio = ["n", "e"]
