@@ -342,6 +342,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ; There seems to be a problem with org-roam integration into spacemacs currently.
+  ; The link below suggests this for letting spacemacs run in daemon mode:
+  ; https://github.com/syl20bnr/spacemacs/issues/14477#issuecomment-815164427
+  (setq org-roam-directory "~/Documents/org/roam")
   )
 
 (defun dotspacemacs/user-config ()

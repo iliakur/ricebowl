@@ -231,11 +231,7 @@
      (add-hook 'after-init-hook 'org-roam-mode)
    #+end_src
 
-   Apply my settings:
-   #+begin_src emacs-lisp
-     (with-eval-after-load 'org-roam
-       (setq org-roam-directory "~/Documents/org/roam"))
-   #+end_src
+   See ~init.el~ for roam directory setting.
 
 ** Babel
    Extend support to some more languages that I use.
