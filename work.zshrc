@@ -21,7 +21,7 @@ alias mytest="pytest --no-cov-on-fail"
 # Quick way to set up direnv auto-loading in a typical rtr project.
 # Assumes that the virtualenv is already present and placed in ./env.
 # This convention is so strong that it should be a safe bet to rely on.
-alias setup-direnv="ln -s env/bin/activate .envrc -f; direnv allow"
+alias rtr-direnv="echo 'source env/bin/activate' > .envrc && direnv allow"
 
 function k8s-login(){
     $HOME/code/k8s-rtr/scripts/k8s-dev-login.sh $(cat $HOME/.rtr-credentials)
