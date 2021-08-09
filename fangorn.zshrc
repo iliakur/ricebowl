@@ -26,6 +26,7 @@ backup () {
           ~/code/configs \
           ~/code/cogsys/ms-thesis \
           ~/Documents \
+          ~/.ssh \
           /run/media/quickbeam/PLINKETT/backup/ \
         }
 

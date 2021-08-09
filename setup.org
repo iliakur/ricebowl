@@ -8,20 +8,33 @@
   This command should just install the packages that are needed from the very beginning
   #+begin_src sh
     sudo dnf install -y \
-         i3 \
-         ripgrep \
          ShellCheck \
          acpi \
          arandr \
-         xrandr \
+         calibre \
+         dunst \
+         git \
+         htop \
+         i3 \
          levien-inconsolata-fonts \
          linux-libertine-biolinum-fonts \
-         htop \
-         dunst \
-         redshift \
          network-manager-applet \
-         rofi
+         redshift \
+         ripgrep \
+         rofi \
+         xrandr
   #+end_src
+* Calibre
+  Can be installed manually or with snap (not recommended by devs).
+
+  Copy the backed up books and point calibre to them.
+* dropbox
+  gotta install the client manually, then hook it up to startup.
+* coding
+  Place ~docsets~ folder in the ~~/code~ folder.
+* spacemacs
+  clone spacemacs folder into ~.emacs.d~.
+  the linker script will take care of the rest
 * Battery Status
   add this to your crontab:
   #+begin_src
@@ -32,3 +45,15 @@
    #+begin_src sh
      pipx install py3status && pipx inject py3status pytz tzlocal
    #+end_src
+* Mouse setup
+  Copy this to ~/etc/X11/xorg.conf.d/10-libinput.conf~:
+  #+begin_src
+Section "InputClass"
+  Identifier   "Marble Mouse"
+  MatchProduct "Logitech USB Trackball"
+  Driver       "libinput"
+  Option       "ScrollMethod"    "button"
+  Option       "ScrollButton"    "8"
+  Option       "MiddleEmulation" "true"
+EndSection
+  #+end_src
