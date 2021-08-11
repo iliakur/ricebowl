@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from itertools import chain
 from pathlib import Path
 import re
 
@@ -9,6 +10,7 @@ def robust_link(link_path, target):
         backup_file = link_path.with_suffix('.bak')
         link_path.rename(backup_file)
         print(f"Found a file at the intended link location, renamed it to {backup_file}.")
+    link_path.parent.mkdir(parents=True, exist_ok=True)
     link_path.symlink_to(target)
     print(f"Linked {link_path} to {target}.")
 
@@ -18,10 +20,9 @@ ignore_these_files = {
     ".gitignore",
     __file__,
 }
-for fpath in Path.cwd().iterdir():
+for fpath in chain(Path.cwd().iterdir(), (Path.cwd() / 'scripts').iterdir()):
     if fpath.is_file() and fpath.name not in ignore_these_files:
-        with fpath.open() as fh:
-            links = re.findall("# ?->\s+(.+)", fh.read())
+        links = re.findall("# ?->\s+(.+)", fpath.read_text())
         for l in links:
             link_path = Path(l.format(name=fpath.name)).expanduser()
             robust_link(link_path, fpath)
