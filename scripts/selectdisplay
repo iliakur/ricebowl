@@ -1,4 +1,5 @@
 #!/bin/bash
+#-> ~/bin/{name}
 set -eo pipefail
 
 displays=$(xrandr | awk '$2=="connected" { print $1 }')
