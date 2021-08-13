@@ -165,7 +165,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-max --randomize ~/Pictures/wallpapers/* &
-exec --no-startup-id dropbox start
+exec --no-startup-id dropboxd &
 exec --no-startup-id emacs --daemon
 exec --no-startup-id ~/bin/ikkbremaps
 exec --no-startup-id ~/bin/startvpn
