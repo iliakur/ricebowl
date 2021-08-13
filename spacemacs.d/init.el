@@ -347,6 +347,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ; The link below suggests this for letting spacemacs run in daemon mode:
   ; https://github.com/syl20bnr/spacemacs/issues/14477#issuecomment-815164427
   (setq org-roam-directory "~/Documents/org/roam")
+  (setq org-roam-v2-ack t)
   )
 
 (defun dotspacemacs/user-config ()
