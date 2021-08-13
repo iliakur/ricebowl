@@ -80,7 +80,6 @@ values."
                                       bicycle
                                       beacon
                                       default-text-scale
-                                      interleave
                                       org-super-agenda
                                       toml-mode)
    ;; A list of packages that cannot be updated.
