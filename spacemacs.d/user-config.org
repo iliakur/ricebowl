@@ -213,8 +213,12 @@
    #+end_src
 *** org-habit
    #+begin_src emacs-lisp
+     (defun ik/toggle-habits-only-for-today ()
+       (interactive)
+       (setq org-habit-show-habits-only-for-today
+             (not org-habit-show-habits-only-for-today)))
      (spacemacs/set-leader-keys
-       "oh" 'org-habit-toggle-habits)
+       "oh" 'ik/toggle-habits-only-for-today)
      (setq org-habit-preceding-days 30)
    #+end_src
 **** TODO habits on specific days
