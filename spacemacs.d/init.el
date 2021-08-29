@@ -536,11 +536,6 @@ you should place your code here."
     (org-babel-load-file (expand-file-name "user-config.org" dotspacemacs-directory)))
 
 
-  ;; Living dangerously: erasing buffers without prompting.
-  ;; I'm banking on my ability to quickly (literally one keystroke) undo that action.
-  ;; I also use it almost exclusively to clear scratch buffers.
-  (spacemacs/set-leader-keys "oe" 'erase-buffer)
-
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 

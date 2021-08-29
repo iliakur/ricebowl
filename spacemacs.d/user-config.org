@@ -643,6 +643,15 @@ Disable responsiveness so that pomodoro is always visible.
      (spacemacs/set-leader-keys
        "on" 'ik/narrow-to-indent-up)
 #+end_src
+* Clear buffer
+
+  Living dangerously: erasing buffers without prompting.
+  I'm banking on my ability to quickly (literally one keystroke) undo that action.
+  I also use it almost exclusively to clear scratch buffers.
+#+begin_src emacs-lisp
+  (spacemacs/set-leader-keys "oe" 'erase-buffer)
+#+end_src
+
 
 * Projectile
   According to the discussion in [[https://github.com/bbatsov/projectile/issues/1302][this issue]], the error I keep getting when I try using projectile for the first time after startup, can be addressed with this:
