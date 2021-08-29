@@ -633,6 +633,17 @@ Disable responsiveness so that pomodoro is always visible.
        (evil-define-key 'normal evil-org-mode-map "I" 'evil-window-bottom)
        (evil-define-key 'normal evil-org-mode-map "L" 'evil-org-insert-line))
    #+end_src
+** Narrow to indentation level
+   #+begin_src emacs-lisp
+     (defun ik/narrow-to-indent-up ()
+       (interactive)
+       (apply
+        'narrow-to-region
+        (butlast (evil-indent-plus-i-indent-up))))
+     (spacemacs/set-leader-keys
+       "on" 'ik/narrow-to-indent-up)
+#+end_src
+
 * Projectile
   According to the discussion in [[https://github.com/bbatsov/projectile/issues/1302][this issue]], the error I keep getting when I try using projectile for the first time after startup, can be addressed with this:
   #+begin_src emacs-lisp
