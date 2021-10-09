@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#-> ~/bin/{name}
+
+set -eo pipefail
+
+if [ "$(hostname)" = "work" ]; then
+    ~/bin/startvpn
+    dropbox start
+else
+    dropboxd &
+fi
