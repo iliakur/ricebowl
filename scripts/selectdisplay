@@ -27,7 +27,7 @@ function connect_external(){
     else
         rotation="$4"
     fi
-    xrandr --output "${internal}" --auto --scale 1.0x1.0 \
+    xrandr --output "${internal}" --scale 1.0x1.0 \
            --output "${external}" --auto --scale 1.0x1.0 \
            --"${direction}"-of "${internal}" --rotate "${rotation}" --primary
     # For now this is copy/pasted here and in i3config, would be nice to have
@@ -66,7 +66,7 @@ if [ "${ndisplays}" -eq 2 ]; then
     esac
 elif [ "${ndisplays}" -eq 1 ]; then
     notify-send "Only found one display, resetting it."
-    xrandr --output "${displays}" --auto --scale 1.0x1.0 --primary
+    xrandr --output "${displays}" --scale 1.0x1.0 --primary
     exit 0
 else
     notify-send "Found more than 2 displays, I don't know what to do."
