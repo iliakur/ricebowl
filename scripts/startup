@@ -4,8 +4,11 @@
 set -eo pipefail
 
 if [ "$(hostname)" = "work" ]; then
-    ~/bin/startvpn
+    xrandr --output eDP --mode 1280x720
+    selectdisplay reconnect left left
     dropbox start
+    startvpn
 else
+    selectdisplay
     dropboxd &
 fi
