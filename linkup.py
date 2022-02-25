@@ -31,3 +31,8 @@ for fpath in chain(Path.cwd().iterdir(), (Path.cwd() / 'scripts').iterdir()):
 robust_link(Path.home() / '.spacemacs.d', Path.cwd() / 'spacemacs.d')
 # Special treatment for Xresources because it has non-standard comment syntax.
 robust_link(Path.home() / '.Xresources', Path.cwd() / 'Xresources')
+
+# VSCodium settings
+vscodium_root = (Path.home() / '.config' / 'VSCodium' / 'User').expanduser()
+for fpath in (Path.cwd() / 'VSCodium').iterdir():
+    robust_link(vscodium_root / fpath.name, fpath)

@@ -1,0 +1,75 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "editor.fontFamily": "Fira Code",
+    // "editor.fontFamily": "Inconsolata",
+    "editor.fontLigatures": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        80,
+        90
+    ],
+    "editor.formatOnSave": true,
+    "editor.autoIndent": "advanced",
+    "editor.detectIndentation": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnPaste": true,
+    "center-editor-window.threeStateToggle": true,
+    "keyboard.dispatch": "keyCode", // Respect linux xkbmap settings (CAPS->ESC)
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.renderWhitespace": "none",
+    "debug.disassemblyView.showSourceCode": false,
+    "python.linting.mypyEnabled": true,
+    "vim.camelCaseMotion.enable": true,
+    "explorer.confirmDragAndDrop": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
+}
