@@ -34,7 +34,7 @@ values."
      javascript
      rust
      go
-     lsp
+     (lsp :variables lsp-file-watch-threshold nil)
      graphviz
      (dash :variables
            dash-docs-enable-debugging nil
@@ -44,7 +44,9 @@ values."
      json
      html
      yaml
-     python
+     (python :variables
+             python-backend 'lsp
+             python-lsp-server 'pyright)
      elm
      debug
      helm
