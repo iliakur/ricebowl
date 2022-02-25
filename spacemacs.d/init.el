@@ -534,8 +534,9 @@ you should place your code here."
   (require 'org)
   (require 'ob-tangle)
   ;; Disable confirmation requests for blocks that are being evaluated.
-  (let ((org-confirm-babel-evaluate nil))
-    (org-babel-load-file (expand-file-name "user-config.org" dotspacemacs-directory)))
+  (with-eval-after-load 'org
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-load-file (expand-file-name "user-config.org" dotspacemacs-directory))))
 
 
   ;; Clingo ASP files essentially have prolog syntax, their file extension is .lp
