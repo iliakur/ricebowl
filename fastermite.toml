@@ -7,7 +7,7 @@ menu_keys="arstneio"
 # Services
 k= "Kommunikation"
 e= "Entwicklung"
-q= {"pattern"= "QA", "match"= "strict"}
+q= {pattern= "QA", match= "strict"}
 d="Dokumentation"
 z= "Entwickler-Konzeption"
 r = "Research"
