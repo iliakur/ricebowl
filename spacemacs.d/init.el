@@ -169,7 +169,7 @@ values."
                               ; https://bugzilla.redhat.com/show_bug.cgi?id=1786054
                               ; https://github.com/googlefonts/Inconsolata/issues/42
                               ; https://lists.gnu.org/archive/html/bug-gnu-emacs/2020-01/msg00509.html
-                               :size 17
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -589,5 +589,5 @@ This function is called at the very end of Spacemacs initialization."
  '(org-block ((t (:inherit fixed-pitch :extend t :foreground "#cb4b16"))))
  '(org-code ((t (:inherit fixed-pitch :foreground "#b58900"))))
  '(org-table ((t (:inherit fixed-pitch :foreground "#6c71c4"))))
- '(variable-pitch ((t (:slant normal :weight normal :height 160 :width normal :family "Linux Biolinum O")))))
+ '(variable-pitch ((t (:slant normal :weight normal :height 140 :width normal :family "Linux Biolinum O")))))
 )
