@@ -47,7 +47,9 @@ values."
      (python :variables
              python-backend 'lsp
              python-lsp-server 'pyright)
-     elm
+     (elm :variables
+          elm-backend 'lsp)
+
      debug
      helm
      bm

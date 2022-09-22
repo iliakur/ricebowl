@@ -71,5 +71,6 @@
     "vim.camelCaseMotion.enable": true,
     "explorer.confirmDragAndDrop": false,
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.visible": false,
+    "elmLS.trace.server": "messages",
+    "elmLS.elmPath": "~/.nvm/versions/node/v18.0.0/bin/elm",
 }
