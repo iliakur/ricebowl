@@ -22,7 +22,7 @@ v= "Variant Suggestions"
 g="Guilds"
 f="Fraunhofer Institut"
 # Current Westermann project: QA and Hardening
-w="SLA :: Westermann :: Workbook"
+w=["Workbook_Core Components", "e"]
 # Full activity shortcuts
 meet = ["i", "k"]
 tio = ["n", "e"]
@@ -41,6 +41,7 @@ est= ["meet", "estimation meeting"]
 prepest= ["c", "estimate tickets before meeting"]
 sotu= ["meet", "State Of The Union; aka company weekly"]
 devb=["meet", "dev breakfast"]
+a42 = ["meet", "checkpoint with area42 team"]
 sprintrev=["w", "k", "sprint review"]
 mlg=["guild_work", "machine learning guild"]
 scg=["guild_work", "software craftsmanship guild"]
