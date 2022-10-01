@@ -703,7 +703,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 
    #+begin_src emacs-lisp
      (spacemacs/declare-prefix-for-mode 'python-mode "n" "navigation")
-     (spacemacs/declare-prefix-for-mode 'python-mode "nu"
+     (spacemacs/set-leader-keys-for-major-mode 'python-mode "nu"
        'python-nav-backward-up-list)
      (spacemacs/declare-prefix-for-mode 'python-mode "nf" "defun")
      (spacemacs/set-leader-keys-for-major-mode 'python-mode
