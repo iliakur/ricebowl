@@ -1,12 +1,12 @@
 #+PROPERTY: header-args :tangle yes :exports none :results silent
 * Writing
-** Nicer font
+** Variable pitch font
+In all text modes except yaml.
   #+begin_src emacs-lisp
-
-  (add-hook 'text-mode-hook 'variable-pitch-mode)
-  (global-set-key (kbd "<f5>")
-                  (lambda () (interactive) (variable-pitch-mode)))
+    (add-hook 'text-mode-hook 'variable-pitch-mode)
+    (remove-hook 'yaml-mode-hook 'variable-pitch-mode)
   #+end_src
+
 ** Line highlighting
   HL-line mode is really only useful in text mode buffers where lines regularly wrap.
 #+begin_src emacs-lisp
