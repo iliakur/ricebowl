@@ -410,68 +410,6 @@ you should place your code here."
     (setq org-agenda-compact-blocks t)
     ;; Warn about deadlines a month in advance, not 2 weeks.
     (setq org-deadline-warning-days 30)
-    (defconst ik/work-org-directory (file-name-as-directory (concat org-directory "work")))
-    (defconst ik/work-org-files
-      (list (expand-file-name "rtr.org" ik/work-org-directory)
-            (expand-file-name "gtd.org" ik/work-org-directory)))
-    (defconst ik/thesis-org-directory (file-name-as-directory (concat org-directory "thesis")))
-    (defconst ik/general-agendas
-      '(("m" "Movies to watch" todo "TOWATCH"
-         ((org-agenda-files (list (expand-file-name "movies.org" ik/references-directory)))
-          (org-agenda-max-entries 7)))
-        ("e" "Next todo"
-         alltodo "" ((org-agenda-max-entries 1)))
-        ("n" "Notes"
-         tags "notes+LEVEL=2"
-         ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))))))
-    (defconst ik/personal-agendas
-      '(("p" . "Personal")
-        ("pp" "Personal daily"
-         ((agenda "" ((org-agenda-dim-blocked-tasks t)))))
-        ("pi" "Quick inbox review"
-         tags "inbox+LEVEL=2" ((org-agenda-files (list (expand-file-name "inbox.org" org-directory)))
-                     (org-agenda-todo-ignore-with-date nil)
-                     (org-agenda-todo-list-sublevels nil)
-                     (org-agenda-dim-blocked-tasks t)))
-        ("pr" "Personal weekly review"
-         ((stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" org-directory)))))
-          (todo "" ((org-agenda-overriding-header "Unscheduled tasks")
-                    (org-agenda-files (list (expand-file-name "gtd.org" org-directory)))
-                    (org-agenda-max-todos 5)))
-          (agenda "" ((org-agenda-span 7)))))))
-    (defconst ik/work-agendas
-      '(("a" . "Work-related")
-        ("aa" "Work-related daily"
-         ((tags-todo "wip" ((org-agenda-overriding-header "Work in Progress")))
-          (agenda "" ((org-agenda-dim-blocked-tasks t)))
-          (tags-todo "@email" ((org-agenda-overriding-header "Email/Chat")))
-          (tags-todo "-@email&-@office&-wip" ((org-agenda-overriding-header "Downtime tasks")))
-          (tags-todo "@office" ((org-agenda-overriding-header "Around the office"))))
-         ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))
-          (org-refile-targets ik/work-org-files)))
-        ("ar" "Work-related weekly review"
-         ((alltodo "" ((org-agenda-overriding-header "Inbox")
-                       (org-agenda-files
-                        (list (expand-file-name "inbox.org" ik/work-org-directory)))
-                       (org-agenda-todo-ignore-with-date nil)
-                       (org-agenda-max-entries 1)))
-          (stuck "" ((org-agenda-files (list (expand-file-name "gtd.org" ik/work-org-directory)))))
-          (agenda "" ((org-agenda-span 7)
-                      ;; I currently do my weekly reviews on Wednesday,
-                      ;; so I start planning from Thursday onward.
-                      (org-agenda-start-on-weekday 4)
-                      (org-agenda-dim-blocked-tasks t)
-                      (org-agenda-files
-                       (list (expand-file-name "gtd.org" ik/work-org-directory))))))
-         ((org-refile-targets ik/work-org-files)))))
-    (setq org-agenda-custom-commands
-          (append
-           ik/general-agendas
-           ik/personal-agendas
-           ik/work-agendas))
-    (setq org-agenda-custom-commands ik/personal-agendas)
-
-
 
     ;; Managing TODOs
     ;; Add keys for faster access to different states instead of cycling through them.
