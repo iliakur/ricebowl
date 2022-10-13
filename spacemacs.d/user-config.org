@@ -71,7 +71,7 @@ In all text modes except yaml.
       (unless (member major-mode '(yaml-mode toml-mode))
         (olivetti-mode 1)))
     (add-hook 'text-mode-hook 'ik-olivetti-mode)
-    (setq olivetti-body-width 93)
+    (setq olivetti-body-width 103)
   #+end_src
 
 ** Add Commas to Numbers
