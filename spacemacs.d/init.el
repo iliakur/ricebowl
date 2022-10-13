@@ -419,8 +419,8 @@ you should place your code here."
     ;; Most of the time I'm marking things as done and the keys for that involve pressing "t".
     ;; That being said, marking things directly as TODO is still quite frequent,
     ;; so I use another strong key for that: "s".
-    (setq org-todo-keywords '((type "TODO(s)" "WAITING(w)" "|" "DONE(t)")))
-    (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue"))))
+    (setq org-todo-keywords '((type "TODO(s)" "WAITING(w)" "|" "DONE(t)" "CANCELED(c)")))
+    (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue")) ("CANCELED" . (:foreground "orange"))))
     (setq org-enforce-todo-dependencies t)
     (setq org-log-done t)
     )
