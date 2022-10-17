@@ -8,6 +8,7 @@ brew install pyright
 brew install shellcheck
 brew install bashate
 brew install fd
+brew install watch
 brew install ripgrep
 brew install htop
 HOMEBREW_CASK_OPTS="" brew install --cask dropbox
