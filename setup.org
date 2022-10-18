@@ -70,7 +70,25 @@ eval "$(pyenv virtualenv-init -)"
 * dropbox
   gotta install the client manually, then hook it up to startup.
 * coding
-  Place ~docsets~ folder in the ~~/code~ folder.
+** Docsets
+  Place ~docsets~ folder in the ~~/src~ folder.
+** Multiple Git accounts
+
+Goal: easy way to sign commits with personal and work git accounts.
+
+Taken from [[https://devimalplanet.com/easiest-way-to-manage-multiple-git-users-same-computer][here]].
+
+The idea is to have a separate work and
+
+Assuming you have your personal stuff inside a folder ~~/src~, add this to your global ~~/.gitconfig~:
+#+begin_src ini
+[includeIf "gitdir:~/src/"]
+    path = ~/src/.gitconfig
+#+end_src
+
+*Make sure to include the final slash in the path in the section header!*
+
+Then inside ~~/src/.gitconfig~ add your overrides, e.g. email.
 * spacemacs
   clone spacemacs folder into ~.emacs.d~.
   the linker script will take care of the rest
