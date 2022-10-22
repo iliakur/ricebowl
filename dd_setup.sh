@@ -7,6 +7,7 @@ brew install --cask docker
 brew install --cask iterm2
 
 # Directory and git settings for personal programming projects.
+# TODO make this idempotent
 mkdir -vp "${HOME}"/src
 cat <<EOT > "${HOME}"/src/.gitconfig
 [user]
@@ -20,6 +21,11 @@ EOT
 # Personal software
 brew install --cask emacs
 ln --symbolic --verbose "${PWD}"/spacemacs.d "${HOME}"/.spacemacs.d
+
+# Fonts (mostly for emacs)
+brew tap -v homebrew/cask-fonts
+HOMEBREW_CASK_OPTS="" brew install font-inconsolata font-linux-biolinum
+
 brew install pyright
 brew install shellcheck
 brew install bashate
