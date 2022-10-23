@@ -523,14 +523,4 @@ This function is called at the very end of Spacemacs initialization."
  '(paradox-github-token t)
  '(pdf-view-midnight-colors '("#b2b2b2" . "#292b2e"))
  '(recentf-exclude
-   '("COMMIT_EDITMSG\\'" "/home/quickbeam/.emacs.d/elpa/develop/" "/home/quickbeam/.emacs.d/.cache/" "*.org_archive")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-block ((t (:inherit fixed-pitch :extend t :foreground "#cb4b16"))))
- '(org-code ((t (:inherit fixed-pitch :foreground "#b58900"))))
- '(org-table ((t (:inherit fixed-pitch :foreground "#6c71c4"))))
- '(variable-pitch ((t (:slant normal :weight normal :height 140 :width normal :family "Linux Biolinum O")))))
-)
+   '("COMMIT_EDITMSG\\'" "/home/quickbeam/.emacs.d/elpa/develop/" "/home/quickbeam/.emacs.d/.cache/" "*.org_archive"))))

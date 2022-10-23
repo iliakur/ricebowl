@@ -7,6 +7,16 @@ In all text modes except yaml.
     (remove-hook 'yaml-mode-hook 'variable-pitch-mode)
   #+end_src
 
+  Some font attributes differ on MacOS vs Linux.
+  #+begin_src emacs-lisp
+    (set-face-attribute
+     'variable-pitch
+     nil
+     :height (if (eq system-type 'darwin) 180 140)
+     :family (if (eq system-type 'darwin) "Linux Biolinum" "Linux Biolinum O"))
+  #+end_src
+
+  *Note: if you want to find out the name of the font on your system, run ~(font-family-list)~ and search the output for your font.*
 ** Line highlighting
   HL-line mode is really only useful in text mode buffers where lines regularly wrap.
 #+begin_src emacs-lisp
@@ -229,6 +239,14 @@ In all text modes except yaml.
 
     You could even stop treating it as a habit and treat it more like the family update, where there's a reminder, but you do it as soon as you can.
     Or you give up on doing it on weekends, I guess.
+** Fonts
+Code blocks and tables should have default font.
+
+#+begin_src emacs-lisp
+  (set-face-attribute 'org-table nil :inherit 'default)
+  (set-face-attribute 'org-code nil :inherit 'default)
+  (set-face-attribute 'org-block nil :inherit 'default)
+#+end_src
 ** Roam
    Enable globally:
    #+begin_src emacs-lisp
