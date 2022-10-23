@@ -503,7 +503,6 @@ Code blocks and tables should have default font.
       (setq org-odt-preferred-output-format "docx")
     #+end_src
 
-
 * Gui elements and prompts
 ** Simpler yes/no prompt:
  #+begin_src emacs-lisp
@@ -581,7 +580,6 @@ Disable responsiveness so that pomodoro is always visible.
 #+begin_src emacs-lisp
   (spacemacs/set-leader-keys "oe" 'erase-buffer)
 #+end_src
-
 
 * Projectile
   According to the discussion in [[https://github.com/bbatsov/projectile/issues/1302][this issue]], the error I keep getting when I try using projectile for the first time after startup, can be addressed with this:
