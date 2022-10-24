@@ -372,6 +372,7 @@ Code blocks and tables should have default font.
                         :order 2)
                  (:name "In progress" :tag "wip")
                  (:name "Important" :tag "important")
+                 (:name "Urgent" :tag "urgent")
                  (:auto-parent t)
                  (:auto-tags t)))))))
           ("p" "Personal Daily"
