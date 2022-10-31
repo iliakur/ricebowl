@@ -483,13 +483,7 @@ you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.lp$" . prolog-mode))
 
   ;; RS3 files are XML
-  (add-to-list 'auto-mode-alist '("\\.rs3$" . xml-mode))
-
-  ;; Magit by default displays blame information inline.
-  ;; I'm used to having it in a side bar with the code flow uninterrupted.
-  (with-eval-after-load 'magit
-    (setq magit-blame-disable-modes
-          (add-to-list 'magit-blame-disable-modes 'olivetti-mode))))
+  (add-to-list 'auto-mode-alist '("\\.rs3$" . xml-mode)))
 
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
