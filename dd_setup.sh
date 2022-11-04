@@ -27,6 +27,7 @@ ln --symbolic --verbose "${PWD}"/spacemacs.d "${HOME}"/.spacemacs.d
 brew tap -v homebrew/cask-fonts
 HOMEBREW_CASK_OPTS="" brew install font-inconsolata font-linux-biolinum
 
+brew install --cask devtoys
 brew install pyright
 brew install shellcheck
 brew install bashate
