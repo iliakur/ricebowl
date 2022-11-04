@@ -5,6 +5,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # Team-relevant software
 brew install --cask docker
 brew install --cask iterm2
+brew install kind
 
 # Directory and git settings for personal programming projects.
 # TODO make this idempotent
