@@ -149,7 +149,12 @@ In all text modes except yaml.
      For those situations when I cannot have the volume on for whatever reason, I make org-pomodoro notifications more prominent by sending them through ~libnotify~.
     #+begin_src emacs-lisp
       (with-eval-after-load 'alert
-        (add-to-list 'alert-user-configuration '(((:category . "org-pomodoro")) libnotify nil)))
+        (add-to-list 'alert-user-configuration
+                     `(((:category . "org-pomodoro"))
+                       ,(if (eq system-type 'darwin)
+                            'osx-notifier
+                          'libnotify)
+                       nil)))
     #+end_src
 
 **** Long breaks and blocks of pomodoros
