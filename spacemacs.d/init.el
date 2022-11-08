@@ -374,23 +374,6 @@ you should place your code here."
           (list
            (expand-file-name "gtd.org" org-directory)
            (expand-file-name "tickler.org" org-directory)))
-
-    (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                  (file+headline "inbox.org" "Inbox")
-                                  "* TODO %i%?")
-
-                                  ("n" "A Note" entry
-                                   (file+headline "inbox.org" "Notes")
-                                   "* %i%?")
-
-                                  ("T" "Tickler" entry
-                                  (file+headline "tickler.org" "Tickler")
-                                  "* %i%? \n %t")
-
-                                  ("h" "Habit" entry
-                                   (file+headline "tickler.org" "Tickler")
-                                   "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")))
-
     ;; Agenda-related settings
     ;; Allow multiple agendas by letting each one stick around.
     (setq org-agenda-sticky t)

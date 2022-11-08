@@ -415,6 +415,42 @@ Code blocks and tables should have default font.
                (tags . " %i ")
                (search . " %i ")))
      #+end_src
+
+** Capture
+#+begin_src emacs-lisp
+  (add-hook 'org-capture-mode-hook 'evil-insert-state)
+
+  (setq org-capture-templates
+        '(("t"
+           "Todo [inbox]"
+           entry
+           (file+headline "inbox.org" "Inbox")
+           "* TODO %i%?")
+          ("l"
+           "Link to read [inbox]"
+           entry
+           (file+headline "inbox.org" "Inbox")
+           "* TODO [[%c][%i%?]]")
+
+          ("n"
+           "A Note"
+           entry
+           (file+headline "inbox.org" "Notes")
+           "* %i%?")
+
+          ("T"
+           "Tickler"
+           entry
+           (file+headline "tickler.org" "Tickler")
+           "* %i%? \n %t")
+
+          ("h"
+           "Habit"
+           entry
+           (file+headline "tickler.org" "Tickler")
+           "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")))
+#+end_src
+
 ** Refiling
   [[https://stackoverflow.com/a/21335010/4501212][This link]] finally explains the meaning of the variable ~org-refile-use-outline-path~ the way the docs don't.
   Basically, it lets you treat files as refile targets, with the item being refiled added to the file as a top-level heading.
