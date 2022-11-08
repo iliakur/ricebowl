@@ -103,6 +103,13 @@ In all text modes except yaml.
              (insert (format "%s" num))))
    #+end_src
 
+** evil-escape-mode
+Colemak-friendly evil-escape sequence and slower delay for my slow typing :)
+#+begin_src emacs-lisp
+  (setq evil-escape-key-sequence "nn")
+  (setq-default evil-escape-delay 0.2)
+#+end_src
+
 * Markdown
    #+begin_src emacs-lisp
   (with-eval-after-load 'markdown
