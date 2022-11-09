@@ -818,7 +818,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
        (browse-url "https://www.keybr.com/")
        (browse-url "https://www.online-stopwatch.com/timer/10minutes"))
  #+end_src
-* Magit
+* Git
 ** No Olivetti in blame mode
 #+begin_src emacs-lisp
   (with-eval-after-load 'magit
@@ -837,4 +837,9 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
           (progn (kill-new branch)
                  (message "%s" branch))
         (user-error "There is not current branch"))))
+#+end_src
+** Link to commit hash instead of branch name
+#+begin_src emacs-lisp
+  (with-eval-after-load 'git-link
+    (setq git-link-use-commit t))
 #+end_src
