@@ -104,9 +104,9 @@ In all text modes except yaml.
    #+end_src
 
 ** evil-escape-mode
-Colemak-friendly evil-escape sequence and slower delay for my slow typing :)
+Colemak- and English-friendly evil escape sequence and slower delay for my slow typing :)
 #+begin_src emacs-lisp
-  (setq evil-escape-key-sequence "nn")
+  (setq evil-escape-key-sequence "hh")
   (setq-default evil-escape-delay 0.2)
 #+end_src
 
