@@ -314,7 +314,10 @@ Code blocks and tables should have default font.
 #+begin_src emacs-lisp
     (setq org-special-ctrl-a/e t)
 #+end_src
-
+** Logging and notes
+#+begin_src emacs-lisp
+  (setq org-log-into-drawer t)
+#+end_src
 ** Enable auto-completion
 #+begin_src emacs-lisp
   (with-eval-after-load 'auto-complete
