@@ -28,7 +28,9 @@ brew tap -v homebrew/cask-fonts
 HOMEBREW_CASK_OPTS="" brew install font-inconsolata font-linux-biolinum
 
 brew install --cask devtoys
+brew install --cask rectangle # Tiling wm for macos.
 brew install pyright
+brew install pyenv-virtualenv
 brew install shellcheck
 brew install bashate
 brew install fd
