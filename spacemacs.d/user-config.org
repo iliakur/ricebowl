@@ -846,3 +846,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
   (with-eval-after-load 'git-link
     (setq git-link-use-commit t))
 #+end_src
+** Enter insert mode for commits
+#+begin_src emacs-lisp
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
+#+end_src
