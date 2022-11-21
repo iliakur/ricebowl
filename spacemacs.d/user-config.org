@@ -254,9 +254,9 @@ Colemak- and English-friendly evil escape sequence and slower delay for my slow 
 Code blocks and tables should have default font.
 
 #+begin_src emacs-lisp
-  (set-face-attribute 'org-table nil :inherit 'default)
-  (set-face-attribute 'org-code nil :inherit 'default)
-  (set-face-attribute 'org-block nil :inherit 'default)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 #+end_src
 ** Roam
    Enable globally:
@@ -330,8 +330,6 @@ Code blocks and tables should have default font.
            (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
    #+end_src
 ** Code Blocks and Tables
-*** font
-   Monospaced font in tables and hide markup symbols by default. I ended up doing it through ~customize-group org-faces~, see that part of ~init.el~.
 *** Auto-indent code blocks
     Adapted from [[https://emacs.stackexchange.com/a/5853][here]].
     #+begin_src emacs-lisp
