@@ -4,7 +4,6 @@
 In all text modes except yaml.
   #+begin_src emacs-lisp
     (add-hook 'text-mode-hook 'variable-pitch-mode)
-    (remove-hook 'yaml-mode-hook 'variable-pitch-mode)
   #+end_src
 
   Some font attributes differ on MacOS vs Linux.
@@ -755,6 +754,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
  #+end_src
 
 * Yaml
+** Folding
   Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
  #+begin_src emacs-lisp
   (add-hook 'yaml-mode-hook
@@ -763,6 +763,14 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
               (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
               (setq outline-regexp "^ *")))
  #+end_src
+** Enabling prog-mode features
+
+[[https://github.com/yoshiki/yaml-mode/issues?q=is%3Aissue+programming-mode][The maintainer is obstinate that he derive from text-mode]], so we have to make some tweaks ourselves.
+
+#+begin_src emacs-lisp
+  (remove-hook 'yaml-mode-hook 'olivetti-mode)
+#+end_src
+
 * helm-bibtex
  #+begin_src emacs-lisp
    (with-eval-after-load 'helm-bibtex
