@@ -430,7 +430,8 @@ Code blocks and tables should have default font.
            "Link to read [inbox]"
            entry
            (file+headline "inbox.org" "Inbox")
-           "* TODO [[%c][%i%?]]")
+           "* TODO [[%c][%^{prompt}]]"
+           :immediate-finish t)
 
           ("n"
            "A Note"
