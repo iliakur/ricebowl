@@ -576,12 +576,20 @@ Code blocks and tables should have default font.
 *** Space before link when inserting
 Something about evil cursor management and the way org inserts links swallows the space before the link. This re-adds the space.
 #+begin_src emacs-lisp
-  (defun org-insert-link-with-space (orig-func &rest args)
-    (insert " ")
-    (call-interactively orig-func))
-
-  (advice-add 'org-insert-link
-              :around #'org-insert-link-with-space)
+  (defun ik/org-insert-link-smartly-from-clipboard ()
+    (interactive)
+    (let* ((link (substring-no-properties (car kill-ring)))
+           (desc
+            (read-string
+             "Enter link description: "
+             (when
+                 (string-match "datadoghq\.atlassian\.net" link)
+               (car (last
+                     (split-string "https://datadoghq.atlassian.net/browse/AI-2736" "/")))))))
+      (insert " ")
+      (insert (org-link-make-string link desc))))
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "ol" 'ik/org-insert-link-smartly-from-clipboard)
 #+end_src
 *** Use IDs for org heading links
 #+begin_src emacs-lisp
