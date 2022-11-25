@@ -551,6 +551,16 @@ Code blocks and tables should have default font.
       (setq org-odt-preferred-output-format "docx")
     #+end_src
 
+** Space before link when inserting
+Something about evil cursor management and the way org inserts links swallows the space before the link. This re-adds the space.
+#+begin_src emacs-lisp
+  (defun org-insert-link-with-space (orig-func &rest args)
+    (insert " ")
+    (call-interactively orig-func))
+
+  (advice-add 'org-insert-link
+              :around #'org-insert-link-with-space)
+#+end_src
 * Gui elements and prompts
 ** Simpler yes/no prompt:
  #+begin_src emacs-lisp
