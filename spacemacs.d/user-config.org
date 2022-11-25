@@ -56,7 +56,7 @@ In all text modes except yaml.
  #+begin_src emacs-lisp
   (global-set-key (kbd "<C-return>") 'comment-indent-new-line)
  #+end_src
-** Exit enclosing delimiter
+** Jump out of any surround (parens, brackets quotes)
   Quickly escape enclosing items such as parentheses or quotes.
   Advantages over using the arrow key:
   - can jump out of any part of expression, not just the end
