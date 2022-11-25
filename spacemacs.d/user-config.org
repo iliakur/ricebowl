@@ -432,15 +432,26 @@ Code blocks and tables should have default font.
            (file+headline "inbox.org" "Inbox")
            "* TODO [[%c][%^{link description}]]"
            :immediate-finish t)
-          ("d"
+          ("d" "Diary Entries")
+          ("dp"
            "Diary entry for a project"
            entry
            (file+olp+datetree "diary.org")
-           "* logged for %a at %T
+           "* entered for %a at %T
     :PROPERTIES:
     :linked-id: %L
     :END:
     %i%?")
+          ("dd"
+           "Plain diary entry"
+           entry
+           (file+olp+datetree "diary.org")
+           "* %^{short description} (entered at %T)\n %i%?")
+          ("dl"
+           "diary entry with a link"
+           entry
+           (file+olp+datetree "diary.org")
+           "* [[%c][%^{short description}]] entered at %T\n %i%?")
           ("n"
            "A Note"
            entry
@@ -459,6 +470,8 @@ Code blocks and tables should have default font.
            (file+headline "tickler.org" "Tickler")
            "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")))
 #+end_src
+
+
 ** Refiling
   [[https://stackoverflow.com/a/21335010/4501212][This link]] finally explains the meaning of the variable ~org-refile-use-outline-path~ the way the docs don't.
   Basically, it lets you treat files as refile targets, with the item being refiled added to the file as a top-level heading.
