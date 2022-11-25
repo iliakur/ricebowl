@@ -432,7 +432,15 @@ Code blocks and tables should have default font.
            (file+headline "inbox.org" "Inbox")
            "* TODO [[%c][%^{link description}]]"
            :immediate-finish t)
-
+          ("d"
+           "Diary entry for a project"
+           entry
+           (file+olp+datetree "diary.org")
+           "* logged for %a at %T
+    :PROPERTIES:
+    :linked-id: %L
+    :END:
+    %i%?")
           ("n"
            "A Note"
            entry
