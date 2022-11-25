@@ -451,11 +451,9 @@ Code blocks and tables should have default font.
            (file+headline "tickler.org" "Tickler")
            "* TODO %? \n SCHEDULED: %t \n :PROPERTIES:\n :STYLE:  habit \n :END:")))
 #+end_src
-
 ** Refiling
   [[https://stackoverflow.com/a/21335010/4501212][This link]] finally explains the meaning of the variable ~org-refile-use-outline-path~ the way the docs don't.
   Basically, it lets you treat files as refile targets, with the item being refiled added to the file as a top-level heading.
-  Disabling completion in steps is needed to play nice with Helm. See
   Disabling completion in steps is needed to play nice with Helm. See [[https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html][this]]  for an explanation.
    #+begin_src emacs-lisp
      (setq org-refile-use-outline-path 'file)
