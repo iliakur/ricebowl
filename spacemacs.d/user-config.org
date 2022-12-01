@@ -883,7 +883,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 
 +Borrowed+ Stolen from [[https://emacs.stackexchange.com/a/30496][here]].
 #+begin_src emacs-lisp
-  (defun ik/magit-add-current-buffer-to-kill-ring ()
+  (defun ik/magit-copy-current-branch ()
     "Show the current branch in the echo-area and add it to the `kill-ring'."
     (interactive)
     (let ((branch (magit-get-current-branch)))
