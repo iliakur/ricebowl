@@ -595,7 +595,7 @@ Something about evil cursor management and the way org inserts links swallows th
 #+end_src
 *** Use IDs for org heading links
 #+begin_src emacs-lisp
-  (setq org-id-link-to-org-use-id t)
+  (setq org-id-link-to-org-use-id 'create-if-interactive)
 #+end_src
 
 
