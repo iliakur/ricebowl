@@ -733,7 +733,10 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
        "nfe" 'python-nav-backward-defun
        "nfm" 'python-nav-if-name-main)
    #+end_src
-
+** Insert comment to disable lint error for long line
+#+begin_src emacs-lisp
+  (fset 'disable-python-linter-long-line-check [65 32 35 32 110 111 113 97 58 32 69 53 48 49 escape 110])
+#+end_src
 ** Copy function name
    Would be cool to tweak this to include the module name.
 #+begin_src emacs-lisp
