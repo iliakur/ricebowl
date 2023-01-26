@@ -336,9 +336,11 @@ Code blocks and tables should have default font.
       (defun indent-org-src-block-automatically ()
         (interactive)
         (when (org-in-src-block-p)
-          (org-edit-special)
-          (indent-region (point-min) (point-max))
-          (org-edit-src-exit)))
+          ;; Yaml auto-formatting is broken so we disable it.
+          (unless (equal (car (org-babel-get-src-block-info nil)) "yaml")
+            (org-edit-special)
+            (indent-region (point-min) (point-max))
+            (org-edit-src-exit))))
       (add-hook 'before-save-hook #'indent-org-src-block-automatically)
       (spacemacs/set-leader-keys-for-major-mode 'org-mode "od" 'indent-org-src-block-automatically)
     #+end_src
