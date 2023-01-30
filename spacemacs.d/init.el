@@ -378,7 +378,7 @@ you should place your code here."
     ;; Allow multiple agendas by letting each one stick around.
     (setq org-agenda-sticky t)
     ;; By default I want to just focus on one day.
-    (setq org-agenda-span 1)
+    (setq org-agenda-span 3)
     ;; Weekly reviews happen on different days, set agenda to whichever day it happens to be.
     (setq org-agenda-start-on-weekday nil)
     ;; If I have scheduled a time to deal with a deadline, don't show it in the agenda.

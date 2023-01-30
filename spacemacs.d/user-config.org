@@ -361,8 +361,7 @@ Code blocks and tables should have default font.
           ("w" "Work Daily"
            ((agenda
              ""
-             ((org-agenda-span 'day)
-              (org-agenda-files (list (expand-file-name "work.org" org-directory)))
+             ((org-agenda-files (list (expand-file-name "work.org" org-directory)))
               (org-super-agenda-groups
                '((:name "Clocked"
                         :log "clocked")
