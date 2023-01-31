@@ -348,6 +348,7 @@ Code blocks and tables should have default font.
 ** Agendas
 #+begin_src emacs-lisp
   (org-super-agenda-mode 1)
+  (setq org-super-agenda-final-group-separator "\n")
   (setq org-agenda-custom-commands
         '(("i" "Inbox"
            tags "LEVEL=2"
@@ -359,23 +360,8 @@ Code blocks and tables should have default font.
             (org-super-agenda-groups
              '((:auto-parent t)))))
           ("w" "Work Daily"
-           ((agenda
-             ""
-             ((org-agenda-files (list (expand-file-name "work.org" org-directory)))
-              (org-super-agenda-groups
-               '((:name "Clocked"
-                        :log "clocked")
-                 (:name "Today"
-                        :time-grid t
-                        :date today
-                        :todo "TODAY"
-                        :scheduled today
-                        :deadline today
-                        :order 1)
-                 (:name "Overdue"
-                        :deadline past
-                        :scheduled past
-                        :order 2)))))
+           (
+            (agenda "" ((org-agenda-files (list (expand-file-name "work.org" org-directory)))))
             (alltodo
              ""
              ((org-agenda-files (list (expand-file-name "work.org" org-directory)))
@@ -386,7 +372,7 @@ Code blocks and tables should have default font.
                  (:name "In progress" :tag "wip")
                  (:name "Important" :tag "important")
                  (:name "Urgent" :tag "urgent")
-                 (:auto-parent t)
+                 (:auto-outline-path t)
                  (:auto-tags t)))))))
           ("p" "Personal Daily"
            ((agenda
@@ -401,7 +387,7 @@ Code blocks and tables should have default font.
               (org-super-agenda-groups
                '((:name none :discard (:pred blocked-invisible-p))
                  (:name "Waiting" :todo "WAITING" :order 50)
-                 (:auto-parent t)
+                 (:auto-outline-path t)
                  (:auto-tags t)))))))))
   (defun blocked-invisible-p (item)
     "Check if item is blocked and invisible."
