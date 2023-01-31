@@ -360,13 +360,13 @@ Code blocks and tables should have default font.
             (org-super-agenda-groups
              '((:auto-parent t)))))
           ("w" "Work Daily"
-           (
-            (agenda "" ((org-agenda-files (list (expand-file-name "work.org" org-directory)))))
+           ((agenda "" ((org-agenda-files (list (expand-file-name "work.org" org-directory)))))
             (alltodo
              ""
              ((org-agenda-files (list (expand-file-name "work.org" org-directory)))
               (org-super-agenda-groups
-               '((:name "Waiting/Blocked"
+               '(( :discard (:tag "tools"))
+                 (:name "Waiting/Blocked"
                         :todo "WAITING"
                         :order 2)
                  (:name "In progress" :tag "wip")
@@ -383,9 +383,9 @@ Code blocks and tables should have default font.
                  (:name "Schedule" :scheduled t :deadline t :time-grid t :order 1)))))
             (alltodo
              ""
-             ((org-agenda-overriding-header "")
-              (org-super-agenda-groups
-               '((:name none :discard (:pred blocked-invisible-p))
+             ((org-super-agenda-groups
+               '((:discard (:pred blocked-invisible-p))
+                 ( :discard (:tag "tools"))
                  (:name "Waiting" :todo "WAITING" :order 50)
                  (:auto-outline-path t)
                  (:auto-tags t)))))))))
