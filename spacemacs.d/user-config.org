@@ -169,8 +169,8 @@ Colemak- and English-friendly evil escape sequence and slower delay for my slow 
       (setq org-pomodoro-long-break-length 25)
       ;; This fits my schedule better.
       (setq org-pomodoro-long-break-frequency 3)
-      ;; If I haven't clocked in in a full pomodoro's time, we can reset the group.
-      (setq org-pomodoro-expiry-time 25)
+      ;; If I haven't clocked in a full pomodoro's time plus a long break, we can reset the group.
+      (setq org-pomodoro-expiry-time 50)
     #+end_src
 
 **** Control Panel
