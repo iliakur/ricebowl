@@ -22,42 +22,45 @@ In all text modes except yaml.
   (global-hl-line-mode -1)
   (add-hook 'text-mode-hook 'hl-line-mode)
 #+end_src
-** Insert file path
+** Inserting stuff
+#+begin_src emacs-lisp
+  (spacemacs/declare-prefix "oi" "insert")
+#+end_src
+*** Insert file path
   I would like to be able to insert file paths into buffers with completion.
 
   Kudos: https://www.emacswiki.org/emacs/InsertFileName
 
   #+begin_src emacs-lisp
-  (defun ik/insert-file-name (filename &optional args)
-    "Insert name of file FILENAME into buffer after point.
+    (defun ik/insert-file-name (filename &optional args)
+      "Insert name of file FILENAME into buffer after point.
 
-  Prefixed with \\[universal-argument], expand the file name to
-  its fully canocalized path.  See `expand-file-name'.
+    Prefixed with \\[universal-argument], expand the file name to
+    its fully canocalized path.  See `expand-file-name'.
 
-  Prefixed with \\[negative-argument], use relative path to file
-  name from current directory, `default-directory'.  See
-  `file-relative-name'.
+    Prefixed with \\[negative-argument], use relative path to file
+    name from current directory, `default-directory'.  See
+    `file-relative-name'.
 
-  The default with no prefix is to insert the file name exactly as
-  it appears in the minibuffer prompt."
-    ;; Based on insert-file in Emacs -- ashawley 20080926
-    (interactive "*fInsert file name: \nP")
-    (cond ((eq '- args)
-           (insert (file-relative-name filename)))
-          ((not (null args))
-           (insert (expand-file-name filename)))
-          (t
-           (insert filename))))
+    The default with no prefix is to insert the file name exactly as
+    it appears in the minibuffer prompt."
+      ;; Based on insert-file in Emacs -- ashawley 20080926
+      (interactive "*fInsert file name: \nP")
+      (cond ((eq '- args)
+             (insert (file-relative-name filename)))
+            ((not (null args))
+             (insert (expand-file-name filename)))
+            (t
+             (insert filename))))
 
-  (global-set-key (kbd "C-c i") 'ik/insert-file-name)
+    (spacemacs/set-leader-keys "oif" 'ik/insert-file-name)
   #+end_src
-** Insert value of environment variable
+*** Insert value of environment variable
 
 #+begin_src emacs-lisp
   (defun ik/insert-from-env ()
     (interactive)
     (insert (call-interactively 'getenv)))
-  (spacemacs/declare-prefix "oi" "insert")
   (spacemacs/set-leader-keys "oie" 'ik/insert-from-env)
 #+end_src
 ** Insert new comment line
