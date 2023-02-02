@@ -51,6 +51,15 @@ In all text modes except yaml.
 
   (global-set-key (kbd "C-c i") 'ik/insert-file-name)
   #+end_src
+** Insert value of environment variable
+
+#+begin_src emacs-lisp
+  (defun ik/insert-from-env ()
+    (interactive)
+    (insert (call-interactively 'getenv)))
+  (spacemacs/declare-prefix "oi" "insert")
+  (spacemacs/set-leader-keys "oie" 'ik/insert-from-env)
+#+end_src
 ** Insert new comment line
   While writing a comment, insert a new comment line.
  #+begin_src emacs-lisp
@@ -299,14 +308,6 @@ Code blocks and tables should have default font.
     "on" 'org-forward-element)
   (spacemacs/set-leader-keys-for-major-mode 'org-mode
     "oe" 'org-backward-element)
-  #+end_src
-** Interleave integration
-   Interleave isn't really an org package but it relies heavily on orgmode syntax.
-  #+begin_src emacs-lisp
-    (spacemacs/set-leader-keys-for-major-mode 'org-mode
-      "oi" 'interleave-mode)
-    (with-eval-after-load 'interleave
-      (setq interleave-org-notes-dir-list '(".")))
   #+end_src
 ** Editing headlines
    When editing headlines, ignore tags and asterisks at beginning/end of lines respectively.
