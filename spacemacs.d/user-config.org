@@ -392,7 +392,27 @@ Code blocks and tables should have default font.
                  ( :discard (:tag "tools"))
                  (:name "Waiting" :todo "WAITING" :order 50)
                  (:auto-outline-path t)
-                 (:auto-tags t)))))))))
+                 (:auto-tags t)))))))
+          ("t" "Improve Tools"
+           ((tags-todo
+             "tools"
+             ((org-agenda-max-todos 3)
+              (org-agenda-files
+               (list
+                (expand-file-name "work.org" org-directory)
+                (expand-file-name "gtd.org" org-directory)))))))
+          ("d" "Daily"
+           ((agenda
+             ""
+             ((org-agenda-span 2)
+              (org-agenda-start-day "-1d")
+              (org-agenda-start-with-follow-mode t)
+              (org-agenda-follow-indirect t)
+              (org-agenda-start-with-log-mode t)
+              (org-agenda-files
+               (list (expand-file-name "diary.org" org-directory)))
+              (org-super-agenda-groups
+               '((:name "Today" :date today :order 1)))))))))
   (defun blocked-invisible-p (item)
     "Check if item is blocked and invisible."
     (eq (get-text-property 0 'org-todo-blocked item) 'invisible))
