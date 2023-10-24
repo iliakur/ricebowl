@@ -909,7 +909,7 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
       (if branch
           (progn (kill-new branch)
                  (message "%s" branch))
-        (user-error "There is not current branch"))))
+        (user-error "There is no current branch"))))
 #+end_src
 ** Link to commit hash instead of branch name
 #+begin_src emacs-lisp
