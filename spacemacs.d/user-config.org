@@ -1,4 +1,4 @@
-#+PROPERTY: header-args :tangle yes :exports none :results silent
+#+PROPERTY: header-args :tangle yes :exports none :results silent cache: yes
 * Writing
 ** Variable pitch font
 In all text modes except yaml.
