@@ -649,6 +649,8 @@ Disable responsiveness so that pomodoro is always visible.
 ** highlight cursor position
    #+begin_src emacs-lisp
      (beacon-mode 1)
+     ;; Show the beacon on demand, not just when switching buffers.
+     (spacemacs/set-leader-keys "ol" 'beacon-blink)
    #+end_src
 ** Functions
   It is very convenient to navigate to the beginning and end of functions, especially if they are big methods.
