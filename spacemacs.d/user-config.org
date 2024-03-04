@@ -635,6 +635,11 @@ Disable responsiveness so that pomodoro is always visible.
        "oT"
        'spacemacs/cycle-spacemacs-theme)
    #+end_src
+** Disable helm-descrbinds
+Newer versions of helm come with this package, it clobbers which-key, but doesn't work. So I disable it and get which-key back:
+#+begin_src emacs-lisp
+  (helm-descbinds-mode 0)
+#+end_src
 * Navigating inside buffer
 ** Lines
   Make evil-mode up/down operate in screen lines instead of logical lines.
