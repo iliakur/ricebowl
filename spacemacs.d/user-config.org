@@ -114,6 +114,23 @@ In all text modes except yaml.
              (insert (format "%s" num))))
    #+end_src
 
+** Move region into variable
+#+begin_src emacs-lisp
+  (defun ik/move-region-to-variable (count beg end varname)
+    "Replace highlighted region with variable name.
+    Move up a line and declare the variable setting it to the region.
+    If prefix argument is given that's how many lines up we want the variable declared.
+    Cursor stays where the region used to be."
+    (interactive "P\nr\nMnew variable name: ")
+    (save-excursion
+      (kill-region beg end)
+      (insert varname)
+      (when count (forward-line (- (- count 1))))
+      (evil-insert-newline-above)
+      (when evil-auto-indent (indent-according-to-mode))
+      (insert varname " = ")
+      (yank)))
+#+end_src
 * Evil
 ** evil-escape-mode
 Colemak- and English-friendly evil escape sequence and slower delay for my slow typing :)
