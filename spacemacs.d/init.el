@@ -349,11 +349,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  ; There seems to be a problem with org-roam integration into spacemacs currently.
-  ; The link below suggests this for letting spacemacs run in daemon mode:
-  ; https://github.com/syl20bnr/spacemacs/issues/14477#issuecomment-815164427
-  (setq org-roam-directory "~/Documents/org/roam")
-  (setq org-roam-v2-ack t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -407,8 +402,7 @@ you should place your code here."
     (setq org-todo-keywords '((type "TODO(s)" "WAITING(w)" "|" "DONE(t)" "CANCELED(c)")))
     (setq org-todo-keyword-faces '(("TODO" . org-warning) ("WAITING" . (:foreground "blue")) ("CANCELED" . (:foreground "orange"))))
     (setq org-enforce-todo-dependencies t)
-    (setq org-log-done t)
-    )
+    (setq org-log-done t))
 
   (with-eval-after-load 'evil
     ;; Until this gets fixed, use standard Evil functions instead of evil-org-mode ones:
