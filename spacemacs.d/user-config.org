@@ -571,19 +571,6 @@ Code blocks and tables should have default font.
 
  #+end_src
 
-**** LaTeX classes
-     #+begin_src emacs-lisp
-       (add-to-list 'org-latex-classes
-                    '("report-no-parts"
-                      "\\documentclass[11pt]{report}"
-                      ("\\chapter{%s}" . "\\chapter*{%s}")
-                      ("\\section{%s}" . "\\section*{%s}")
-                      ("\\subsection{%s}" . "\\subsection*{%s}")
-                      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
-
-     #+end_src
-
-
 **** Table captions
      Captions should just be below all floats, even tables.
      #+begin_src emacs-lisp
