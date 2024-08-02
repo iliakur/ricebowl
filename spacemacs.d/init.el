@@ -30,7 +30,11 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(typescript
+   '(d
+     erlang
+     multiple-cursors
+     csv
+     typescript
      javascript
      rust
      go
