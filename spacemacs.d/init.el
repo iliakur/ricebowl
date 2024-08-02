@@ -85,10 +85,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(olivetti
                                       helm-bibtex
-                                      bicycle
                                       beacon
                                       default-text-scale
-                                      org-super-agenda
                                       toml-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
