@@ -63,9 +63,6 @@ values."
      auto-completion
      shell-scripts
      emacs-lisp
-     (latex :variables
-             latex-enable-folding t
-             latex-enable-auto-fill t)
      git
      markdown
      pdf
