@@ -830,11 +830,12 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 ** Folding
   Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
  #+begin_src emacs-lisp
-  (add-hook 'yaml-mode-hook
-            (lambda ()
-              (outline-minor-mode)
-              (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
-              (setq outline-regexp "^ *")))
+   (add-hook 'yaml-mode-hook
+             (lambda ()
+               (outline-minor-mode)
+               (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
+               (setq outline-regexp "^ *")
+               (indent-guide-mode)))
  #+end_src
 ** Enabling prog-mode features
 
