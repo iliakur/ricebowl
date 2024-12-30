@@ -847,6 +847,11 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
 * CSV
 #+begin_src emacs-lisp
   (add-hook 'csv-mode-hook (lambda () (call-interactively 'csv-align-fields)))
+  (add-hook 'csv-mode-hook
+            (lambda ()
+              (prog1
+                  (display-line-numbers-mode)
+                (setq display-line-numbers 'relative))))
 #+end_src
 
 * helm-bibtex
