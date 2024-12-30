@@ -48,9 +48,7 @@ values."
      json
      html
      yaml
-     (python :variables
-             python-backend 'lsp
-             python-lsp-server 'pyright)
+     (python :variables python-backend 'anaconda)
      (elm :variables
           elm-backend 'lsp)
      debug
