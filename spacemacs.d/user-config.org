@@ -89,7 +89,9 @@ In all text modes except yaml.
 ** Olivetti
   #+begin_src emacs-lisp
     (defun ik-olivetti-mode ()
-      (unless (member major-mode '(yaml-mode toml-mode csv-mode))
+      (unless
+          (or (member major-mode '(yaml-mode toml-mode csv-mode))
+              (and (string-match-p  "integrations-core.+\.txt$" (buffer-file-name))))
         (olivetti-mode 1)))
     (add-hook 'text-mode-hook 'ik-olivetti-mode)
     (setq olivetti-body-width 103)
