@@ -89,12 +89,20 @@ In all text modes except yaml.
 ** Olivetti
   #+begin_src emacs-lisp
     (defun ik-olivetti-mode ()
-      (unless
-          (or (member major-mode '(yaml-mode toml-mode csv-mode))
-              (and (string-match-p  "integrations-core.+\.txt$" (buffer-file-name))))
-        (olivetti-mode 1)))
+      (let ((should-enable-olivetti
+             (not
+              (and
+               (member major-mode '(yaml-mode toml-mode csv-mode))
+               (string-match-p  "integrations-core.+\.txt$" (buffer-file-name))
+               ;; Vertical window.
+               (< (window-total-width) (window-total-height))))))
+        (if should-enable-olivetti (olivetti-mode 1) (olivetti-mode -1))))
     (add-hook 'text-mode-hook 'ik-olivetti-mode)
     (setq olivetti-body-width 103)
+    ;; If we resize a text-mode window we should toggle olivetti-mode.
+    (add-hook 'window-size-change-functions
+              (lambda (frame)
+                (when (bound-and-true-p text-mode) (ik-olivetti-mode))))
   #+end_src
 
 ** Add Commas to Numbers
