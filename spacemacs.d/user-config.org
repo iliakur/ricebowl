@@ -88,21 +88,9 @@ In all text modes except yaml.
 
 ** Olivetti
   #+begin_src emacs-lisp
-    (defun ik-olivetti-mode ()
-      (let ((should-enable-olivetti
-             (not
-              (and
-               (member major-mode '(yaml-mode toml-mode csv-mode))
-               (string-match-p  "integrations-core.+\.txt$" (buffer-file-name))
-               ;; Vertical window.
-               (< (window-total-width) (window-total-height))))))
-        (if should-enable-olivetti (olivetti-mode 1) (olivetti-mode -1))))
-    (add-hook 'text-mode-hook 'ik-olivetti-mode)
-    (setq olivetti-body-width 103)
-    ;; If we resize a text-mode window we should toggle olivetti-mode.
-    (add-hook 'window-size-change-functions
-              (lambda (frame)
-                (when (bound-and-true-p text-mode) (ik-olivetti-mode))))
+    (add-hook 'org-mode-hook 'olivetti-mode)
+    (add-hook 'markdown-mode-hook 'olivetti-mode)
+    (with-eval-after-load 'olivetti (olivetti-set-width 103))
   #+end_src
 
 ** Add Commas to Numbers
@@ -922,12 +910,6 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
        (browse-url "https://www.online-stopwatch.com/timer/10minutes"))
  #+end_src
 * Git
-** No Olivetti in blame mode
-#+begin_src emacs-lisp
-  (with-eval-after-load 'magit
-    (setq magit-blame-disable-modes
-          (add-to-list 'magit-blame-disable-modes 'olivetti-mode)))
-#+end_src
 ** Save current branch name to clipboard
 
 +Borrowed+ Stolen from [[https://emacs.stackexchange.com/a/30496][here]].
