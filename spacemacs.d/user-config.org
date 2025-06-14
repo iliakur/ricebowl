@@ -78,7 +78,8 @@ switch this to tree-sitter folding
   #+begin_src emacs-lisp
     (add-hook 'org-mode-hook 'olivetti-mode)
     (add-hook 'markdown-mode-hook 'olivetti-mode)
-    (with-eval-after-load 'olivetti (olivetti-set-width 103))
+    (require 'olivetti)
+    (setopt olivetti-body-width 103)
   #+end_src
 
 ** Add Commas to Numbers
