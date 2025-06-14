@@ -16,12 +16,6 @@ In all text modes except yaml.
   #+end_src
 
   *Note: if you want to find out the name of the font on your system, run ~(font-family-list)~ and search the output for your font.*
-** Line highlighting
-  HL-line mode is really only useful in text mode buffers where lines regularly wrap.
-#+begin_src emacs-lisp
-  (global-hl-line-mode -1)
-  (add-hook 'text-mode-hook 'hl-line-mode)
-#+end_src
 ** Inserting stuff
 #+begin_src emacs-lisp
   (spacemacs/declare-prefix "oi" "insert")
@@ -77,14 +71,8 @@ In all text modes except yaml.
   (global-set-key (kbd "<C-escape>") 'sp-forward-sexp)
 #+end_src
 
-** Code/text block folding
-#+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook 'outline-minor-mode)
-  (add-hook 'prog-mode-hook 'hs-minor-mode)
-  (with-eval-after-load 'outline
-    (define-key outline-minor-mode-map (kbd "<C-tab>") 'bicycle-cycle)
-    (define-key outline-minor-mode-map (kbd "<backtab>") 'bicycle-cycle-global))
-#+end_src
+** TODO Code/text block folding
+switch this to tree-sitter folding
 
 ** Olivetti
   #+begin_src emacs-lisp
@@ -151,7 +139,6 @@ Colemak- and English-friendly evil escape sequence and slower delay for my slow 
                       org-bibtex
                       org-docview
                       org-gnus
-                      org-habit
                       org-info
                       org-irc
                       org-mhe
@@ -160,123 +147,6 @@ Colemak- and English-friendly evil escape sequence and slower delay for my slow 
 #+end_src
 
   Then define some module-specific settings.
-*** org-pomodoro
-**** Sounds
-     The starting settings reflect the book's recommendations to have everything on by default, even the ticking sounds.
-    #+begin_src emacs-lisp
-      (with-eval-after-load 'org-pomodoro
-        (setq org-pomodoro-plays-sounds t)
-        (setq org-pomodoro-ticking-sound-p t))
-    #+end_src
-
-    I exposed a simple toggling function to turn all sounds on and off, in case I have to.
-#+begin_src emacs-lisp
-  (defun ik/toggle-org-pomodoro-sounds ()
-      (interactive)
-      (setq org-pomodoro-play-sounds (not org-pomodoro-play-sounds))
-      (message "Org Pomodoro sounds turned %s"
-               (if org-pomodoro-play-sounds "on" "off")))
-#+end_src
-
-**** Notifications
-     For those situations when I cannot have the volume on for whatever reason, I make org-pomodoro notifications more prominent by sending them through ~libnotify~.
-    #+begin_src emacs-lisp
-      (with-eval-after-load 'alert
-        (add-to-list 'alert-user-configuration
-                     `(((:category . "org-pomodoro"))
-                       ,(if (eq system-type 'darwin)
-                            'osx-notifier
-                          'libnotify)
-                       nil)))
-    #+end_src
-
-**** Long breaks and blocks of pomodoros
-    #+begin_src emacs-lisp
-      ;; This is from the book.
-      (setq org-pomodoro-long-break-length 25)
-      ;; This fits my schedule better.
-      (setq org-pomodoro-long-break-frequency 3)
-      ;; If I haven't clocked in a full pomodoro's time plus a long break, we can reset the group.
-      (setq org-pomodoro-expiry-time 50)
-    #+end_src
-
-**** Control Panel
-     The short and long break commands don't quite work, but resetting the pomodoro count does.
-
-    #+begin_src emacs-lisp
-      (defun ik/org-pomodoro-reset-count (arg)
-        (interactive "P")
-        (let ((new-count (if arg arg 0)))
-          (progn
-            (setq org-pomodoro-count new-count)
-            (message "Reset pomodoro count to %s" new-count))))
-
-      (defun ik/org-pomodoro-show-count ()
-        (interactive)
-        (let
-            ((pomodoro-count
-              (if (bound-and-true-p org-pomodoro-count) org-pomodoro-count 0)))
-          (message "%s pomodoro%s completed in this block"
-                   pomodoro-count
-                   (if (eq pomodoro-count 1) "" "s"))))
-
-      (defun ik/org-pomodoro-start-short-break ()
-        (interactive)
-        (org-pomodoro-start 'short-break))
-
-      (defun ik/org-pomodoro-start-long-break ()
-          (interactive)
-          (ik/org-pomodoro-reset-count)
-          (org-pomodoro-start 'long-break))
-
-      (spacemacs/declare-prefix "op" "org-pomodoro")
-      (spacemacs/declare-prefix "opb" "breaks")
-      (spacemacs/set-leader-keys
-        "ops" 'ik/toggle-org-pomodoro-sounds
-        "opr" 'ik/org-pomodoro-reset-count
-        "opc" 'ik/org-pomodoro-show-count
-        "opbl" 'ik/org-pomodoro-start-long-break
-        "opbs" 'ik/org-pomodoro-start-short-break)
-    #+end_src
-***** TODO fix short and long break dispatch
-
-**** Count Pomodoros
-#+begin_src emacs-lisp
-  (defun ik/count-pomodoros (&optional rstart rend)
-   (interactive)
-   (how-many "CLOCK" rstart rend t))
-#+end_src
-
-**** TODO Measuring effort
-     The first step is to configure effort values.
-     #+begin_src emacs-lisp
-       (setq org-global-properties '(("EFFORT_ALL" . "0 1 2 3 4 5 6 7 8")))
-     #+end_src
-
-     I then I need to add pomodoros as allowed duration units.
-    Then I should add something to org-duration-format. It's just a complicated variable.
-   #+begin_src emacs-lisp :tangle no
-     (setq org-duration-units)
-     (setq org-duration-format)
-   #+end_src
-*** org-habit
-   #+begin_src emacs-lisp
-     (defun ik/toggle-habits-only-for-today ()
-       (interactive)
-       (setq org-habit-show-habits-only-for-today
-             (not org-habit-show-habits-only-for-today)))
-     (spacemacs/set-leader-keys
-       "oh" 'ik/toggle-habits-only-for-today)
-     (setq org-habit-preceding-days 30)
-   #+end_src
-**** TODO habits on specific days
-     There's a [[https://github.com/oddious/org-habit-plus][package]] out there that acts as an extension to default habits, it would need a little work to integrate.
-     Alternatively, you can add a simple reminder instead of a todo and then use a time expression as shown in these answers:
-     - https://stackoverflow.com/a/28459330
-     - https://emacs.stackexchange.com/a/7865
-
-    You could even stop treating it as a habit and treat it more like the family update, where there's a reminder, but you do it as soon as you can.
-    Or you give up on doing it on weekends, I guess.
 ** Fonts
 Code blocks and tables should have default font.
 
@@ -341,13 +211,6 @@ Code blocks and tables should have default font.
   (with-eval-after-load 'auto-complete
     (add-to-list 'ac-modes 'org-mode))
 #+end_src
-** TODO org-file-apps
-   I discovered that attached openoffice documents were being opened with emacs, I'd like to change that.
-   Below is my first attempt at solving this, which doesn't work yet.
-   #+begin_src emacs-lisp :tangle no
-     (setq org-file-apps
-           (append org-file-apps '(("\\.od[stgfb]\\'" . system))))
-   #+end_src
 ** Code Blocks and Tables
 *** Auto-indent code blocks
     Adapted from [[https://emacs.stackexchange.com/a/5853][here]].
@@ -629,10 +492,6 @@ Something about evil cursor management and the way org inserts links swallows th
   (setq spaceline-minor-modes-p nil)
 #+end_src
 
-Disable responsiveness so that pomodoro is always visible.
-#+begin_src emacs-lisp
-(spacemacs/toggle-mode-line-responsive-off)
-#+end_src
 ** Toggle theme between dark/light
    #+begin_src emacs-lisp
      (spacemacs/set-leader-keys
@@ -698,35 +557,11 @@ Newer versions of helm come with this package, it clobbers which-key, but doesn'
   (spacemacs/set-leader-keys "oe" 'erase-buffer)
 #+end_src
 
-* Projectile
-  According to the discussion in [[https://github.com/bbatsov/projectile/issues/1302][this issue]], the error I keep getting when I try using projectile for the first time after startup, can be addressed with this:
-  #+begin_src emacs-lisp
-    ;; (setq projectile-git-submodule-command nil)
-  #+end_src
- [[https://github.com/bbatsov/projectile/issues/1302#issuecomment-471513156][This comment]] also suggests installing and adding a program called ~gettext~ to path. In any case I don't understand *why* all this is necessary or why it works...
-
- I've disabled it for now because it actually results in exactly the error it claims to address when I run projectile for the first time.
-
- Here's the error for the record:
-#+begin_quote
-Waiting for git... [2 times]
-In ‘Projectile files’ source: ‘(closure (helm-projectile-current-project-root helm-ag-base-command t) nil (if (projectile-project-p) (progn (save-current-buffer (set-buffer (or (and (buffer-live-p helm-current-buffer) helm-current-buffer) (setq helm-current-buffer (current-buffer)))) (let* ((root (projectile-project-root)) (--cl-var-- (projectile-current-project-files)) (display nil) (--cl-var-- nil)) (while (consp --cl-var--) (setq display (car --cl-var--)) (setq --cl-var-- (cons (cons display (expand-file-name display root)) --cl-var--)) (setq --cl-var-- (cdr --cl-var--))) (nreverse --cl-var--))))))’
- (file-missing "Setting current directory" "No such file or directory" "/home/quickbeam/fatal: not a git repository (or any parent up to mount point /)
-Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
-/")
-#+end_quote
 * Workspaces/Buffer Groups
    #+begin_src emacs-lisp
      (spacemacs/set-leader-keys
             "od" 'desktop-clear)
    #+end_src
-* Bookmarks
-  These settings emulate VSCode's behavior, in case I ever (God forbid) need to switch.
- #+begin_src emacs-lisp
-  (global-set-key (kbd "<C-f2>") 'bm-toggle)
-  (global-set-key (kbd "<f2>") 'bm-next)
-  (global-set-key (kbd "<S-f2>") 'bm-previous)
- #+end_src
 * Python
  #+begin_src emacs-lisp
   (setq python-formatter 'black)
@@ -822,25 +657,6 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
   (setq yas-triggers-in-field t)
  #+end_src
 
-* Yaml
-** Folding
-  Yaml folding, kudos: https://github.com/jgmize/dotfiles/blob/master/.spacemacs#L501
- #+begin_src emacs-lisp
-   (add-hook 'yaml-mode-hook
-             (lambda ()
-               (outline-minor-mode)
-               (define-key yaml-mode-map (kbd "TAB") 'outline-toggle-children)
-               (setq outline-regexp "^ *")
-               (indent-guide-mode)))
- #+end_src
-** Enabling prog-mode features
-
-[[https://github.com/yoshiki/yaml-mode/issues?q=is%3Aissue+programming-mode][The maintainer is obstinate that he derive from text-mode]], so we have to make some tweaks ourselves.
-
-#+begin_src emacs-lisp
-  (remove-hook 'yaml-mode-hook 'olivetti-mode)
-#+end_src
-
 * CSV
 #+begin_src emacs-lisp
   (add-hook 'csv-mode-hook (lambda () (call-interactively 'csv-align-fields)))
@@ -900,14 +716,6 @@ Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
  #+begin_src emacs-lisp
   (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
   (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook 'TeX-revert-document-buffer)
- #+end_src
-* Typing Exercises
- #+begin_src emacs-lisp
-   (defun ik/typing-exercises ()
-       "Open webpages I need to practice my typing."
-       (interactive)
-       (browse-url "https://www.keybr.com/")
-       (browse-url "https://www.online-stopwatch.com/timer/10minutes"))
  #+end_src
 * Git
 ** Save current branch name to clipboard
