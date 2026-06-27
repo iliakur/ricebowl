@@ -38,7 +38,6 @@ values."
      javascript
      rust
      go
-     (lsp :variables lsp-enable-file-watchers nil)
      graphviz
      (dash :variables
            dash-docs-enable-debugging nil
