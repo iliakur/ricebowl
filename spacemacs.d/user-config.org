@@ -130,6 +130,33 @@ Colemak- and English-friendly evil escape sequence and slower delay for my slow 
   (with-eval-after-load 'markdown
     (setq markdown-hide-markup t))
    #+end_src
+* Gui elements and prompts
+** Simpler yes/no prompt:
+ #+begin_src emacs-lisp
+  (defalias 'yes-or-no-p 'y-or-n-p)
+ #+end_src
+** Golden ratio
+  #+begin_src emacs-lisp
+  (golden-ratio-mode 1)
+  #+end_src
+** Modeline
+  Disable major and minor mode indicators by default for a leaner mode-line.
+#+begin_src emacs-lisp
+  (setq spaceline-major-mode-p nil)
+  (setq spaceline-minor-modes-p nil)
+#+end_src
+
+** Toggle theme between dark/light
+   #+begin_src emacs-lisp
+     (spacemacs/set-leader-keys
+       "oT"
+       'spacemacs/cycle-spacemacs-theme)
+   #+end_src
+** Disable helm-descrbinds
+Newer versions of helm come with this package, it clobbers which-key, but doesn't work. So I disable it and get which-key back:
+#+begin_src emacs-lisp
+  (helm-descbinds-mode 0)
+#+end_src
 * Org
   By the time this config gets parsed and loaded we can assume that org is present since we're tangling with org-babel. That's why there is no need for ~with-eval-after-load~.
 ** Org Modules
@@ -477,33 +504,6 @@ Something about evil cursor management and the way org inserts links swallows th
 #+end_src
 
 
-* Gui elements and prompts
-** Simpler yes/no prompt:
- #+begin_src emacs-lisp
-  (defalias 'yes-or-no-p 'y-or-n-p)
- #+end_src
-** Golden ratio
-  #+begin_src emacs-lisp
-  (golden-ratio-mode 1)
-  #+end_src
-** Modeline
-  Disable major and minor mode indicators by default for a leaner mode-line.
-#+begin_src emacs-lisp
-  (setq spaceline-major-mode-p nil)
-  (setq spaceline-minor-modes-p nil)
-#+end_src
-
-** Toggle theme between dark/light
-   #+begin_src emacs-lisp
-     (spacemacs/set-leader-keys
-       "oT"
-       'spacemacs/cycle-spacemacs-theme)
-   #+end_src
-** Disable helm-descrbinds
-Newer versions of helm come with this package, it clobbers which-key, but doesn't work. So I disable it and get which-key back:
-#+begin_src emacs-lisp
-  (helm-descbinds-mode 0)
-#+end_src
 * Navigating inside buffer
 ** Lines
   Make evil-mode up/down operate in screen lines instead of logical lines.
